@@ -1,0 +1,160 @@
+{
+  "nav": {
+    "features": "Recursos",
+    "install": "Instalar",
+    "architecture": "Arquitetura",
+    "guide": "Guia Completo",
+    "contact": "Contato"
+  },
+  "hero": {
+    "badge": "v2.0.0 — A Mente do Arquiteto",
+    "title1": "Pense.",
+    "title2": "Construa.",
+    "title3": "Evolua.",
+    "subtitle": "Um framework modular e orientado a skills para agentes de IA. Baixo consumo de tokens, alto sinal. Arquitetura primeiro, código depois.",
+    "cta": "Explorar Framework",
+    "docs": "Documentação",
+    "install": "npm install izanagi-ai",
+    "guide_cta": "Ver Guia Completo"
+  },
+  "about": {
+    "title": "O que é NexusAI?",
+    "desc": "NexusAI é um framework meta — um conjunto de instruções para agentes de IA que padroniza qualidade, segurança e eficiência. Diferente de bibliotecas comuns, NexusAI organiza o comportamento do agente em camadas: cada tarefa passa por engines de decisão, contexto, execução de skills, qualidade, reflexão e memória. O resultado? Agentes que evoluem sozinhos, gastam menos tokens e produzem código mais limpo.",
+    "highlight1": "137 skills especializadas",
+    "highlight2": "8 engines em pipeline",
+    "highlight3": "Auto-evolução contínua",
+    "highlight4": "Suporte a 10+ linguagens e stacks"
+  },
+  "stats": {
+    "skills": "Skills",
+    "agents": "Agentes Pré-construídos",
+    "categories": "Categorias",
+    "tokens": "Tokens por Resposta"
+  },
+  "features": {
+    "title": "Modular por Natureza",
+    "subtitle": "Oito engines trabalhando em conjunto. Cada uma construída com propósito específico, substituível e mensurável.",
+    "decision": {
+      "title": "Decision Engine",
+      "desc": "Classifica tarefas, roteia para a chain de skills correta e prioriza com precisão."
+    },
+    "context": {
+      "title": "Context Engine",
+      "desc": "Constrói janelas de contexto mínimas, carrega memória relevante e elimina ruído antes do agente pensar."
+    },
+    "token": {
+      "title": "Token Manager",
+      "desc": "Monitora orçamentos em tempo real. Dispara compressão acima de 70% de uso. Mantém respostas enxutas."
+    },
+    "quality": {
+      "title": "Quality Gates",
+      "desc": "Validação em cinco camadas: Segurança → Estilo → Clareza → Concisão → Completude."
+    },
+    "reflection": {
+      "title": "Reflection Engine",
+      "desc": "Auto-revisão após cada tarefa. Registra erros, captura melhorias, alimenta o ciclo de evolução."
+    },
+    "evolution": {
+      "title": "Evolution Engine",
+      "desc": "Skills se atualizam sozinhas ao longo do tempo. O framework melhora a cada tarefa, autonomamente."
+    }
+  },
+  "install": {
+    "title": "Comece em Segundos",
+    "subtitle": "Instale via npm, crie um agente e comece a construir.",
+    "step1": "Instale o pacote",
+    "step2": "Inicialize no seu projeto",
+    "step3": "Crie seu primeiro agente",
+    "or": "ou use diretamente com npx",
+    "copied": "Copiado!"
+  },
+  "architecture": {
+    "title": "Arquitetura em Camadas",
+    "subtitle": "Cada interação passa por um pipeline de engines que garantem qualidade, segurança e clareza.",
+    "principle1": "Arquitetura primeiro. Código depois.",
+    "principle2": "Baixo token, alto sinal.",
+    "principle3": "Auto-correção contínua.",
+    "principle4": "Segurança embutida em cada camada."
+  },
+  "cta": {
+    "title": "Pronto para Evoluir seu Agente?",
+    "subtitle": "Comece a construir com NexusAI. Zero configuração, controle total.",
+    "button": "Começar Agora",
+    "github": "Ver no GitHub",
+    "npm": "Ver no npm"
+  },
+  "guide": {
+    "title": "Guia Completo — NexusAI",
+    "subtitle": "Aprenda a instalar, configurar e usar o NexusAI do zero.",
+    "prereqs_title": "Pré-requisitos",
+    "prereqs_desc": "Antes de começar, certifique-se de ter instalado:",
+    "prereq1": "Node.js 18 ou superior",
+    "prereq2": "npm (vem com Node.js) ou yarn/pnpm",
+    "prereq3": "Git (opcional, para projetos versionados)",
+    "prereq4": "Um terminal (PowerShell, bash, zsh)",
+    "install_title": "1. Instalação",
+    "install_desc": "Instale o NexusAI globalmente ou localmente no seu projeto:",
+    "install_global": "Instalação global (recomendada)",
+    "install_local": "Instalação local (no projeto)",
+    "install_check": "Verifique se instalou corretamente:",
+    "init_title": "2. Inicialização",
+    "init_desc": "Crie um novo projeto ou inicialize em um existente:",
+    "init_cmd": "NexusAI vai criar a estrutura de diretórios e arquivos de configuração.",
+    "init_result_title": "Estrutura gerada:",
+    "init_file1": "nexus.json — configuração principal",
+    "init_file2": "agents/ — pasta para seus agentes",
+    "init_file3": "skills/ — pasta para skills personalizadas",
+    "agent_title": "3. Criando um Agente",
+    "agent_desc": "Agentes são configurações JSON que combinam skills. Crie seu primeiro:",
+    "agent_cmd": "Isso gera um arquivo agents/meu-agente.json.",
+    "agent_example_title": "Exemplo de agente:",
+    "agent_example_desc": "Cada agente declara quais skills usa, em que ordem e quais tarefas executa sempre ou nunca.",
+    "usage_title": "4. Usando o Agente",
+    "usage_desc": "Execute o agente passando uma tarefa:",
+    "usage_example": "O NexusAI vai carregar as skills configuradas e executar a tarefa.",
+    "usage_list": "Liste todos os agentes disponíveis:",
+    "skills_title": "5. Skills",
+    "skills_desc": "Skills são o coração do NexusAI. Cada skill é um módulo de instruções que ensina o agente a resolver um tipo específico de problema. O framework tem 137 skills pré-instaladas em 12 categorias:",
+    "skills_categories": "Arquitetura (10), Coding (13), Segurança (3), Qualidade (12), Testes (4), Banco de Dados (6), DevOps (8), Ensino (6), Memória (6), Otimização (3), Análise (5), Documentação (6), e mais...",
+    "skills_custom": "Você também pode criar suas próprias skills. Cada skill segue um formato YAML com nome, versão, dependências, gatilhos e orçamento de tokens.",
+    "structure_title": "6. Estrutura do Projeto",
+    "structure_desc": "Quando você instala o NexusAI, esta é a estrutura completa do framework:",
+    "structure_bin": "Executável da CLI",
+    "structure_core": "Motor central (decisão, contexto, reflexão, skill-resolver)",
+    "structure_agents": "Definições de Agentes de IA em JSON",
+    "structure_skills": "Skill base (137+ skills especializadas em Markdown)",
+    "structure_memory": "Gerenciamento de memória e compressão",
+    "structure_optimization": "Redução de tokens e custos",
+    "structure_teaching": "Modo professor e aprendizado adaptativo",
+    "structure_architecture": "Padrões arquiteturais e design",
+    "structure_coding": "Skills de engenharia de software",
+    "structure_security": "OWASP, autenticação, auditoria",
+    "structure_testing": "Testes unitários, integração, E2E",
+    "structure_devops": "Docker, CI/CD, infraestrutura",
+    "structure_database": "SQL, NoSQL, otimização",
+    "structure_frontend": "Skills de frontend",
+    "structure_backend": "Skills de backend",
+    "tokens_title": "7. Gerenciamento de Tokens",
+    "tokens_desc": "NexusAI foi projetado para ser econômico:",
+    "tokens_item1": "Limite de 2048 tokens por resposta (soft), 4096 (hard)",
+    "tokens_item2": "Compressão automática acima de 70% do orçamento",
+    "tokens_item3": "Skills desativadas por padrão — ative só as que precisar",
+    "tokens_item4": "Economia de ~50% no system prompt comparado a frameworks tradicionais",
+    "next_title": "8. Próximos Passos",
+    "next_desc": "Agora que você já sabe o básico, explore:",
+    "next_item1": "A documentação completa no GitHub",
+    "next_item2": "O guia de skills para criar as suas próprias",
+    "next_item3": "Os agentes pré-construídos para inspiração",
+    "next_item4": "O roadmap do projeto para saber o que vem por aí",
+    "back": "Voltar ao Início"
+  },
+  "footer": {
+    "tagline": "Arquitetura primeiro. Código depois.",
+    "copyright": "NexusAI — A Mente do Arquiteto"
+  },
+  "links": {
+    "github_repo": "Repositório GitHub",
+    "github_profile": "GitHub do Autor",
+    "npm_package": "Pacote npm"
+  }
+}
