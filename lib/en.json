@@ -7,7 +7,7 @@
     "contact": "Contact"
   },
   "hero": {
-    "badge": "v2.0.0 — The Architect's Mind",
+    "badge": "v2.0.4 — The Architect's Mind",
     "title1": "Think.",
     "title2": "Build.",
     "title3": "Evolve.",
@@ -18,8 +18,8 @@
     "guide_cta": "View Full Guide"
   },
   "about": {
-    "title": "What is NexusAI?",
-    "desc": "NexusAI is a meta-framework — a set of instructions for AI agents that standardizes quality, security, and efficiency. Unlike common libraries, NexusAI organizes agent behavior in layers: every task passes through decision, context, skill execution, quality, reflection, and memory engines. The result? Agents that evolve on their own, spend fewer tokens, and produce cleaner code.",
+    "title": "What is IzanagiIA?",
+    "desc": "IzanagiIA is a meta-framework — a set of instructions for AI agents that standardizes quality, security, and efficiency. Unlike common libraries, IzanagiIA organizes agent behavior in layers: every task passes through decision, context, skill execution, quality, reflection, and memory engines. The result? Agents that evolve on their own, spend fewer tokens, and produce cleaner code.",
     "highlight1": "137 specialized skills",
     "highlight2": "8 pipeline engines",
     "highlight3": "Continuous self-evolution",
@@ -78,14 +78,14 @@
   },
   "cta": {
     "title": "Ready to Evolve Your Agent?",
-    "subtitle": "Start building with NexusAI. Zero config, full control.",
+    "subtitle": "Start building with IzanagiIA. Zero config, full control.",
     "button": "Get Started",
     "github": "View on GitHub",
     "npm": "View on npm"
   },
   "guide": {
-    "title": "Complete Guide — NexusAI",
-    "subtitle": "Learn how to install, configure, and use NexusAI from scratch.",
+    "title": "Complete Guide — IzanagiIA",
+    "subtitle": "Learn how to install, configure, and use IzanagiIA from scratch.",
     "prereqs_title": "Prerequisites",
     "prereqs_desc": "Before starting, make sure you have installed:",
     "prereq1": "Node.js 18 or higher",
@@ -93,13 +93,13 @@
     "prereq3": "Git (optional, for versioned projects)",
     "prereq4": "A terminal (PowerShell, bash, zsh)",
     "install_title": "1. Installation",
-    "install_desc": "Install NexusAI globally or locally in your project:",
+    "install_desc": "Install IzanagiIA globally or locally in your project:",
     "install_global": "Global installation (recommended)",
     "install_local": "Local installation (in project)",
     "install_check": "Verify the installation:",
     "init_title": "2. Initialization",
     "init_desc": "Create a new project or initialize in an existing one:",
-    "init_cmd": "NexusAI will create the directory structure and configuration files.",
+    "init_cmd": "IzanagiIA will create the directory structure and configuration files.",
     "init_result_title": "Generated structure:",
     "init_file1": "nexus.json — main configuration",
     "init_file2": "agents/ — folder for your agents",
@@ -111,14 +111,14 @@
     "agent_example_desc": "Each agent declares which skills it uses, in what order, and which tasks it always or never runs.",
     "usage_title": "4. Using the Agent",
     "usage_desc": "Run the agent by passing a task:",
-    "usage_example": "NexusAI will load the configured skills and execute the task.",
+    "usage_example": "IzanagiIA will load the configured skills and execute the task.",
     "usage_list": "List all available agents:",
     "skills_title": "5. Skills",
-    "skills_desc": "Skills are the heart of NexusAI. Each skill is an instruction module that teaches the agent how to solve a specific type of problem. The framework has 137 pre-installed skills across 12 categories:",
+    "skills_desc": "Skills are the heart of IzanagiIA. Each skill is an instruction module that teaches the agent how to solve a specific type of problem. The framework has 137 pre-installed skills across 12 categories:",
     "skills_categories": "Architecture (10), Coding (13), Security (3), Quality (12), Testing (4), Database (6), DevOps (8), Teaching (6), Memory (6), Optimization (3), Analysis (5), Documentation (6), and more...",
     "skills_custom": "You can also create your own skills. Each skill follows a YAML format with name, version, dependencies, triggers, and token budget.",
     "structure_title": "6. Project Structure",
-    "structure_desc": "When you install NexusAI, this is the complete framework structure:",
+    "structure_desc": "When you install IzanagiIA, this is the complete framework structure:",
     "structure_bin": "CLI executable",
     "structure_core": "Core engine (decision, context, reflection, skill-resolver)",
     "structure_agents": "AI Agent definitions in JSON",
@@ -135,7 +135,7 @@
     "structure_frontend": "Frontend skills",
     "structure_backend": "Backend skills",
     "tokens_title": "7. Token Management",
-    "tokens_desc": "NexusAI is designed to be cost-efficient:",
+    "tokens_desc": "IzanagiIA is designed to be cost-efficient:",
     "tokens_item1": "2048 soft / 4096 hard token limit per response",
     "tokens_item2": "Automatic compression above 70% budget usage",
     "tokens_item3": "Skills disabled by default — activate only what you need",
@@ -150,7 +150,7 @@
   },
   "footer": {
     "tagline": "Architecture first. Code second.",
-    "copyright": "NexusAI — The Architect's Mind"
+    "copyright": "IzanagiIA — The Architect's Mind"
   },
   "links": {
     "github_repo": "GitHub Repository",

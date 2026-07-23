@@ -9,7 +9,7 @@ export default function Footer() {
     <footer className="border-t border-white/5 py-10">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-sm">
-          <span className="text-white/20">&copy; 2026 NexusAI</span>
+          <span className="text-white/20">&copy; 2026 IzanagiIA</span>
           <span className="text-white/20 text-xs">{t("footer.tagline")}</span>
           <div className="flex items-center gap-6">
             <a

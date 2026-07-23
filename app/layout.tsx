@@ -5,13 +5,13 @@ const baseUrl = "https://pedrohenriquesanchesleal4-debug.github.io/SiteIzanagi"
 
 export const metadata: Metadata = {
   title: {
-    default: "NexusAI — The Architect's Mind",
-    template: "%s | NexusAI",
+    default: "IzanagiIA — The Architect's Mind",
+    template: "%s | IzanagiIA",
   },
   description:
-    "NexusAI: framework modular e skill-oriented para agentes de IA. Baixo consumo de tokens, qualidade por camadas, auto-evolução contínua. Arquitetura primeiro, código depois.",
+    "IzanagiIA: framework modular e skill-oriented para agentes de IA. Baixo consumo de tokens, qualidade por camadas, auto-evolução contínua. Arquitetura primeiro, código depois.",
   keywords: [
-    "NexusAI",
+    "IzanagiIA",
     "AI framework",
     "agentes de IA",
     "framework para agentes",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Pedro Henrique Sanches Leal" }],
   creator: "Pedro Henrique Sanches Leal",
-  publisher: "NexusAI",
+  publisher: "IzanagiIA",
   robots: { index: true, follow: true },
   metadataBase: new URL(baseUrl),
 
@@ -34,8 +34,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     alternateLocale: ["en_US", "es_ES"],
-    siteName: "NexusAI",
-    title: "NexusAI — The Architect's Mind",
+    siteName: "IzanagiIA",
+    title: "IzanagiIA — The Architect's Mind",
     description:
       "Framework modular skill-oriented para agentes de IA. 137 skills, 10 agentes, 8 engines. Baixo token, alto sinal.",
     url: baseUrl,
@@ -44,14 +44,14 @@ export const metadata: Metadata = {
         url: `${baseUrl}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "NexusAI — The Architect's Mind",
+        alt: "IzanagiIA — The Architect's Mind",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "NexusAI — The Architect's Mind",
+    title: "IzanagiIA — The Architect's Mind",
     description:
       "Framework modular skill-oriented para agentes de IA. 137 skills, baixo consumo de tokens.",
     images: [`${baseUrl}/og-image.png`],
@@ -79,7 +79,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "SoftwareApplication",
-              name: "NexusAI",
+              name: "IzanagiIA",
               applicationCategory: "DeveloperApplication",
               operatingSystem: "Windows, macOS, Linux",
               description:

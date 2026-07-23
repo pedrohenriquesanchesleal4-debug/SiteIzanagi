@@ -19,7 +19,7 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <button onClick={() => scrollTo("hero")} className="text-lg font-semibold tracking-tight hover:text-white/80 transition-colors">
-          NexusAI
+          IzanagiIA
         </button>
 
         <div className="hidden md:flex items-center gap-8 text-sm text-white/50">

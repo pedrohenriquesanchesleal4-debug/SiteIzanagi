@@ -56,7 +56,7 @@ function GuideContent() {
       <nav className="glass border-b border-white/5">
         <div className="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link href="/" className="text-lg font-semibold tracking-tight hover:text-white/80 transition-colors">
-            NexusAI
+            IzanagiIA
           </Link>
           <div className="flex items-center gap-4">
             <Link href="/" className="text-sm text-white/40 hover:text-white/80 transition-colors">
@@ -178,7 +178,7 @@ cd my-project" />
           <p className="text-sm text-white/30">{t("guide.structure_desc")}</p>
           <div className="glass rounded-xl p-4">
             <pre className="text-xs text-white/30 font-mono leading-relaxed">
-              <code>{`NexusAI/
+              <code>{`IzanagiIA/
 ├── bin/            ${t("guide.structure_bin")}
 ├── src/cli/        Código fonte dos comandos CLI
 ├── core/           ${t("guide.structure_core")}
