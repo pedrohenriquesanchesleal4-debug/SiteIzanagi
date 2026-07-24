@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: {
     default: "IzanagiIA — The Architect's Mind",
     template: "%s | IzanagiIA",
+  
   },
   description:
     "IzanagiIA: framework modular e skill-oriented para agentes de IA. Baixo consumo de tokens, qualidade por camadas, auto-evolução contínua. Arquitetura primeiro, código depois.",
@@ -29,6 +30,9 @@ export const metadata: Metadata = {
   creator: "Pedro Henrique Sanches Leal",
   publisher: "IzanagiIA",
   robots: { index: true, follow: true },
+  verification: {
+    google: "ujlocrfygZyC6GpH5lawoLAMCK6FhTeBnr6i6UbhB_E",
+  },
   metadataBase: new URL(baseUrl),
 
   openGraph: {
@@ -56,10 +60,6 @@ export const metadata: Metadata = {
     description:
       "Framework modular skill-oriented para agentes de IA. 137 skills, baixo consumo de tokens.",
     images: [`${baseUrl}/og-image.png`],
-  },
-
-  other: {
-    "google-site-verification": "", // opcional: colocar o código de verificação do Search Console
   },
 }
 
