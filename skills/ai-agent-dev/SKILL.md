@@ -96,7 +96,7 @@ const workflow = new StateGraph({ channels: {} })
 ```tsx
 import { Server } from "@modelcontextprotocol/sdk";
 
-const server = new Server("portal-tools", {
+const server = new Server("enterprise-tools", {
   capabilities: { tools: {} },
 });
 

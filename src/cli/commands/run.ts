@@ -181,7 +181,7 @@ export function runCommand(baseDir: string, args: string[]): void {
     agent.always.forEach((a: string) => console.log(`  • ${a}`));
   }
 
-  // 4. Plano de execução
+  // 4. Plano de execução e Geração de Prompt Pronto para a IA
   const defaultAgent = (projectConfig && (projectConfig.defaultAgent as string)) || 'senior-engineer';
   console.log('\n\x1b[1mExecution Plan:\x1b[0m');
   console.log('  1. Load Context & System Rules (SYSTEM.md / RULES.md)');
@@ -189,6 +189,47 @@ export function runCommand(baseDir: string, args: string[]): void {
   console.log('  3. Execute Skill Chain (sequential, dependency-aware)');
   console.log('  4. Apply Quality Gates: Security -> Style -> Clarity -> Conciseness -> Completeness');
   console.log('  5. Generate Output & Reflection Log\n');
+
+  // Compila e salva o prompt pronto para a IA
+  const roots = [path.join(cwd, '.agents'), baseDir];
+  const findDoc = (name: string): string =>
+    roots.map((r) => path.join(r, name)).find((p) => fs.existsSync(p)) || '';
+
+  const systemContent = findDoc('SYSTEM.md');
+  const rulesContent = findDoc('RULES.md');
+
+  let fullPrompt = `<!-- IZANAGI AI READY-TO-USE PROMPT -->\n`;
+  fullPrompt += `<!-- TASK: ${task} -->\n`;
+  fullPrompt += `<!-- AGENT: ${agent.name} (v${agent.version || '1.0.0'}) -->\n\n`;
+  fullPrompt += `## USER TASK\n${task}\n\n`;
+  fullPrompt += `## AGENT IDENTITY & ROLE\n${agent.identity || agent.role}\n\n`;
+
+  if (agent.always && agent.always.length > 0) {
+    fullPrompt += `## MANDATORY AGENT RULES (ALWAYS)\n` + agent.always.map((a: string) => `- ${a}`).join('\n') + `\n\n`;
+  }
+  if (agent.never && agent.never.length > 0) {
+    fullPrompt += `## PROHIBITED ACTIONS (NEVER)\n` + agent.never.map((n: string) => `- ${n}`).join('\n') + `\n\n`;
+  }
+
+  fullPrompt += `## COMPUTED SKILL CHAIN (${skillChain.join(' -> ')})\n\n`;
+  for (const skill of skillChain) {
+    const sPath = resolveSkillPath(cwd, baseDir, skill);
+    if (sPath && fs.existsSync(sPath)) {
+      fullPrompt += `### SKILL: ${skill}\n` + fs.readFileSync(sPath, 'utf-8') + `\n\n`;
+    }
+  }
+
+  if (systemContent && fs.existsSync(systemContent)) {
+    fullPrompt += `## SYSTEM FOUNDATION\n` + fs.readFileSync(systemContent, 'utf-8') + `\n\n`;
+  }
+  if (rulesContent && fs.existsSync(rulesContent)) {
+    fullPrompt += `## OPERATIONAL RULES\n` + fs.readFileSync(rulesContent, 'utf-8') + `\n\n`;
+  }
+
+  const promptPath = path.resolve(cwd, 'izanagi-prompt.md');
+  fs.writeFileSync(promptPath, fullPrompt, 'utf-8');
+  console.log(`\x1b[32m✔ Ready-to-use AI prompt generated successfully!\x1b[0m`);
+  console.log(`  Saved to: \x1b[36m${promptPath}\x1b[0m (copy and paste directly to your AI tool)\n`);
 
   console.log('\x1b[90mTips:');
   if (agentId && agentFile) {

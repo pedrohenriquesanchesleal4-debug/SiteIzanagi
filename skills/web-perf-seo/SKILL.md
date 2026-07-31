@@ -70,7 +70,7 @@ import Head from "next/head";
   <meta property="og:title" content={pageTitle} />
   <meta property="og:description" content={pageDescription} />
   <meta property="og:image" content={ogImage} />
-  <link rel="canonical" href={`https://portal.example.com${path}`} />
+  <link rel="canonical" href={`https://api.enterprise.com${path}`} />
 </Head>
 ```
 

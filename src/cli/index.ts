@@ -8,6 +8,7 @@ import { initCommand } from './commands/init.js';
 import { compileCommand } from './commands/compile.js';
 import { runCommand } from './commands/run.js';
 import { createCommand } from './commands/create.js';
+import { chatCommand } from './commands/chat.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -39,6 +40,12 @@ export async function runCLI(args: string[]): Promise<void> {
     case 'run':
     case 'resolve':
       runCommand(baseDir, rest);
+      break;
+
+    case 'chat':
+    case 'repl':
+    case 'interactive':
+      chatCommand(baseDir);
       break;
 
     case 'create':
@@ -82,8 +89,9 @@ function showHelp(): void {
 \x1b[1mUsage:\x1b[0m
   izanagi <command> [options]
 
-\x1b[1mCommands:\x1b[0m
+  \x1b[1mCommands:\x1b[0m
   \x1b[32minit [dir] [--packs a,b,c]\x1b[0m      Creates a project with selectable skill packs (.agents).
+  \x1b[32mchat / repl\x1b[0m                   Launches interactive CLI shell (REPL mode).
   \x1b[32mrun [agent] --task "<task>"\x1b[0m     Classifies task, selects Agent and Skill Chain.
   \x1b[32mcreate <agent|skill> <name>\x1b[0m    Creates a new agent or skill scaffold.
   \x1b[32mcompile <agent> [file]\x1b[0m         Compiles ready-to-use prompt for an Agent (e.g. architect, security).

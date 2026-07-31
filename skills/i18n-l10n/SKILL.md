@@ -56,7 +56,7 @@ export default createMiddleware({
   },
   "home": {
     "title": "Bem-vindo ao Portal",
-    "description": "Associacao Nacional dos Servidores da Previdencia"
+    "description": "Enterprise Organization System"
   },
   "common": {
     "loading": "Carregando...",

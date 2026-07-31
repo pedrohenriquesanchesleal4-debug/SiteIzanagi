@@ -36,7 +36,7 @@ Client → EventSource → Server → text/event-stream → Client
 
 ### WebSocket Nativo
 ```tsx
-const ws = new WebSocket("wss://portal.example.com/api/ws");
+const ws = new WebSocket("wss://api.enterprise.com/api/ws");
 
 ws.onopen = () => ws.send(JSON.stringify({ type: "subscribe", channel: "notifications" }));
 ws.onmessage = (event) => {
@@ -52,7 +52,7 @@ ws.onclose = () => reconnect();
 import { Server } from "socket.io";
 
 const io = new Server(httpServer, {
-  cors: { origin: "https://portal.example.com" },
+  cors: { origin: "https://api.enterprise.com" },
 });
 
 io.on("connection", (socket) => {
@@ -62,7 +62,7 @@ io.on("connection", (socket) => {
 
 // Client
 import { io } from "socket.io-client";
-const socket = io("wss://portal.example.com");
+const socket = io("wss://api.enterprise.com");
 ```
 
 ---
