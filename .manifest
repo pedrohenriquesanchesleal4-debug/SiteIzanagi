@@ -1,0 +1,529 @@
+{
+  "name": "izanagi-ai",
+  "version": "2.2.1",
+  "description": "Modular Skill-Oriented AI Prompt & Agent Framework for Autonomous Software Engineering",
+  "author": "Pedro Henrique Sanches Leal",
+  "license": "MIT",
+  "homepage": "https://github.com/pedrohenriquesanchesleal4-debug/izanagi-ai",
+
+  "agents": [
+    {
+      "id": "animation",
+      "name": "Animation Engineer",
+      "version": "1.0.0",
+      "file": "agents/animation-agent.json",
+      "role": "Cria sites cinematográficos: scrollytelling, scroll-driven animations, 3D WebGL e motion design",
+      "skills": ["animation-web", "webgl-3d", "motion-design", "frontend", "architect", "planner", "ux", "a11y", "perf", "reviewer"],
+      "chains": ["new_project", "new_feature", "implementation", "frontend", "review"]
+    },
+    {
+      "id": "architect",
+      "name": "Software Architect",
+      "version": "1.0.0",
+      "file": "agents/architect-agent.json",
+      "role": "Arquiteta sistemas, avalia trade-offs, produz planos de implementação",
+      "skills": ["architect", "clean-arch", "hexagonal", "ddd", "cqrs", "event-driven", "microservices", "monolith", "repository", "uow", "tradeoff", "alternatives", "risk", "requirements", "docs", "uml", "sequence", "er", "scalability"],
+      "chains": ["new_project", "new_feature", "refactor", "review"]
+    },
+    {
+      "id": "senior-engineer",
+      "name": "Senior Engineer",
+      "version": "1.0.0",
+      "file": "agents/senior-engineer-agent.json",
+      "role": "Full-stack — código limpo, seguro, testado",
+      "skills": ["backend", "frontend", "api", "laravel", "php", "ts", "react", "node", "python", "db", "sql", "reviewer", "clean-code", "solid", "dry-kiss-yagni", "complexity", "refactor", "perf", "patterns", "unit-test", "integration-test", "mock", "security", "explainer"],
+      "chains": ["implement", "bug", "refactor", "review", "optimize"]
+    },
+    {
+      "id": "bug-hunter",
+      "name": "Bug Hunter",
+      "version": "1.0.0",
+      "file": "agents/bug-hunter-agent.json",
+      "role": "Caça bugs sistematicamente — reproduz, isola, elimina",
+      "skills": ["debug", "bug", "root-cause", "unit-test", "integration-test", "reviewer", "perf", "professor", "explainer", "self-fix", "bug-prevention"],
+      "chains": ["bug", "debug", "prevent"]
+    },
+    {
+      "id": "security",
+      "name": "Security Engineer",
+      "version": "1.0.0",
+      "file": "agents/security-agent.json",
+      "role": "Audita, previne e corrige vulnerabilidades",
+      "skills": ["security", "owasp", "pentest", "reviewer", "deps", "professor", "explainer", "self-fix"],
+      "chains": ["security_audit", "review", "implement"]
+    },
+    {
+      "id": "professor",
+      "name": "Professor",
+      "version": "1.0.0",
+      "file": "agents/professor-agent.json",
+      "role": "Ensino adaptativo — explica, guia, acompanha progresso",
+      "skills": ["professor", "mentor", "explainer", "interactive", "adaptive", "tracker", "patterns", "recovery", "recall", "project-memory"],
+      "chains": ["teach", "mentor", "explain", "question"]
+    },
+    {
+      "id": "devops",
+      "name": "DevOps Engineer",
+      "version": "1.0.0",
+      "file": "agents/devops-agent.json",
+      "role": "Infraestrutura, deploy, CI/CD, monitoramento",
+      "skills": ["devops", "docker", "k8s", "cicd", "git", "gitflow", "linux", "windows", "security", "logging", "observability", "monitoring", "scalability", "perf"],
+      "chains": ["deploy", "infra", "monitor", "ci_cd"]
+    },
+    {
+      "id": "database",
+      "name": "Database Engineer",
+      "version": "1.0.0",
+      "file": "agents/database-agent.json",
+      "role": "Modelagem, schema, otimização de queries",
+      "skills": ["db", "sql", "postgres", "mysql", "sqlserver", "redis", "repository", "perf", "er", "integration-test"],
+      "chains": ["schema", "optimize", "migrate"]
+    },
+    {
+      "id": "pm",
+      "name": "Project Manager",
+      "version": "1.0.0",
+      "file": "agents/pm-agent.json",
+      "role": "Entrega de projetos, tarefas, riscos, comunicação",
+      "skills": ["pm", "planner", "release", "risk", "requirements", "tradeoff", "tech-debt", "breaking-change", "deps", "docs"],
+      "chains": ["plan", "sprint", "release"]
+    },
+    {
+      "id": "techlead",
+      "name": "Tech Lead",
+      "version": "1.0.0",
+      "file": "agents/techlead-agent.json",
+      "role": "Liderança técnica — qualidade, mentoria, arquitetura, entrega",
+      "skills": ["techlead", "principal", "staff", "reviewer", "architect", "clean-code", "solid", "refactor", "complexity", "tech-debt", "patterns", "mentor", "risk", "tradeoff", "requirements", "pm", "planner", "self-critique"],
+      "chains": ["review", "design", "unblock", "debt"]
+    },
+    {
+      "id": "docs",
+      "name": "Documentation Writer",
+      "version": "1.0.0",
+      "file": "agents/docs-agent.json",
+      "role": "Documentação técnica — README, API, arquitetura, diagramas",
+      "skills": ["docs", "tech-writer", "readme", "uml", "sequence", "er", "architect", "requirements", "explainer"],
+      "chains": ["readme", "api_docs", "architecture", "guide"]
+    }
+  ],
+
+  "skills": {
+    "total": 140,
+    "categories": [
+      {
+        "name": "Core",
+        "count": 8,
+        "skills": [
+          { "id": "decision-engine", "name": "Decision Engine", "version": "1.0.0", "path": "core/decision-engine.md" },
+          { "id": "context-engine", "name": "Context Engine", "version": "1.0.0", "path": "core/context-engine.md" },
+          { "id": "token-manager", "name": "Token Manager", "version": "1.0.0", "path": "core/token-manager.md" },
+          { "id": "compression-engine", "name": "Compression Engine", "version": "1.0.0", "path": "core/compression-engine.md" },
+          { "id": "reflection-engine", "name": "Reflection Engine", "version": "1.0.0", "path": "core/reflection-engine.md" },
+          { "id": "evolution-engine", "name": "Evolution Engine", "version": "1.0.0", "path": "core/evolution-engine.md" },
+          { "id": "quality-gates", "name": "Quality Gates", "version": "1.0.0", "path": "core/quality-gates.md" },
+          { "id": "planning-engine", "name": "Planning Engine", "version": "1.0.0", "path": "core/planning-engine.md" }
+        ]
+      },
+      {
+        "name": "Architecture",
+        "count": 10,
+        "skills": [
+          { "id": "architect", "name": "Software Architect", "version": "1.0.0", "path": "skills/software-architect.md" },
+          { "id": "clean-arch", "name": "Clean Architecture", "version": "1.0.0", "path": "architecture/clean-architecture.md" },
+          { "id": "hexagonal", "name": "Hexagonal Architecture", "version": "1.0.0", "path": "architecture/hexagonal-architecture.md" },
+          { "id": "cqrs", "name": "CQRS Specialist", "version": "1.0.0", "path": "architecture/cqrs-specialist.md" },
+          { "id": "event-driven", "name": "Event-Driven Architect", "version": "1.0.0", "path": "architecture/event-driven-architect.md" },
+          { "id": "ddd", "name": "DDD Specialist", "version": "1.0.0", "path": "architecture/ddd-specialist.md" },
+          { "id": "microservices", "name": "Microservices Expert", "version": "1.0.0", "path": "architecture/microservices-expert.md" },
+          { "id": "monolith", "name": "Monolith Expert", "version": "1.0.0", "path": "architecture/monolith-expert.md" },
+          { "id": "repository", "name": "Repository Pattern", "version": "1.0.0", "path": "architecture/repository-pattern.md" },
+          { "id": "uow", "name": "Unit of Work", "version": "1.0.0", "path": "architecture/unit-of-work.md" }
+        ]
+      },
+      {
+        "name": "Coding",
+        "count": 13,
+        "skills": [
+          { "id": "backend", "name": "Backend Engineer", "version": "1.0.0", "path": "coding/backend-engineer.md" },
+          { "id": "frontend", "name": "Frontend Engineer", "version": "1.0.0", "path": "coding/frontend-engineer.md" },
+          { "id": "api", "name": "API Designer", "version": "1.0.0", "path": "coding/api-designer.md" },
+          { "id": "laravel", "name": "Laravel Specialist", "version": "1.0.0", "path": "coding/laravel-specialist.md" },
+          { "id": "php", "name": "PHP Specialist", "version": "1.0.0", "path": "coding/php-specialist.md" },
+          { "id": "js", "name": "JavaScript Specialist", "version": "1.0.0", "path": "coding/javascript-specialist.md" },
+          { "id": "ts", "name": "TypeScript Specialist", "version": "1.0.0", "path": "coding/typescript-specialist.md" },
+          { "id": "python", "name": "Python Specialist", "version": "1.0.0", "path": "coding/python-specialist.md" },
+          { "id": "react", "name": "React Specialist", "version": "1.0.0", "path": "coding/react-specialist.md" },
+          { "id": "vue", "name": "Vue Specialist", "version": "1.0.0", "path": "coding/vue-specialist.md" },
+          { "id": "node", "name": "Node.js Specialist", "version": "1.0.0", "path": "coding/nodejs-specialist.md" },
+          { "id": "java", "name": "Java Specialist", "version": "1.0.0", "path": "coding/java-specialist.md" },
+          { "id": "csharp", "name": "C# Specialist", "version": "1.0.0", "path": "coding/csharp-specialist.md" }
+        ]
+      },
+      {
+        "name": "Security",
+        "count": 3,
+        "skills": [
+          { "id": "security", "name": "Security Engineer", "version": "1.0.0", "path": "security/security-engineer.md" },
+          { "id": "owasp", "name": "OWASP Auditor", "version": "1.0.0", "path": "security/owasp-auditor.md" },
+          { "id": "pentest", "name": "Pentest Reviewer", "version": "1.0.0", "path": "security/pentest-reviewer.md" }
+        ]
+      },
+      {
+        "name": "Quality",
+        "count": 12,
+        "skills": [
+          { "id": "reviewer", "name": "Senior Code Reviewer", "version": "1.0.0", "path": "skills/senior-code-reviewer.md" },
+          { "id": "clean-code", "name": "Clean Code Validator", "version": "1.0.0", "path": "skills/clean-code-validator.md" },
+          { "id": "solid", "name": "SOLID Validator", "version": "1.0.0", "path": "skills/solid-validator.md" },
+          { "id": "dry-kiss-yagni", "name": "DRY/KISS/YAGNI Validator", "version": "1.0.0", "path": "skills/dry-kiss-yagni-validator.md" },
+          { "id": "complexity", "name": "Complexity Analyzer", "version": "1.0.0", "path": "skills/complexity-analyzer.md" },
+          { "id": "bug-prevention", "name": "Bug Prevention", "version": "1.0.0", "path": "skills/bug-prevention.md" },
+          { "id": "patterns", "name": "Design Pattern Advisor", "version": "1.0.0", "path": "skills/design-pattern-advisor.md" },
+          { "id": "refactor", "name": "Refactoring Specialist", "version": "1.0.0", "path": "skills/refactoring-specialist.md" },
+          { "id": "tech-debt", "name": "Technical Debt Analyzer", "version": "1.0.0", "path": "skills/technical-debt-analyzer.md" },
+          { "id": "breaking-change", "name": "Breaking Change Detector", "version": "1.0.0", "path": "skills/breaking-change-detector.md" },
+          { "id": "perf", "name": "Performance Optimizer", "version": "1.0.0", "path": "skills/performance-optimizer.md" },
+          { "id": "scalability", "name": "Scalability Expert", "version": "1.0.0", "path": "skills/scalability-expert.md" }
+        ]
+      },
+      {
+        "name": "Testing",
+        "count": 4,
+        "skills": [
+          { "id": "unit-test", "name": "Unit Test Engineer", "version": "1.0.0", "path": "testing/unit-test-engineer.md" },
+          { "id": "integration-test", "name": "Integration Test Engineer", "version": "1.0.0", "path": "testing/integration-test-engineer.md" },
+          { "id": "e2e-test", "name": "E2E Test Engineer", "version": "1.0.0", "path": "testing/e2e-test-engineer.md" },
+          { "id": "mock", "name": "Mocking Specialist", "version": "1.0.0", "path": "testing/mocking-specialist.md" }
+        ]
+      },
+      {
+        "name": "Database",
+        "count": 6,
+        "skills": [
+          { "id": "db", "name": "Database Engineer", "version": "1.0.0", "path": "database/database-engineer.md" },
+          { "id": "sql", "name": "SQL Optimizer", "version": "1.0.0", "path": "database/sql-optimizer.md" },
+          { "id": "postgres", "name": "PostgreSQL Specialist", "version": "1.0.0", "path": "database/postgresql-specialist.md" },
+          { "id": "mysql", "name": "MySQL Specialist", "version": "1.0.0", "path": "database/mysql-specialist.md" },
+          { "id": "sqlserver", "name": "SQL Server Specialist", "version": "1.0.0", "path": "database/sqlserver-specialist.md" },
+          { "id": "redis", "name": "Redis Specialist", "version": "1.0.0", "path": "database/redis-specialist.md" }
+        ]
+      },
+      {
+        "name": "DevOps",
+        "count": 8,
+        "skills": [
+          { "id": "devops", "name": "DevOps Engineer", "version": "1.0.0", "path": "devops/devops-engineer.md" },
+          { "id": "docker", "name": "Docker Expert", "version": "1.0.0", "path": "devops/docker-expert.md" },
+          { "id": "k8s", "name": "Kubernetes Specialist", "version": "1.0.0", "path": "devops/kubernetes-specialist.md" },
+          { "id": "git", "name": "Git Expert", "version": "1.0.0", "path": "devops/git-expert.md" },
+          { "id": "gitflow", "name": "Git Flow Specialist", "version": "1.0.0", "path": "devops/git-flow-specialist.md" },
+          { "id": "cicd", "name": "CI/CD Specialist", "version": "1.0.0", "path": "devops/ci-cd-specialist.md" },
+          { "id": "linux", "name": "Linux Specialist", "version": "1.0.0", "path": "devops/linux-specialist.md" },
+          { "id": "windows", "name": "Windows Specialist", "version": "1.0.0", "path": "devops/windows-specialist.md" }
+        ]
+      },
+      {
+        "name": "Engineering Roles",
+        "count": 4,
+        "skills": [
+          { "id": "principal", "name": "Principal Engineer", "version": "1.0.0", "path": "skills/principal-engineer.md" },
+          { "id": "staff", "name": "Staff Engineer", "version": "1.0.0", "path": "skills/staff-engineer.md" },
+          { "id": "techlead", "name": "Tech Lead", "version": "1.0.0", "path": "skills/tech-lead.md" },
+          { "id": "cto", "name": "CTO Advisor", "version": "1.0.0", "path": "skills/cto-advisor.md" }
+        ]
+      },
+      {
+        "name": "Debugging & Root Cause",
+        "count": 3,
+        "skills": [
+          { "id": "bug", "name": "Bug Hunter", "version": "1.0.0", "path": "skills/bug-hunter.md" },
+          { "id": "debug", "name": "Debug Specialist", "version": "1.0.0", "path": "skills/debug-specialist.md" },
+          { "id": "root-cause", "name": "Root Cause Analyzer", "version": "1.0.0", "path": "skills/root-cause-analyzer.md" }
+        ]
+      },
+      {
+        "name": "Teaching",
+        "count": 6,
+        "skills": [
+          { "id": "professor", "name": "Professor Mode", "version": "1.0.0", "path": "teaching/professor-mode.md" },
+          { "id": "mentor", "name": "Mentor Mode", "version": "1.0.0", "path": "teaching/mentor-mode.md" },
+          { "id": "explainer", "name": "Code Explainer", "version": "1.0.0", "path": "teaching/code-explainer.md" },
+          { "id": "interactive", "name": "Interactive Teaching", "version": "1.0.0", "path": "teaching/interactive-teaching.md" },
+          { "id": "adaptive", "name": "Adaptive Teaching", "version": "1.0.0", "path": "teaching/adaptive-teaching.md" },
+          { "id": "tracker", "name": "Learning Tracker", "version": "1.0.0", "path": "teaching/learning-tracker.md" }
+        ]
+      },
+      {
+        "name": "Memory",
+        "count": 6,
+        "skills": [
+          { "id": "memory", "name": "Memory Manager", "version": "1.0.0", "path": "memory/memory-manager.md" },
+          { "id": "session-compress", "name": "Session Compression", "version": "1.0.0", "path": "memory/session-compression.md" },
+          { "id": "summarizer", "name": "Conversation Summarizer", "version": "1.0.0", "path": "memory/conversation-summarizer.md" },
+          { "id": "recovery", "name": "Context Recovery", "version": "1.0.0", "path": "memory/context-recovery.md" },
+          { "id": "recall", "name": "Smart Recall", "version": "1.0.0", "path": "memory/smart-recall.md" },
+          { "id": "project-memory", "name": "Long-Term Project Memory", "version": "1.0.0", "path": "memory/long-term-project-memory.md" }
+        ]
+      },
+      {
+        "name": "Optimization",
+        "count": 3,
+        "skills": [
+          { "id": "token-reduce", "name": "Token Reducer", "version": "1.0.0", "path": "optimization/token-reducer.md" },
+          { "id": "prompt", "name": "Prompt Optimizer", "version": "1.0.0", "path": "optimization/prompt-optimizer.md" },
+          { "id": "cost", "name": "Cost Optimizer", "version": "1.0.0", "path": "optimization/cost-optimizer.md" }
+        ]
+      },
+      {
+        "name": "Analysis",
+        "count": 5,
+        "skills": [
+          { "id": "requirements", "name": "Requirement Analyzer", "version": "1.0.0", "path": "skills/requirement-analyzer.md" },
+          { "id": "risk", "name": "Risk Analyzer", "version": "1.0.0", "path": "skills/risk-analyzer.md" },
+          { "id": "deps", "name": "Dependency Analyzer", "version": "1.0.0", "path": "skills/dependency-analyzer.md" },
+          { "id": "tradeoff", "name": "Trade-off Analyzer", "version": "1.0.0", "path": "skills/tradeoff-analyzer.md" },
+          { "id": "alternatives", "name": "Alternative Solution Generator", "version": "1.0.0", "path": "skills/alternative-solution-generator.md" }
+        ]
+      },
+      {
+        "name": "Documentation",
+        "count": 6,
+        "skills": [
+          { "id": "docs", "name": "Documentation Writer", "version": "1.0.0", "path": "skills/documentation-writer.md" },
+          { "id": "tech-writer", "name": "Technical Writer", "version": "1.0.0", "path": "skills/technical-writer.md" },
+          { "id": "readme", "name": "README Generator", "version": "1.0.0", "path": "skills/readme-generator.md" },
+          { "id": "uml", "name": "UML Generator", "version": "1.0.0", "path": "skills/uml-generator.md" },
+          { "id": "sequence", "name": "Sequence Diagram Builder", "version": "1.0.0", "path": "skills/sequence-diagram-builder.md" },
+          { "id": "er", "name": "ER Diagram Builder", "version": "1.0.0", "path": "skills/er-diagram-builder.md" }
+        ]
+      },
+      {
+        "name": "Project Management",
+        "count": 3,
+        "skills": [
+          { "id": "pm", "name": "Project Manager", "version": "1.0.0", "path": "skills/project-manager.md" },
+          { "id": "planner", "name": "Task Planner", "version": "1.0.0", "path": "skills/task-planner.md" },
+          { "id": "release", "name": "Release Planner", "version": "1.0.0", "path": "skills/release-planner.md" }
+        ]
+      },
+      {
+        "name": "UX & Observability",
+        "count": 5,
+        "skills": [
+          { "id": "ux", "name": "UX Reviewer", "version": "1.0.0", "path": "skills/ux-reviewer.md" },
+          { "id": "a11y", "name": "Accessibility Reviewer", "version": "1.0.0", "path": "skills/accessibility-reviewer.md" },
+          { "id": "logging", "name": "Logging Expert", "version": "1.0.0", "path": "skills/logging-expert.md" },
+          { "id": "observability", "name": "Observability Expert", "version": "1.0.0", "path": "skills/observability-expert.md" },
+          { "id": "monitoring", "name": "Monitoring Specialist", "version": "1.0.0", "path": "skills/monitoring-specialist.md" }
+        ]
+      },
+      {
+        "name": "Self-Improvement",
+        "count": 6,
+        "skills": [
+          { "id": "self-fix", "name": "Self Correction", "version": "1.0.0", "path": "skills/self-correction.md" },
+          { "id": "self-critique", "name": "Self Critique", "version": "1.0.0", "path": "skills/self-critique.md" },
+          { "id": "improvement", "name": "Continuous Improvement", "version": "1.0.0", "path": "skills/continuous-improvement.md" },
+          { "id": "hallucination", "name": "Hallucination Detection", "version": "1.0.0", "path": "skills/hallucination-detection.md" },
+          { "id": "confidence", "name": "Confidence Estimator", "version": "1.0.0", "path": "skills/confidence-estimator.md" },
+          { "id": "learning", "name": "Continuous Learning Engine", "version": "1.0.0", "path": "skills/continuous-learning-engine.md" }
+        ]
+      },
+      {
+        "name": "AI & Agent",
+        "count": 2,
+        "skills": [
+          { "id": "ai-agent", "name": "AI Agent", "version": "1.0.0", "path": "skills/ai-agent/SKILL.md", "type": "advanced" },
+          { "id": "ai-agent-dev", "name": "AI Agent Dev", "version": "1.0.0", "path": "skills/ai-agent-dev/SKILL.md", "type": "advanced" }
+        ]
+      },
+      {
+        "name": "Architecture Patterns",
+        "count": 1,
+        "skills": [
+          { "id": "architecture-patterns", "name": "Architecture Patterns", "version": "1.0.0", "path": "skills/architecture-patterns/SKILL.md", "type": "advanced" }
+        ]
+      },
+      {
+        "name": "Cloud & Infrastructure",
+        "count": 5,
+        "skills": [
+          { "id": "cloud-architect", "name": "Cloud Architect", "version": "1.0.0", "path": "skills/cloud-architect/SKILL.md", "type": "advanced", "status": "disabled" },
+          { "id": "cloud-infra", "name": "Cloud Infrastructure", "version": "1.0.0", "path": "skills/cloud-infra/SKILL.md", "type": "advanced", "status": "disabled" },
+          { "id": "iac-terraform", "name": "IaC & Terraform", "version": "1.0.0", "path": "skills/iac-terraform/SKILL.md", "type": "advanced", "status": "disabled" },
+          { "id": "serverless-edge", "name": "Serverless & Edge", "version": "1.0.0", "path": "skills/serverless-edge/SKILL.md", "type": "advanced", "status": "disabled" },
+          { "id": "sre-reliability", "name": "SRE & Reliability", "version": "1.0.0", "path": "skills/sre-reliability/SKILL.md", "type": "advanced", "status": "disabled" }
+        ]
+      },
+      {
+        "name": "Chaos Engineering",
+        "count": 1,
+        "skills": [
+          { "id": "chaos-engineering", "name": "Chaos Engineering", "version": "1.0.0", "path": "skills/chaos-engineering/SKILL.md", "type": "advanced", "status": "disabled" }
+        ]
+      },
+      {
+        "name": "Data Engineering",
+        "count": 2,
+        "skills": [
+          { "id": "data-engineer", "name": "Data Engineer", "version": "1.0.0", "path": "skills/data-engineer/SKILL.md", "type": "advanced", "status": "disabled" },
+          { "id": "data-engineering", "name": "Data Engineering", "version": "1.0.0", "path": "skills/data-engineering/SKILL.md", "type": "advanced", "status": "disabled" }
+        ]
+      },
+      {
+        "name": "Feature Flags",
+        "count": 1,
+        "skills": [
+          { "id": "feature-flags", "name": "Feature Flags", "version": "1.0.0", "path": "skills/feature-flags/SKILL.md", "type": "advanced", "status": "disabled" }
+        ]
+      },
+      {
+        "name": "GraphQL",
+        "count": 1,
+        "skills": [
+          { "id": "graphql", "name": "GraphQL", "version": "1.0.0", "path": "skills/graphql/SKILL.md", "type": "advanced", "status": "disabled" }
+        ]
+      },
+      {
+        "name": "i18n & Localization",
+        "count": 1,
+        "skills": [
+          { "id": "i18n-l10n", "name": "i18n & Localization", "version": "1.0.0", "path": "skills/i18n-l10n/SKILL.md", "type": "advanced", "status": "disabled" }
+        ]
+      },
+      {
+        "name": "Legacy Migration",
+        "count": 1,
+        "skills": [
+          { "id": "legacy-migration", "name": "Legacy Migration", "version": "1.0.0", "path": "skills/legacy-migration/SKILL.md", "type": "advanced", "status": "disabled" }
+        ]
+      },
+      {
+        "name": "Mobile Development",
+        "count": 2,
+        "skills": [
+          { "id": "mobile-dev", "name": "Mobile Development", "version": "1.0.0", "path": "skills/mobile-dev/SKILL.md", "type": "advanced", "status": "disabled" },
+          { "id": "mobile-engineer", "name": "Mobile Engineer", "version": "1.0.0", "path": "skills/mobile-engineer/SKILL.md", "type": "advanced", "status": "disabled" }
+        ]
+      },
+      {
+        "name": "Privacy & Security Extended",
+        "count": 2,
+        "skills": [
+          { "id": "privacy-engineer", "name": "Privacy Engineer", "version": "1.0.0", "path": "skills/privacy-engineer/SKILL.md", "type": "advanced", "status": "disabled" },
+          { "id": "security-privacy", "name": "Security & Privacy", "version": "1.0.0", "path": "skills/security-privacy/SKILL.md", "type": "advanced" }
+        ]
+      },
+      {
+        "name": "Quality Assurance Extended",
+        "count": 2,
+        "skills": [
+          { "id": "qa-checklist", "name": "QA Checklist", "version": "1.0.0", "path": "skills/qa/SKILL.md", "type": "advanced" },
+          { "id": "qa-engineer", "name": "QA Engineer", "version": "1.0.0", "path": "skills/qa-engineer/SKILL.md", "type": "advanced" }
+        ]
+      },
+      {
+        "name": "Token Economics",
+        "count": 1,
+        "skills": [
+          { "id": "economia-tokens", "name": "Economia de Tokens", "version": "1.0.0", "path": "skills/economia-tokens/SKILL.md", "type": "advanced" }
+        ]
+      },
+      {
+        "name": "Session & Memory Extended",
+        "count": 2,
+        "skills": [
+          { "id": "handoff-sessao", "name": "Handoff de Sessão", "version": "1.0.0", "path": "skills/handoff-sessao/SKILL.md", "type": "advanced" },
+          { "id": "memoria-projeto", "name": "Memória de Projeto", "version": "1.0.0", "path": "skills/memoria-projeto/SKILL.md", "type": "advanced" }
+        ]
+      },
+      {
+        "name": "Professor Mode Extended",
+        "count": 1,
+        "skills": [
+          { "id": "professor-modo", "name": "Modo Professor", "version": "1.0.0", "path": "skills/professor-modo/SKILL.md", "type": "advanced" }
+        ]
+      },
+      {
+        "name": "Frontend Extended",
+        "count": 2,
+        "skills": [
+          { "id": "frontend-tokens", "name": "Frontend Design Tokens", "version": "1.0.0", "path": "skills/frontend/SKILL.md", "type": "advanced" },
+          { "id": "frontend-dev", "name": "Frontend Dev", "version": "1.0.0", "path": "skills/frontend-dev/SKILL.md", "type": "advanced" }
+        ]
+      },
+      {
+        "name": "Animation & 3D",
+        "count": 3,
+        "skills": [
+          { "id": "animation-web", "name": "Animation Web (Scrollytelling/Cinematic)", "version": "1.0.0", "path": "skills/animation-web/SKILL.md", "type": "advanced" },
+          { "id": "webgl-3d", "name": "WebGL 3D (Three.js/R3F)", "version": "1.0.0", "path": "skills/webgl-3d/SKILL.md", "type": "advanced" },
+          { "id": "motion-design", "name": "Motion Design (GSAP/Anime.js/Motion)", "version": "1.0.0", "path": "skills/motion-design/SKILL.md", "type": "advanced" }
+        ]
+      },
+      {
+        "name": "WebAssembly",
+        "count": 1,
+        "skills": [
+          { "id": "wasm", "name": "WebAssembly", "version": "1.0.0", "path": "skills/wasm/SKILL.md", "type": "advanced", "status": "disabled" }
+        ]
+      },
+      {
+        "name": "Web Performance & SEO",
+        "count": 2,
+        "skills": [
+          { "id": "web-perf-engineer", "name": "Web Performance Engineer", "version": "1.0.0", "path": "skills/web-perf-engineer/SKILL.md", "type": "advanced", "status": "disabled" },
+          { "id": "web-perf-seo", "name": "Web Performance & SEO", "version": "1.0.0", "path": "skills/web-perf-seo/SKILL.md", "type": "advanced" }
+        ]
+      },
+      {
+        "name": "WebSocket & Real-Time",
+        "count": 1,
+        "skills": [
+          { "id": "websocket-realtime", "name": "WebSocket & Real-Time", "version": "1.0.0", "path": "skills/websocket-realtime/SKILL.md", "type": "advanced", "status": "disabled" }
+        ]
+      },
+      {
+        "name": "Agentic & Prompt",
+        "count": 3,
+        "skills": [
+          { "id": "agentic-coding", "name": "Agentic Coding", "version": "1.0.0", "path": "skills/agentic-coding.md" },
+          { "id": "mcp", "name": "MCP Server Dev", "version": "1.0.0", "path": "skills/mcp-server-dev.md" },
+          { "id": "prompt-eng", "name": "Prompt Engineering", "version": "1.0.0", "path": "skills/prompt-engineering.md" }
+        ]
+      },
+      {
+        "name": "Code Audit",
+        "count": 1,
+        "skills": [
+          { "id": "code-auditor", "name": "Code Auditor", "version": "1.0.0", "path": "skills/code-auditor.md" }
+        ]
+      }
+    ]
+  },
+
+  "packs": {
+    "core": { "description": "Core engines (always included)", "included": true },
+    "agents": { "description": "Pre-built agent definitions" },
+    "skills": { "description": "All specialized skills" },
+    "architecture": { "description": "Architecture patterns (Clean, Hexagonal, DDD, CQRS, etc.)" },
+    "coding": { "description": "Language & framework specialists (JS, TS, Python, PHP, React, Vue, etc.)" },
+    "database": { "description": "Database engineering (PostgreSQL, MySQL, Redis, SQL Server)" },
+    "devops": { "description": "DevOps tooling (Docker, K8s, CI/CD, Git, Linux)" },
+    "security": { "description": "Security & OWASP auditing" },
+    "testing": { "description": "Test engineering (unit, integration, E2E, mocking)" },
+    "memory": { "description": "Memory management & session persistence" },
+    "optimization": { "description": "Token reduction & cost optimization" },
+    "teaching": { "description": "Teaching modes & adaptive learning" }
+  },
+
+  "meta": {
+    "generated_at": "2026-07-31T14:41:00Z",
+    "engine": "node >= 18.0.0",
+    "cli": {
+      "bin": ["izanagi", "izanagi-ai"],
+      "commands": ["init", "run", "create", "compile", "list", "doctor"]
+    }
+  }
+}

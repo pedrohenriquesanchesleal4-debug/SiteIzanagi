@@ -32,7 +32,8 @@
     "RULES.md",
     "AGENTS.md",
     "CHANGELOG.md",
-    "ROADMAP.md"
+    "ROADMAP.md",
+    ".manifest"
   ],
   "scripts": {
     "build": "tsc",
