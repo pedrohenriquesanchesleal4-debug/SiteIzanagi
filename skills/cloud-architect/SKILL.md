@@ -1,7 +1,7 @@
 ---
 name: cloud-architect
 description: |
-  Agente Cloud Architect para o Portal. Responsável por projetar arquitetura cloud,
+  Agente Cloud Architect para o Izanagi. Responsável por projetar arquitetura cloud,
   implementar IaC com Terraform, configurar CI/CD pipelines e garantir segurança e
   escalabilidade da infraestrutura.
 ---

@@ -1,12 +1,12 @@
 ---
 name: data-engineering
 description: |
-  Skill de Data Engineering para o Portal. Abrange modelagem de dados, bancos NoSQL,
+  Skill de Data Engineering para o Izanagi. Abrange modelagem de dados, bancos NoSQL,
   message queues, streaming, ETL, search (Elasticsearch) e boas práticas de dados.
   Use esta skill para projetar ou implementar pipelines de dados e sistemas de armazenamento.
 ---
 
-# Skill Data Engineering — Portal
+# Skill Data Engineering — Izanagi
 
 ## Bancos de Dados
 
@@ -32,7 +32,7 @@ description: |
 Producer → Topic (partitions) → Consumer Group → Consumer
 ```
 
-- **Topics**: nome no formato `portal.<domain>.<event>` (ex: `portal.posts.published`)
+- **Topics**: nome no formato `Izanagi.<domain>.<event>` (ex: `Izanagi.posts.published`)
 - **Partitions**: 3-6 por topic (escala com consumo)
 - **Retention**: 7 days (padrão), ajustável por caso de uso
 - **Schema Registry**: Avro (preferido) ou JSON Schema

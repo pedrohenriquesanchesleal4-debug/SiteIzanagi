@@ -1,6 +1,6 @@
 # Roadmap
 
-> Vision and planned evolution for the Nexus AI framework.
+> Vision and planned evolution for the Izanagi AI framework.
 
 ---
 
@@ -116,9 +116,9 @@
 
 - [ ] Plugin System — third-party skills
 - [ ] Skill Marketplace — share and install skills
-- [ ] Nexus CLI — command-line tool to manage skills
-- [ ] Nexus API — REST API for framework interrogation
-- [ ] Multi-Agent Coordination — multiple Nexus agents collaborating
+- [ ] Izanagi CLI — command-line tool to manage skills
+- [ ] Izanagi API — REST API for framework interrogation
+- [ ] Multi-Agent Coordination — multiple Izanagi agents collaborating
 - [ ] Web UI — visual skill editor and monitor
 - [ ] Analytics Dashboard — token usage, evolution, cost
 

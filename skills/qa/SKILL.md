@@ -1,7 +1,7 @@
 ---
 name: qa
 description: |
-  Skill de Quality Assurance para o NexusAI. Contém checklist completo de qualidade
+  Skill de Quality Assurance para o IzanagiAI. Contém checklist completo de qualidade
   de código, validações de acessibilidade, performance, segurança e responsividade.
   Use esta skill para auditar código existente ou validar alterações antes de merge/deploy.
 ---

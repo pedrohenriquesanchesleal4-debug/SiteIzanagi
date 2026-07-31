@@ -1,13 +1,13 @@
 ---
 name: wasm
 description: |
-  Skill de WebAssembly (Wasm) para o Portal. Aborda compilacao de linguagens para Wasm,
+  Skill de WebAssembly (Wasm) para o Izanagi. Aborda compilacao de linguagens para Wasm,
   integracao com JavaScript, performance, Rust/Wasm, AssemblyScript, e casos de uso
   (processamento pesado no client, portabilidade de bibliotecas).
   Use esta skill para implementar funcionalidades que exigem execucao performatica no browser.
 ---
 
-# Skill WebAssembly — Portal
+# Skill WebAssembly — Izanagi
 
 ## O Que e WebAssembly
 
@@ -19,7 +19,7 @@ description: |
 
 ---
 
-## Casos de Uso no Portal
+## Casos de Uso no Izanagi
 
 | Caso | Descricao | Linguagem |
 |------|-----------|-----------|

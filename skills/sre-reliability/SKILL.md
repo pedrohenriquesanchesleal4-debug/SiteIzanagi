@@ -1,12 +1,12 @@
 ---
 name: sre-reliability
 description: |
-  Skill de Site Reliability Engineering (SRE) para o Portal. Aborda SLIs/SLOs/SLAs,
+  Skill de Site Reliability Engineering (SRE) para o Izanagi. Aborda SLIs/SLOs/SLAs,
   error budgets, observabilidade, incident response, capacity planning e reliability patterns.
   Use esta skill para garantir confiabilidade e disponibilidade do sistema.
 ---
 
-# Skill SRE & Reliability — Portal
+# Skill SRE & Reliability — Izanagi
 
 ## SRE Fundamentals
 

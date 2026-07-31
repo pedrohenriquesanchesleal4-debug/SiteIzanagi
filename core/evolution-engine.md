@@ -9,7 +9,7 @@
 
 ## Identity
 
-The Evolution Engine is the self-improvement mechanism of Nexus AI. It receives structured feedback from the Reflection Engine, detects recurring patterns, and automatically updates skill files, rules, and configurations to prevent repeated mistakes and improve over time.
+The Evolution Engine is the self-improvement mechanism of Izanagi AI. It receives structured feedback from the Reflection Engine, detects recurring patterns, and automatically updates skill files, rules, and configurations to prevent repeated mistakes and improve over time.
 
 ---
 

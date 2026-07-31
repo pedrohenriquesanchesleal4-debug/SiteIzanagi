@@ -1,7 +1,7 @@
 ---
 name: data-engineer
 description: |
-  Agente Data Engineer para o Portal. Responsável por modelar dados, implementar
+  Agente Data Engineer para o Izanagi. Responsável por modelar dados, implementar
   pipelines ETL, configurar message queues (Kafka/RabbitMQ), Elasticsearch e garantir
   qualidade e governança de dados.
 ---

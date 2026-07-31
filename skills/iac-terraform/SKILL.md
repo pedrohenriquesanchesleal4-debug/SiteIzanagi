@@ -1,12 +1,12 @@
 ---
 name: iac-terraform
 description: |
-  Skill de Infrastructure as Code (IaC) com Terraform/OpenTofu para o Portal.
+  Skill de Infrastructure as Code (IaC) com Terraform/OpenTofu para o Izanagi.
   Aborda HCL, modules, remote state, workspaces, provisionamento multi-cloud e boas
   praticas de gerenciamento de infraestrutura como codigo.
 ---
 
-# Skill IaC & Terraform — Portal
+# Skill IaC & Terraform — Izanagi
 
 ## Terraform vs OpenTofu
 

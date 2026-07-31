@@ -1,12 +1,12 @@
 ---
 name: websocket-realtime
 description: |
-  Skill de WebSocket e Comunicacao em Tempo Real para o Portal. Aborda WebSocket API,
+  Skill de WebSocket e Comunicacao em Tempo Real para o Izanagi. Aborda WebSocket API,
   Server-Sent Events (SSE), Socket.IO, WebRTC e padroes de arquitetura real-time.
   Use esta skill para implementar funcionalidades em tempo real (chat, notificacoes, streaming).
 ---
 
-# Skill WebSocket & Real-Time — Portal
+# Skill WebSocket & Real-Time — Izanagi
 
 ## Protocolos
 
@@ -97,7 +97,7 @@ const socket = io("wss://api.enterprise.com");
 
 ---
 
-## Casos de Uso no Portal
+## Casos de Uso no Izanagi
 
 | Caso | Protocolo | Channel |
 |------|-----------|---------|

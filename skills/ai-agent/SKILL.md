@@ -1,12 +1,12 @@
 ---
 name: ai-agent
 description: |
-  Skill de AI/Agent Development para o Portal. Contém padrões de integração com LLMs,
+  Skill de AI/Agent Development para o Izanagi. Contém padrões de integração com LLMs,
   RAG, vector databases, LangGraph, MCP, multi-agent systems e prompt engineering.
   Use esta skill para implementar ou revisar funcionalidades baseadas em IA generativa.
 ---
 
-# Skill AI/Agent Development — Portal
+# Skill AI/Agent Development — izanagi
 
 ## Arquiteturas de IA
 
@@ -82,7 +82,7 @@ import { openai } from "@ai-sdk/openai";
 
 const { text } = await generateText({
   model: openai("gpt-4o"),
-  system: "Você é um assistente do Portal...",
+  system: "Você é um assistente do Izanagi...",
   prompt: userQuery,
 });
 ```

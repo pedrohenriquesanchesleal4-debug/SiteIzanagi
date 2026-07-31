@@ -1,12 +1,12 @@
 ---
 name: feature-flags
 description: |
-  Skill de Feature Flags e A/B Testing para o Portal. Aborda estrategias de rollout,
+  Skill de Feature Flags e A/B Testing para o Izanagi. Aborda estrategias de rollout,
   targeted releases, canary deployments, A/B/n experiments e ferramentas de gerenciamento
   de flags. Use esta skill para implementar entregas graduais e experimentacao.
 ---
 
-# Skill Feature Flags — Portal
+# Skill Feature Flags — Izanagi
 
 ## Provedores
 

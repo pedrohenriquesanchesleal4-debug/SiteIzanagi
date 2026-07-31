@@ -1,12 +1,12 @@
 ---
 name: architecture-patterns
 description: |
-  Skill de Architecture Patterns para o Portal. Aborda padroes arquiteturais como
+  Skill de Architecture Patterns para o Izanagi. Aborda padroes arquiteturais como
   microservices, event-driven, CQRS, hexagonal architecture, clean architecture, e
   decision records (ADRs). Use esta skill ao projetar ou refatorar a arquitetura do sistema.
 ---
 
-# Skill Architecture Patterns — Portal
+# Skill Architecture Patterns — Izanagi
 
 ## Microservices
 

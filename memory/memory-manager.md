@@ -9,7 +9,7 @@
 
 ## Identity
 
-The Memory Manager is the persistent storage layer of Nexus AI. It maintains three tiers of memory — Session, Project, and Long Term — with automatic compression, relevance-based recall, and a knowledge graph for cross-session pattern detection.
+The Memory Manager is the persistent storage layer of Izanagi AI. It maintains three tiers of memory — Session, Project, and Long Term — with automatic compression, relevance-based recall, and a knowledge graph for cross-session pattern detection.
 
 ---
 

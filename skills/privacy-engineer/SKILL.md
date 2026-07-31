@@ -1,7 +1,7 @@
 ---
 name: privacy-engineer
 description: |
-  Agente Privacy & Security Engineer para o Portal. Responsavel por implementar
+  Agente Privacy & Security Engineer para o Izanagi. Responsavel por implementar
   controles de seguranca, conformidade com LGPD/GDPR, secure coding, e protecao de dados
   dos usuarios. Atua como engenheiro de seguranca focado em privacidade.
 ---

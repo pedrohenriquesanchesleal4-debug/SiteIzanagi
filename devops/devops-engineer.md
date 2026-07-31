@@ -182,7 +182,7 @@ jobs:
 
 ```
 # .env.example — documented for all developers
-APP_NAME=NexusApp
+APP_NAME=IzanagiApp
 APP_ENV=local
 APP_DEBUG=true
 APP_URL=http://localhost
@@ -190,7 +190,7 @@ APP_URL=http://localhost
 DB_CONNECTION=pgsql
 DB_HOST=127.0.0.1
 DB_PORT=5432
-DB_DATABASE=nexus
+DB_DATABASE=Izanagi
 DB_USERNAME=root
 DB_PASSWORD=
 

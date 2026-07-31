@@ -1,12 +1,12 @@
 ---
 name: mobile-dev
 description: |
-  Skill de Desenvolvimento Mobile para o Portal. Aborda React Native, Expo, Flutter,
+  Skill de Desenvolvimento Mobile para o Izanagi. Aborda React Native, Expo, Flutter,
   PWA, e padroes de design mobile (iOS Human Interface, Material Design 3).
   Use esta skill para desenvolver ou revisar aplicacoes mobile.
 ---
 
-# Skill Mobile Development — Portal
+# Skill Mobile Development — Izanagi
 
 ## React Native + Expo (Preferido)
 

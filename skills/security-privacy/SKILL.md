@@ -1,12 +1,12 @@
 ---
 name: security-privacy
 description: |
-  Skill de Seguranca e Privacidade para o Portal. Aborda OWASP Top 10, LGPD/GDPR,
+  Skill de Seguranca e Privacidade para o Izanagi. Aborda OWASP Top 10, LGPD/GDPR,
   seguranca de APIs, authentication, authorization, cryptography e secure coding.
   Use esta skill para implementar ou revisar aspectos de seguranca e protecao de dados.
 ---
 
-# Skill Security & Privacy — Portal
+# Skill Security & Privacy — Izanagi
 
 ## OWASP Top 10
 

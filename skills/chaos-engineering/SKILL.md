@@ -1,13 +1,13 @@
 ---
 name: chaos-engineering
 description: |
-  Skill de Chaos Engineering para o Portal. Aborda principios de engenharia do caos,
+  Skill de Chaos Engineering para o Izanagi. Aborda principios de engenharia do caos,
   experimentos de resiliencia, ferramentas (Chaos Mesh, Gremlin, Litmus), e pratica de
   break things in production de forma controlada.
   Use esta skill para planejar e executar experimentos de caos.
 ---
 
-# Skill Chaos Engineering — Portal
+# Skill Chaos Engineering — Izanagi
 
 ## Principios (Principles of Chaos)
 
@@ -45,7 +45,7 @@ spec:
   action: pod-kill
   mode: one
   selector:
-    namespaces: [portal]
+    namespaces: [Izanagi]
     labelSelectors:
       app: api-server
   duration: 60s

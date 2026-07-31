@@ -1,12 +1,12 @@
 ---
 name: graphql
 description: |
-  Skill de GraphQL para o Portal. Contém padrões de schema design, resolver patterns,
+  Skill de GraphQL para o Izanagi. Contém padrões de schema design, resolver patterns,
   Apollo Client/Server, caching, subscriptions e boas práticas de performance.
   Use esta skill para implementar ou revisar APIs GraphQL.
 ---
 
-# Skill GraphQL — Portal
+# Skill GraphQL — Izanagi
 
 ## Schema Design
 

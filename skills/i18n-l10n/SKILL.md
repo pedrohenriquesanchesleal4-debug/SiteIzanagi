@@ -1,12 +1,12 @@
 ---
 name: i18n-l10n
 description: |
-  Skill de Internacionalizacao (i18n) e Localizacao (l10n) para o Portal. Aborda
+  Skill de Internacionalizacao (i18n) e Localizacao (l10n) para o Izanagi. Aborda
   next-intl, react-intl, gerenciamento de traducoes, locale routing, formatação de datas/
   numeros/moeda e boas praticas de internacionalizacao em Next.js.
 ---
 
-# Skill i18n & Localization — Portal
+# Skill i18n & Localization — Izanagi
 
 ## Stack Recomendada
 
@@ -55,7 +55,7 @@ export default createMiddleware({
     "contact": "Contato"
   },
   "home": {
-    "title": "Bem-vindo ao Portal",
+    "title": "Bem-vindo ao Izanagi",
     "description": "Enterprise Organization System"
   },
   "common": {

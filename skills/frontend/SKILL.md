@@ -1,13 +1,13 @@
 ---
 name: frontend
 description: |
-  Skill de frontend para o Portal. Contém todos os design tokens do Tailwind CSS,
+  Skill de frontend para o Izanagi. Contém todos os design tokens do Tailwind CSS,
   padrões de design identificados nas páginas existentes, e boas práticas de Next.js + Tailwind.
   Use esta skill para criar ou editar componentes visuais, garantindo consistência com o design system existente.
   Antes de criar novas classes ou variáveis, consulte a lista de tokens existentes abaixo.
 ---
 
-# Skill Frontend — Portal
+# Skill Frontend — Izanagi
 
 ## 🎨 Design Tokens Existentes (`tailwind.config.js`)
 

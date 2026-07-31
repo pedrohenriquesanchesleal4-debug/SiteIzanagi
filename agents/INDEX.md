@@ -1,4 +1,4 @@
-# Nexus AI — Agents
+# Izanagi AI — Agents
 
 > Agents are compositions of skills. Each agent has a role, a set of skills it masters,
 > and a default skill chain for common tasks.

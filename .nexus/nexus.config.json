@@ -1,0 +1,22 @@
+{
+  "framework": "IzanagiI",
+  "version": "2.1.0",
+  "defaultAgent": "senior-engineer",
+  "skillsDir": ".agents/skills",
+  "autoCompression": true,
+  "qualityGates": true,
+  "packs": [
+    "core",
+    "agents",
+    "skills",
+    "architecture",
+    "coding",
+    "database",
+    "devops",
+    "security",
+    "testing",
+    "memory",
+    "optimization",
+    "teaching"
+  ]
+}

@@ -1,12 +1,12 @@
 ---
 name: cloud-infra
 description: |
-  Skill de Cloud Infrastructure para o Portal. Cobre AWS, GCP, Azure, Terraform,
+  Skill de Cloud Infrastructure para o Izanagi. Cobre AWS, GCP, Azure, Terraform,
   Docker, Kubernetes, CI/CD, e boas práticas de infraestrutura como código (IaC).
   Use esta skill para projetar, implantar ou revisar infraestrutura cloud.
 ---
 
-# Skill Cloud Infrastructure — Portal
+# Skill Cloud Infrastructure — Izanagi
 
 ## Provedores Suportados
 
@@ -47,7 +47,7 @@ terraform/
 ### Boas Práticas
 - **Remote state**: S3 + DynamoDB lock (terraform.tfstate no S3)
 - **Workspaces**: `terraform workspace select prod`
-- **Tagging**: `Project=Portal`, `Environment=prod`, `ManagedBy=Terraform`
+- **Tagging**: `Project=Izanagi`, `Environment=prod`, `ManagedBy=Terraform`
 - **Secrets**: nunca hardcoded — usar SSM Parameter Store ou Secrets Manager
 - **Modules**: módulos reutilizáveis, versionados
 

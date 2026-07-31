@@ -1,12 +1,12 @@
 ---
 name: web-perf-seo
 description: |
-  Skill de Web Performance e SEO para o Portal. Aborda Core Web Vitals, lighthouse,
+  Skill de Web Performance e SEO para o Izanagi. Aborda Core Web Vitals, lighthouse,
   otimizacao de assets, cache, SEO on-page, structured data e analytics.
   Use esta skill para auditar e otimizar performance e visibilidade nos buscadores.
 ---
 
-# Skill Web Performance & SEO — Portal
+# Skill Web Performance & SEO — Izanagi
 
 ## Core Web Vitals
 
@@ -65,7 +65,7 @@ const HtmlEditor = dynamic(() => import("@/components/HtmlEditor"), {
 import Head from "next/head";
 
 <Head>
-  <title>Portal — {pageTitle}</title>
+  <title>Izanagi — {pageTitle}</title>
   <meta name="description" content={pageDescription} />
   <meta property="og:title" content={pageTitle} />
   <meta property="og:description" content={pageDescription} />
@@ -93,7 +93,7 @@ import Head from "next/head";
       "@type": "NewsArticle",
       headline: post.title,
       datePublished: post.publishedAt,
-      author: { "@type": "Organization", name: "Portal" },
+      author: { "@type": "Organization", name: "Izanagi" },
     }),
   }}
 />

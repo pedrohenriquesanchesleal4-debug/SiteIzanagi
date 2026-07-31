@@ -1,6 +1,6 @@
 # Skills Index
 
-> Complete registry of all skills in the Nexus AI framework.
+> Complete registry of all skills in the Izanagi AI framework.
 > Updated: 2026-07-31 | Total: 140 skills
 
 ---

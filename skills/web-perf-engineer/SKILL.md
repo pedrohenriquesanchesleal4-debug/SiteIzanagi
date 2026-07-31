@@ -1,9 +1,9 @@
 ---
 name: web-perf-engineer
 description: |
-  Agente Web Performance & SEO Engineer para o Portal. Responsavel por auditar e
+  Agente Web Performance & SEO Engineer para o Izanagi. Responsavel por auditar e
   otimizar performance (Core Web Vitals), SEO (on-page, structured data, analytics),
-  e garantir visibilidade e velocidade do portal nos buscadores.
+  e garantir visibilidade e velocidade do Izanagi nos buscadores.
 ---
 
 # Agente: Web Performance & SEO Engineer

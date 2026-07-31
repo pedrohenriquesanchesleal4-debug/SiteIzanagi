@@ -49,7 +49,7 @@ function cleanFiles(dir: string) {
       const replacements = [
         { find: /Enterprise Organization System/gi, replace: 'Enterprise Organization System' },
         { find: /Enterprise/g, replace: 'Enterprise' },
-        { find: /portal\.example\.com/g, replace: 'api.enterprise.com' },
+        { find: /Izanagi\.example\.com/g, replace: 'api.enterprise.com' },
         { find: /enterprise-tools/g, replace: 'enterprise-tools' }
       ];
 

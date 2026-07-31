@@ -7,7 +7,7 @@ export function listCommand(baseDir: string, filter?: string): void {
   const type = filter ? filter.toLowerCase() : 'all';
 
   if (type === 'all' || type === 'agents') {
-    console.log('\n\x1b[35m=== NexusAI Agents ===\x1b[0m\n');
+    console.log('\n\x1b[35m=== IzanagiAI Agents ===\x1b[0m\n');
 
     const agentsDirs = [
       path.join(cwd, '.agents', 'agents'),
@@ -42,7 +42,7 @@ export function listCommand(baseDir: string, filter?: string): void {
   }
 
   if (type === 'all' || type === 'skills') {
-    console.log('\x1b[35m=== NexusAI Skill Resolver Aliases ===\x1b[0m\n');
+    console.log('\x1b[35m=== IzanagiAI Skill Resolver Aliases ===\x1b[0m\n');
     const aliases = loadSkillResolver(cwd, baseDir);
     const keys = Object.keys(aliases).sort();
     console.log(`Total skills registered: \x1b[32m${keys.length}\x1b[0m\n`);

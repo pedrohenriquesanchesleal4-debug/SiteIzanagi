@@ -6,5 +6,5 @@ tmp/
 dist/
 site/
 .agents/
-.nexus/
+.Izanagi/
 .izanagi/

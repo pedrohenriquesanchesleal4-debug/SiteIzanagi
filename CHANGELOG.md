@@ -12,9 +12,9 @@
 ## [2.2.0] — 2026-07-31
 
 ### Changed
-- **Package renamed back: `nexusai` → `izanagi-ai`** — o framework volta ao nome original Izanagi AI (repo GitHub `izanagi-ai`, site `SiteIzanagi`)
-- **Bins renomeados**: `nexus`/`nexusai` → `izanagi`/`izanagi-ai` (comandos agora são `izanagi init`, `izanagi run`, etc.)
-- CLI internamente renomeada: `Izanagi AI CLI`, config do projeto em `.izanagi/izanagi.config.json` (era `.nexus/nexus.config.json`)
+- **Package renamed back: `Izanagiai` → `izanagi-ai`** — o framework volta ao nome original Izanagi AI (repo GitHub `izanagi-ai`, site `SiteIzanagi`)
+- **Bins renomeados**: `Izanagi`/`Izanagiai` → `izanagi`/`izanagi-ai` (comandos agora são `izanagi init`, `izanagi run`, etc.)
+- CLI internamente renomeada: `Izanagi AI CLI`, config do projeto em `.izanagi/izanagi.config.json` (era `.Izanagi/Izanagi.config.json`)
 - Documentação (AGENTS.md, README, CONTRIBUTING) atualizada para o novo nome/comandos
 
 ### Fixed
@@ -44,7 +44,7 @@
 - Interactive pack selector with graceful fallback for non-TTY environments
 
 ### Changed
-- **Package renamed `izanagi-ai` → `nexusai`** (bins `nexus`/`nexusai` unchanged) — reverted in 2.2.0
+- **Package renamed `izanagi-ai` → `Izanagiai`** (bins `Izanagi`/`Izanagiai` unchanged) — reverted in 2.2.0
 - `AGENTS.md` and `README.md` rewritten with the new CLI commands and pack system
 - Commands `compile`, `list`, `doctor` now resolve agents/skills from project `.agents/`, cwd or installed package
 
