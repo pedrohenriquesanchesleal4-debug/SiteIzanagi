@@ -171,6 +171,10 @@ export function installToProject(targetDir: string, selectedPackIds: string[]): 
       const destPath = path.join(targetAgentsFolder, item);
       if (fs.existsSync(srcPath)) {
         copyRecursiveSync(srcPath, destPath);
+        // Se for arquivo raiz core, copia também para a raiz do projeto para o opencode ler nativamente
+        if (['AGENTS.md', 'SYSTEM.md', 'RULES.md'].includes(item)) {
+          copyRecursiveSync(srcPath, path.join(destinationRoot, item));
+        }
         copiedItems++;
       }
     }
@@ -200,12 +204,12 @@ export function installToProject(targetDir: string, selectedPackIds: string[]): 
   if (!fs.existsSync(opencodePath)) {
     const opencodeConfig = {
       $schema: 'https://opencode.ai/config.json',
-      instructions: ['.agents/AGENTS.md', '.agents/SYSTEM.md']
+      instructions: ['AGENTS.md', 'SYSTEM.md']
     };
     fs.writeFileSync(opencodePath, JSON.stringify(opencodeConfig, null, 2));
     console.log('  \x1b[32m✔\x1b[0m opencode.json created (auto-loads framework on opencode)');
   } else {
-    console.log('  \x1b[33m•\x1b[0m opencode.json already exists — kept as is (add ".agents/AGENTS.md" to instructions manually if needed)');
+    console.log('  \x1b[33m•\x1b[0m opencode.json already exists — kept as is');
   }
 
   // Agentes opencode (ex: /animation) para o projeto — ativáveis digitando /<nome> no opencode
