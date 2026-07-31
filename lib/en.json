@@ -7,7 +7,7 @@
     "contact": "Contact"
   },
   "hero": {
-    "badge": "v2.0.4 — The Architect's Mind",
+    "badge": "v2.2.0 — The Architect's Mind",
     "title1": "Think.",
     "title2": "Build.",
     "title3": "Evolve.",
@@ -101,7 +101,7 @@
     "init_desc": "Create a new project or initialize in an existing one:",
     "init_cmd": "IzanagiIA will create the directory structure and configuration files.",
     "init_result_title": "Generated structure:",
-    "init_file1": "nexus.json — main configuration",
+    "init_file1": "izanagi.json — main configuration",
     "init_file2": "agents/ — folder for your agents",
     "init_file3": "skills/ — folder for custom skills",
     "agent_title": "3. Creating an Agent",

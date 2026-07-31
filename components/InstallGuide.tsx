@@ -5,8 +5,8 @@ import { useI18n } from "@/lib/i18n"
 
 const commands = [
   { key: "step1", cmd: "npm install izanagi-ai" },
-  { key: "step2", cmd: "npx nexusai init" },
-  { key: "step3", cmd: "npx nexusai create agent my-agent" },
+  { key: "step2", cmd: "npx izanagi init" },
+  { key: "step3", cmd: "npx izanagi create agent my-agent" },
 ]
 
 export default function InstallGuide() {
@@ -55,7 +55,7 @@ export default function InstallGuide() {
           <p className="text-sm text-white/20 mb-3">{t("install.or")}</p>
           <code className="glass px-4 py-2 rounded-lg text-xs md:text-sm text-white/30 font-mono inline-flex items-center gap-2">
             <span className="text-green-400/60">$</span>
-            npx izanagi-ai
+            npx izanagi
           </code>
         </div>
       </div>

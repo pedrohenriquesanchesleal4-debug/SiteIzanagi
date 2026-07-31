@@ -113,20 +113,20 @@ function GuideContent() {
           </div>
           <div>
             <p className="text-xs text-white/30 mb-2">{t("guide.install_check")}</p>
-            <CodeBlock code="nexusai --version" />
+            <CodeBlock code="izanagi --version" />
           </div>
         </Section>
 
         <Section num="3" title={t("guide.init_title")}>
           <p className="text-sm text-white/30">{t("guide.init_desc")}</p>
-          <CodeBlock code="nexusai init my-project
+          <CodeBlock code="izanagi init my-project
 cd my-project" />
           <p className="text-xs text-white/20">{t("guide.init_cmd")}</p>
           <div className="glass rounded-xl p-4 mt-4">
             <p className="text-xs text-white/40 mb-2">{t("guide.init_result_title")}</p>
             <ul className="space-y-1 text-xs text-white/30 font-mono">
               <li>my-project/</li>
-              <li className="pl-4">├── nexus.json</li>
+              <li className="pl-4">├── izanagi.json</li>
               <li className="pl-4">├── agents/</li>
               <li className="pl-4">├── skills/</li>
               <li className="pl-4">└── README.md</li>
@@ -136,7 +136,7 @@ cd my-project" />
 
         <Section num="4" title={t("guide.agent_title")}>
           <p className="text-sm text-white/30">{t("guide.agent_desc")}</p>
-          <CodeBlock code="nexusai create agent my-agent" />
+          <CodeBlock code="izanagi create agent my-agent" />
           <p className="text-xs text-white/20">{t("guide.agent_cmd")}</p>
 
           <div className="glass rounded-xl p-4 mt-4">
@@ -158,11 +158,11 @@ cd my-project" />
 
         <Section num="5" title={t("guide.usage_title")}>
           <p className="text-sm text-white/30">{t("guide.usage_desc")}</p>
-          <CodeBlock code={'nexusai run my-agent --task "Create a login page"'} />
+          <CodeBlock code={'izanagi run my-agent --task "Create a login page"'} />
           <p className="text-xs text-white/20">{t("guide.usage_example")}</p>
           <div className="mt-4">
             <p className="text-xs text-white/30 mb-2">{t("guide.usage_list")}</p>
-            <CodeBlock code="nexusai list" />
+            <CodeBlock code="izanagi list" />
           </div>
         </Section>
 

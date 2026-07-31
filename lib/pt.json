@@ -7,7 +7,7 @@
     "contact": "Contato"
   },
   "hero": {
-    "badge": "v2.0.4 — A Mente do Arquiteto",
+    "badge": "v2.2.0 — A Mente do Arquiteto",
     "title1": "Pense.",
     "title2": "Construa.",
     "title3": "Evolua.",
@@ -101,7 +101,7 @@
     "init_desc": "Crie um novo projeto ou inicialize em um existente:",
     "init_cmd": "IzanagiIA vai criar a estrutura de diretórios e arquivos de configuração.",
     "init_result_title": "Estrutura gerada:",
-    "init_file1": "nexus.json — configuração principal",
+    "init_file1": "izanagi.json — configuração principal",
     "init_file2": "agents/ — pasta para seus agentes",
     "init_file3": "skills/ — pasta para skills personalizadas",
     "agent_title": "3. Criando um Agente",

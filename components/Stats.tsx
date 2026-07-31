@@ -4,8 +4,8 @@ import { useRef, useEffect, useState } from "react"
 import { useI18n } from "@/lib/i18n"
 
 const data = [
-  { key: "skills", value: 137, suffix: "+" },
-  { key: "agents", value: 10, suffix: "" },
+  { key: "skills", value: 140, suffix: "+" },
+  { key: "agents", value: 11, suffix: "" },
   { key: "categories", value: 12, suffix: "" },
   { key: "tokens", value: 2, prefix: "<", suffix: "K" },
 ]
