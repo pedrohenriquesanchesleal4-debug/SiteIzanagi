@@ -1,6 +1,6 @@
 {
   "name": "izanagi-ai",
-  "version": "2.2.6",
+  "version": "2.2.8",
   "description": "Izanagi AI - Modular Skill-Oriented AI Prompt & Agent Framework for Autonomous Software Engineering",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -78,6 +78,7 @@
     "url": "git+https://github.com/pedrohenriquesanchesleal4-debug/izanagi-ai.git"
   },
   "dependencies": {
+    "izanagi-ai": "^2.2.7",
     "undici-types": "^6.21.0"
   },
   "bugs": {

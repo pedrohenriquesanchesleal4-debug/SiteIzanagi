@@ -1,5 +1,4 @@
 ---
-name: "Agents Orchestrator"
 description: "Izanagi Multi-Agent Orchestrator - Select single/multiple agents, auto-detect, or use all agents"
 color: "#a855f7"
 ---
