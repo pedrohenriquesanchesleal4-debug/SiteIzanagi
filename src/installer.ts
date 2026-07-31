@@ -6,49 +6,112 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 /**
- * Pastas e arquivos que devem ser copiados para a pasta .agents do usuário
+ * Packs de skills selecionáveis durante o `izanagi init`.
+ * `core` é obrigatório e nunca pode ser desmarcado.
  */
-const ITEMS_TO_COPY = [
-  'agents',
-  'architecture',
-  'coding',
-  'backend',
-  'core',
-  'database',
-  'devops',
-  'frontend',
-  'memory',
-  'optimization',
-  'security',
-  'skills',
-  'teaching',
-  'testing',
-  'SYSTEM.md',
-  'RULES.md',
-  'AGENTS.md',
-  'CHANGELOG.md',
-  'ROADMAP.md'
+export interface PackDefinition {
+  id: string;
+  label: string;
+  description: string;
+  files: string[];
+  default?: boolean;
+}
+
+export const PACKS: PackDefinition[] = [
+  {
+    id: 'core',
+    label: 'Core',
+    description: 'Engines (Decision, Context, Reflection...) + SYSTEM.md / RULES.md / AGENTS.md',
+    files: ['core', 'SYSTEM.md', 'RULES.md', 'AGENTS.md', 'CHANGELOG.md', 'ROADMAP.md'],
+    default: true
+  },
+  {
+    id: 'agents',
+    label: 'Agents',
+    description: '10 agentes pré-definidos em JSON (architect, security, senior-engineer...)',
+    files: ['agents'],
+    default: true
+  },
+  {
+    id: 'skills',
+    label: 'Skill Library',
+    description: '111+ skills especializadas (quality, debugging, cloud, devops...)',
+    files: ['skills'],
+    default: true
+  },
+  {
+    id: 'architecture',
+    label: 'Architecture',
+    description: 'Padrões arquiteturais: Clean Arch, Hexagonal, DDD, CQRS, ADRs',
+    files: ['architecture']
+  },
+  {
+    id: 'coding',
+    label: 'Coding',
+    description: 'Engenharia de software: backend, frontend, React, Laravel, Node',
+    files: ['coding', 'backend', 'frontend']
+  },
+  {
+    id: 'database',
+    label: 'Database',
+    description: 'SQL, PostgreSQL, MySQL, Redis, modelagem ER',
+    files: ['database']
+  },
+  {
+    id: 'devops',
+    label: 'DevOps',
+    description: 'Docker, Kubernetes, CI/CD, Linux, infraestrutura',
+    files: ['devops']
+  },
+  {
+    id: 'security',
+    label: 'Security',
+    description: 'OWASP Top 10, pentest, LGPD/GDPR, autenticação, secrets',
+    files: ['security']
+  },
+  {
+    id: 'testing',
+    label: 'Testing',
+    description: 'Testes unitários, integração, E2E, mocking',
+    files: ['testing']
+  },
+  {
+    id: 'memory',
+    label: 'Memory',
+    description: 'Memória de sessão/projeto, compressão, knowledge graph',
+    files: ['memory']
+  },
+  {
+    id: 'optimization',
+    label: 'Optimization',
+    description: 'Redução de tokens, otimização de prompts, custo',
+    files: ['optimization']
+  },
+  {
+    id: 'teaching',
+    label: 'Teaching',
+    description: 'Modo professor e ensino adaptativo',
+    files: ['teaching']
+  }
 ];
 
+export const CORE_PACK_ID = 'core';
+
 /**
- * Copia recursivamente um diretório ou arquivo de origem para destino
+ * Copia recursivamente um diretório ou arquivo de origem para destino.
  */
 function copyRecursiveSync(src: string, dest: string): void {
   const exists = fs.existsSync(src);
-  const stats = exists && fs.statSync(src);
-  const isDirectory = exists && stats ? stats.isDirectory() : false;
+  if (!exists) return;
 
-  if (isDirectory) {
-    if (!fs.existsSync(dest)) {
-      fs.mkdirSync(dest, { recursive: true });
-    }
+  const stats = fs.statSync(src);
+
+  if (stats.isDirectory()) {
+    fs.mkdirSync(dest, { recursive: true });
     fs.readdirSync(src).forEach((childItemName: string) => {
-      copyRecursiveSync(
-        path.join(src, childItemName),
-        path.join(dest, childItemName)
-      );
+      copyRecursiveSync(path.join(src, childItemName), path.join(dest, childItemName));
     });
-  } else if (exists) {
+  } else {
     const parentDir = path.dirname(dest);
     if (!fs.existsSync(parentDir)) {
       fs.mkdirSync(parentDir, { recursive: true });
@@ -58,42 +121,114 @@ function copyRecursiveSync(src: string, dest: string): void {
 }
 
 /**
- * Instala todos os recursos do NexusAI na pasta .agents do projeto do usuário
+ * Pasta raiz do pacote instalado (node_modules/izanagi-ai ou raiz do repo).
  */
-export function installToProject(targetDir?: string): void {
-  const destinationRoot = path.resolve(targetDir || process.env.INIT_CWD || process.cwd());
-  
-  // Evitar auto-cópia se a pós-instalação rodar no próprio repositório do NexusAI durante desenvolvimento local
-  const packageJsonPath = path.join(destinationRoot, 'package.json');
-  if (fs.existsSync(packageJsonPath) && !targetDir) {
-    try {
-      const pkg = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
-      if (pkg.name === 'nexusai' || pkg.name === 'pedrohsl1-nexusai') {
-        console.log('[NexusAI] Pós-instalação ignorada no próprio repositório NexusAI.');
-        return;
-      }
-    } catch {
-      // Ignorar erros de leitura de package.json
-    }
+export function getPackageDir(): string {
+  return path.resolve(__dirname, '..');
+}
+
+/**
+ * Resolve o framework root do projeto do usuário:
+ * - Se o projeto foi inicializado (`.agents/` existe), usa ele (permite edição local).
+ * - Caso contrário, usa a raiz do pacote instalado.
+ */
+export function resolveFrameworkRoot(cwd: string): string {
+  const projectAgents = path.join(cwd, '.agents');
+  if (fs.existsSync(projectAgents)) {
+    return projectAgents;
+  }
+  return getPackageDir();
+}
+
+/**
+ * Instala os packs selecionados do Izanagi AI na pasta `.agents` do projeto do usuário.
+ */
+export function installToProject(targetDir: string, selectedPackIds: string[]): void {
+  const destinationRoot = path.resolve(targetDir);
+  const packageDir = getPackageDir();
+
+  // Garante que `core` esteja sempre presente
+  const packIds = Array.from(new Set([CORE_PACK_ID, ...selectedPackIds]));
+  const packs = PACKS.filter((p) => packIds.includes(p.id));
+
+  if (!fs.existsSync(destinationRoot)) {
+    fs.mkdirSync(destinationRoot, { recursive: true });
   }
 
-  // Onde os arquivos do pacote estão localizados (raiz do pacote NexusAI no node_modules)
-  const packageDir = path.resolve(__dirname, '..');
   const targetAgentsFolder = path.join(destinationRoot, '.agents');
+  fs.mkdirSync(targetAgentsFolder, { recursive: true });
 
-  console.log(`\n\x1b[36m[NexusAI]\x1b[0m Instalando recursos do NexusAI em: \x1b[1m${targetAgentsFolder}\x1b[0m...`);
+  console.log(`\n\x1b[36m[Izanagi AI]\x1b[0m Initializing framework in: \x1b[1m${destinationRoot}\x1b[0m\n`);
 
-  let copiedCount = 0;
+  let copiedItems = 0;
 
-  for (const item of ITEMS_TO_COPY) {
-    const srcPath = path.join(packageDir, item);
-    const destPath = path.join(targetAgentsFolder, item);
+  for (const pack of packs) {
+    const copied = pack.files.filter((item) => fs.existsSync(path.join(packageDir, item))).length;
+    if (copied === 0) continue;
 
-    if (fs.existsSync(srcPath)) {
-      copyRecursiveSync(srcPath, destPath);
-      copiedCount++;
+    for (const item of pack.files) {
+      const srcPath = path.join(packageDir, item);
+      const destPath = path.join(targetAgentsFolder, item);
+      if (fs.existsSync(srcPath)) {
+        copyRecursiveSync(srcPath, destPath);
+        copiedItems++;
+      }
+    }
+
+    console.log(`  \x1b[32m✔\x1b[0m Pack \x1b[1m${pack.label}\x1b[0m (${copied} items) — ${pack.description}`);
+  }
+
+  // Configuração local (.izanagi/izanagi.config.json)
+  const izanagiFolder = path.join(destinationRoot, '.izanagi');
+  fs.mkdirSync(izanagiFolder, { recursive: true });
+
+  const config = {
+    framework: 'Izanagi AI',
+    version: '2.1.0',
+    defaultAgent: 'senior-engineer',
+    skillsDir: '.agents/skills',
+    autoCompression: true,
+    qualityGates: true,
+    packs: packIds
+  };
+
+  fs.writeFileSync(path.join(izanagiFolder, 'izanagi.config.json'), JSON.stringify(config, null, 2));
+  console.log('  \x1b[32m✔\x1b[0m Config created (.izanagi/izanagi.config.json)');
+
+  // opencode.json para auto-carregar o framework ao abrir o opencode no projeto
+  const opencodePath = path.join(destinationRoot, 'opencode.json');
+  if (!fs.existsSync(opencodePath)) {
+    const opencodeConfig = {
+      $schema: 'https://opencode.ai/config.json',
+      instructions: ['.agents/AGENTS.md', '.agents/SYSTEM.md']
+    };
+    fs.writeFileSync(opencodePath, JSON.stringify(opencodeConfig, null, 2));
+    console.log('  \x1b[32m✔\x1b[0m opencode.json created (auto-loads framework on opencode)');
+  } else {
+    console.log('  \x1b[33m•\x1b[0m opencode.json already exists — kept as is (add ".agents/AGENTS.md" to instructions manually if needed)');
+  }
+
+  // Agentes opencode (ex: /animation) para o projeto — ativáveis digitando /<nome> no opencode
+  const opencodeAgentsSrc = path.join(packageDir, '.opencode', 'agent');
+  const opencodeAgentsDest = path.join(destinationRoot, '.opencode', 'agent');
+  if (fs.existsSync(opencodeAgentsSrc)) {
+    fs.mkdirSync(opencodeAgentsDest, { recursive: true });
+    for (const agentFile of fs.readdirSync(opencodeAgentsSrc).filter((f: string) => f.endsWith('.md'))) {
+      const destFile = path.join(opencodeAgentsDest, agentFile);
+      if (!fs.existsSync(destFile)) {
+        fs.copyFileSync(path.join(opencodeAgentsSrc, agentFile), destFile);
+        const cmd = agentFile.replace(/\.md$/i, '');
+        console.log(`  \x1b[32m✔\x1b[0m opencode agent added: type \x1b[1m/${cmd}\x1b[0m to activate it`);
+      } else {
+        console.log(`  \x1b[33m•\x1b[0m .opencode/agent/${agentFile} already exists — kept as is`);
+      }
     }
   }
 
-  console.log(`\x1b[32m[NexusAI] Sucesso! ${copiedCount} pastas/arquivos copiados para .agents.\x1b[0m\n`);
+  console.log(`\n\x1b[32m[Izanagi AI] Success! ${copiedItems} files copied to .agents (${packs.length} packs).\x1b[0m`);
+  console.log('Next steps:');
+  console.log('  \x1b[36mizanagi run "your task"\x1b[0m              — classify & plan any task');
+  console.log('  \x1b[36mizanagi run <agent> --task "..."\x1b[0m     — run a specific agent');
+  console.log('  \x1b[36mizanagi list skills\x1b[0m                  — see available skills');
+  console.log('  \x1b[36mizanagi doctor\x1b[0m                      — validate the installation\n');
 }

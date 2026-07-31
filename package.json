@@ -1,14 +1,14 @@
 {
   "name": "izanagi-ai",
-  "version": "2.0.8",
-  "description": "Modular Skill-Oriented AI Prompt & Agent Framework for Autonomous Software Engineering",
+  "version": "2.2.0",
+  "description": "Izanagi AI - Modular Skill-Oriented AI Prompt & Agent Framework for Autonomous Software Engineering",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "type": "module",
   "bin": {
-    "nexus": "./bin/nexus.js",
-    "nexusai": "./bin/nexus.js"
+    "izanagi": "bin/izanagi.js",
+    "izanagi-ai": "bin/izanagi.js"
   },
   "files": [
     "dist",
@@ -27,6 +27,7 @@
     "skills",
     "teaching",
     "testing",
+    ".opencode",
     "SYSTEM.md",
     "RULES.md",
     "AGENTS.md",
@@ -46,13 +47,13 @@
     "bump:minor": "node dist/scripts/bump.js minor",
     "bump:major": "node dist/scripts/bump.js major",
     "prepublishOnly": "npm run build",
-    "postinstall": "node bin/postinstall.cjs",
-    "start": "node bin/nexus.js",
-    "doctor": "node bin/nexus.js doctor",
-    "list": "node bin/nexus.js list"
+    "start": "node bin/izanagi.js",
+    "doctor": "node bin/izanagi.js doctor",
+    "list": "node bin/izanagi.js list"
   },
   "keywords": [
-    "nexusai",
+    "izanagi",
+    "izanagi-ai",
     "ai",
     "agents",
     "prompt-engineering",
@@ -73,6 +74,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pedrohenriquesanchesleal4-debug/izanagi-ai"
-  }
+    "url": "git+https://github.com/pedrohenriquesanchesleal4-debug/izanagi-ai.git"
+  },
+  "dependencies": {
+    "undici-types": "^6.21.0"
+  },
+  "bugs": {
+    "url": "https://github.com/pedrohenriquesanchesleal4-debug/izanagi-ai/issues"
+  },
+  "homepage": "https://github.com/pedrohenriquesanchesleal4-debug/izanagi-ai#readme"
 }

@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { findAgentFile } from '../framework.js';
 
 export function compileCommand(baseDir: string, agentIdentifier?: string, outputFile?: string): void {
   if (!agentIdentifier) {
@@ -7,27 +8,26 @@ export function compileCommand(baseDir: string, agentIdentifier?: string, output
     process.exit(1);
   }
 
-  const agentsDir = path.join(baseDir, 'agents');
-  let agentFile = path.join(agentsDir, `${agentIdentifier}-agent.json`);
-  if (!fs.existsSync(agentFile)) {
-    agentFile = path.join(agentsDir, `${agentIdentifier}.json`);
-  }
+  const cwd = process.cwd();
+  const agentFile = findAgentFile(cwd, baseDir, agentIdentifier);
 
-  if (!fs.existsSync(agentFile)) {
-    console.error(`\x1b[31mError:\x1b[0m Agent "${agentIdentifier}" not found in ${agentsDir}`);
+  if (!agentFile) {
+    console.error(`\x1b[31mError:\x1b[0m Agent "${agentIdentifier}" not found.`);
+    console.error(`Check \x1b[33magents/\x1b[0m or run \x1b[33mizanagi list agents\x1b[0m to see available agents.`);
     process.exit(1);
   }
 
   const agent = JSON.parse(fs.readFileSync(agentFile, 'utf-8'));
-  const systemContent = fs.existsSync(path.join(baseDir, 'SYSTEM.md')) 
-    ? fs.readFileSync(path.join(baseDir, 'SYSTEM.md'), 'utf-8') 
-    : '';
 
-  const rulesContent = fs.existsSync(path.join(baseDir, 'RULES.md')) 
-    ? fs.readFileSync(path.join(baseDir, 'RULES.md'), 'utf-8') 
-    : '';
+  // SYSTEM.md / RULES.md: prioriza .agents do projeto, senão raiz do pacote
+  const roots = [path.join(cwd, '.agents'), baseDir];
+  const findDoc = (name: string): string =>
+    roots.map((r) => path.join(r, name)).find((p) => fs.existsSync(p)) || '';
 
-  let compiled = `<!-- NEXUS AI COMPILED SYSTEM PROMPT -->\n`;
+  const systemContent = findDoc('SYSTEM.md');
+  const rulesContent = findDoc('RULES.md');
+
+  let compiled = `<!-- IZANAGI AI COMPILED SYSTEM PROMPT -->\n`;
   compiled += `<!-- AGENT: ${agent.name} (v${agent.version || '1.0.0'}) -->\n\n`;
   compiled += `### ROLE & IDENTITY\n${agent.identity || agent.role}\n\n`;
 
@@ -39,8 +39,12 @@ export function compileCommand(baseDir: string, agentIdentifier?: string, output
     compiled += `### NEVER DO\n` + agent.never.map((n: string) => `- ${n}`).join('\n') + `\n\n`;
   }
 
-  compiled += `--- SYSTEM FOUNDATION ---\n${systemContent}\n\n`;
-  compiled += `--- OPERATIONAL RULES ---\n${rulesContent}\n\n`;
+  if (systemContent) {
+    compiled += `--- SYSTEM FOUNDATION ---\n${systemContent}\n\n`;
+  }
+  if (rulesContent) {
+    compiled += `--- OPERATIONAL RULES ---\n${rulesContent}\n\n`;
+  }
 
   if (outputFile) {
     const outPath = path.resolve(process.cwd(), outputFile);

@@ -1,15 +1,21 @@
 import fs from 'fs';
 import path from 'path';
+import { loadSkillResolver } from '../framework.js';
 
 export function doctorCommand(baseDir: string): boolean {
-  console.log('\n\x1b[36m=== NexusAI Doctor & Integrity Check ===\x1b[0m\n');
+  console.log('\n\x1b[36m=== Izanagi AI Doctor & Integrity Check ===\x1b[0m\n');
+
+  const cwd = process.cwd();
+
+  // Raiz do framework: .agents do projeto (se existir) ou pacote instalado
+  const projectRoot = fs.existsSync(path.join(cwd, '.agents')) ? path.join(cwd, '.agents') : baseDir;
 
   let errors = 0;
   let warnings = 0;
 
   // 1. Verify SYSTEM.md & RULES.md
-  const systemPath = path.join(baseDir, 'SYSTEM.md');
-  const rulesPath = path.join(baseDir, 'RULES.md');
+  const systemPath = path.join(projectRoot, 'SYSTEM.md');
+  const rulesPath = path.join(projectRoot, 'RULES.md');
 
   if (fs.existsSync(systemPath)) {
     console.log(' \x1b[32m✔\x1b[0m SYSTEM.md found');
@@ -26,29 +32,44 @@ export function doctorCommand(baseDir: string): boolean {
   }
 
   // 2. Verify Agents
-  const agentsDir = path.join(baseDir, 'agents');
-  if (!fs.existsSync(agentsDir)) {
-    console.log(' \x1b[31m✖\x1b[0m agents directory missing!');
-    errors++;
-  } else {
+  const agentsDirs = [
+    path.join(cwd, '.agents', 'agents'),
+    path.join(cwd, 'agents'),
+    path.join(baseDir, 'agents')
+  ];
+
+  const seen = new Set<string>();
+  let agentCount = 0;
+
+  for (const agentsDir of agentsDirs) {
+    if (!fs.existsSync(agentsDir)) continue;
     const agentFiles = fs.readdirSync(agentsDir).filter((f: string) => f.endsWith('.json'));
-    console.log(` \x1b[32m✔\x1b[0m Found ${agentFiles.length} agent JSON definitions`);
     for (const f of agentFiles) {
+      if (seen.has(f)) continue;
+      seen.add(f);
+      agentCount++;
       try {
         const content = JSON.parse(fs.readFileSync(path.join(agentsDir, f), 'utf-8'));
         if (!content.name || !content.skills) {
           console.log(`   \x1b[33m⚠\x1b[0m Agent ${f} missing required fields (name, skills)`);
           warnings++;
         }
-      } catch (err) {
+      } catch {
         console.log(`   \x1b[31m✖\x1b[0m Invalid JSON in agent file ${f}`);
         errors++;
       }
     }
   }
 
+  if (agentCount > 0) {
+    console.log(` \x1b[32m✔\x1b[0m Found ${agentCount} agent JSON definitions`);
+  } else {
+    console.log(' \x1b[31m✖\x1b[0m agents directory missing!');
+    errors++;
+  }
+
   // 3. Verify Skill Resolver
-  const resolverPath = path.join(baseDir, 'core', 'skill-resolver.json');
+  const resolverPath = path.join(projectRoot, 'core', 'skill-resolver.json');
   if (!fs.existsSync(resolverPath)) {
     console.log(' \x1b[31m✖\x1b[0m skill-resolver.json missing!');
     errors++;
@@ -60,16 +81,22 @@ export function doctorCommand(baseDir: string): boolean {
       let unresolvedCount = 0;
 
       for (const [alias, relPath] of Object.entries(aliases)) {
-        let fullPath = path.join(baseDir, relPath as string);
-        if (!fullPath.endsWith('.md') && !fullPath.endsWith('.json')) {
-          if (fs.existsSync(fullPath + '.md')) {
-            fullPath += '.md';
-          } else if (fs.existsSync(path.join(fullPath, 'SKILL.md'))) {
-            fullPath = path.join(fullPath, 'SKILL.md');
+        const roots = [projectRoot, baseDir];
+        let found = false;
+
+        for (const root of roots) {
+          const fullPath = path.join(root, relPath as string);
+          if (
+            fs.existsSync(fullPath) ||
+            fs.existsSync(fullPath + '.md') ||
+            fs.existsSync(path.join(fullPath, 'SKILL.md'))
+          ) {
+            found = true;
+            break;
           }
         }
 
-        if (fs.existsSync(fullPath)) {
+        if (found) {
           resolvedCount++;
         } else {
           console.log(`   \x1b[33m⚠\x1b[0m Alias "${alias}" points to non-existent target: ${relPath}`);

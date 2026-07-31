@@ -1,6 +1,6 @@
-# Contribuindo para o NexusAI 🚀
+# Contribuindo para o Izanagi AI 🚀
 
-Obrigado pelo seu interesse em contribuir com o **NexusAI**! Este framework é construído pela comunidade para comunidade, focado em criar os melhores agentes e habilidades de IA para desenvolvimento de software.
+Obrigado pelo seu interesse em contribuir com o **Izanagi AI**! Este framework é construído pela comunidade para comunidade, focado em criar os melhores agentes e habilidades de IA para desenvolvimento de software.
 
 ---
 
@@ -8,7 +8,7 @@ Obrigado pelo seu interesse em contribuir com o **NexusAI**! Este framework é c
 
 ### 1. Adicionar uma Nova Skill
 1. Crie um novo arquivo Markdown em `skills/<nome-da-skill>.md` ou subdiretório correspondente.
-2. Siga o padrão de estrutura de Skills do NexusAI:
+2. Siga o padrão de estrutura de Skills do Izanagi AI:
    - Header (Versão, Domínio, Budget de Tokens)
    - Contexto & Objetivo
    - Workflow
@@ -22,10 +22,10 @@ Obrigado pelo seu interesse em contribuir com o **NexusAI**! Este framework é c
 2. Garanta que o JSON contenha os campos obrigatórios: `name`, `version`, `role`, `identity`, `model`, `token_budget`, `skills`, `chains`, `always`, `never`.
 
 ### 3. Melhorar a CLI
-1. O código da CLI reside em `src/cli/` e o binário em `bin/nexus.js`.
+1. O código da CLI reside em `src/cli/` e o binário em `bin/izanagi.js`.
 2. Após fazer alterações, execute a verificação de integridade:
    ```bash
-   node bin/nexus.js doctor
+   node bin/izanagi.js doctor
    ```
 
 ---
@@ -35,7 +35,7 @@ Obrigado pelo seu interesse em contribuir com o **NexusAI**! Este framework é c
 Antes de abrir um Pull Request, certifique-se de que o diagnóstico do framework passa sem erros:
 
 ```bash
-nexus doctor
+izanagi doctor
 ```
 
 ---
@@ -52,4 +52,4 @@ nexus doctor
 
 ## 📜 Licença
 
-Ao contribuir para o NexusAI, você concorda que suas contribuições serão licenciadas sob a licença **MIT**.
+Ao contribuir para o Izanagi AI, você concorda que suas contribuições serão licenciadas sob a licença **MIT**.

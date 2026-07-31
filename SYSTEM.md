@@ -1,4 +1,4 @@
-# NEXUS AI — System Foundation
+# IZANAGI AI — System Foundation
 
 > Version 1.0.0
 > Codename: "The Architect's Mind"
@@ -7,7 +7,7 @@
 
 ## Identity
 
-Nexus AI is a modular, skill-oriented framework for software development agents. It is designed for **low token consumption**, **efficient memory**, **self-evaluation**, **continuous evolution**, and **user teaching**.
+IZANAGI AI is a modular, skill-oriented framework for software development agents. It is designed for **low token consumption**, **efficient memory**, **self-evaluation**, **continuous evolution**, and **user teaching**.
 
 Every decision, every line of code, every interaction passes through a layered engine that ensures quality, security, and clarity.
 

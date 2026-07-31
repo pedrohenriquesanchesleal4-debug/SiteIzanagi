@@ -1,4 +1,4 @@
-# NexusAI
+# Izanagi AI
 
 Framework modular, skill-oriented para agentes de IA especializados em desenvolvimento de software e automação.
 
@@ -6,22 +6,45 @@ Framework modular, skill-oriented para agentes de IA especializados em desenvolv
 
 ---
 
-## Instalação & CLI via NPM
+## Instalação
 
-O NexusAI possui uma **CLI executável** que pode ser utilizada via `npx` ou instalada globalmente.
+O Izanagi AI possui uma **CLI executável** que pode ser instalada globalmente ou usada via `npx`.
 
 ```bash
-# Execução direta via npx (sem instalação permanente)
-npx nexusai-cli run "Criar API REST com Laravel e JWT"
+# Instalação global
+npm install -g izanagi-ai
 
-# Ou instalação global
-npm install -g nexusai-cli
+# Ou execução direta via npx (sem instalar)
+npx izanagi <comando>
 
-# Agora use diretamente o comando nexus / nexusai
-nexus run "Refatorar camada de autenticação"
-nexus list skills
-nexus doctor
+# Agora use diretamente os comandos izanagi / izanagi-ai
+izanagi --version
 ```
+
+> **Nota:** o pacote é publicado como `izanagi-ai` e os bins disponíveis são `izanagi` e `izanagi-ai`.
+
+---
+
+## Iniciando um projeto
+
+```bash
+# Cria o projeto com seleção interativa de packs de skills (.agents/)
+izanagi init my-project
+
+# Ou especifique os packs diretamente (core é sempre incluído)
+izanagi init my-project --packs core,agents,coding,database
+
+# Entre no projeto e comece a usar
+cd my-project
+izanagi run "Create a login page"
+```
+
+O `init` cria:
+- `.agents/` — skills, agentes e engines selecionados
+- `.izanagi/izanagi.config.json` — configuração local do projeto
+- `opencode.json` — auto-carrega o framework quando o opencode abre o projeto
+
+**Packs disponíveis:** `core` (obrigatório), `agents`, `skills`, `architecture`, `coding`, `database`, `devops`, `security`, `testing`, `memory`, `optimization`, `teaching`.
 
 ---
 
@@ -29,23 +52,46 @@ nexus doctor
 
 | Comando | Descrição |
 |---|---|
-| `nexus run "<task>"` | Analisa a tarefa, seleciona o agente ideal e mapeia a corrente de skills. |
-| `nexus compile <agente> [arquivo]` | Compila um System Prompt completo do agente + fundação do sistema para arquivo ou stdout. |
-| `nexus init` | Inicializa regras `.nexus/` no seu projeto atual. |
-| `nexus list [skills\|agents]` | Lista todas as skills e agentes registrados com seus aliases. |
-| `nexus doctor` | Valida integridade do framework, JSONs de agentes e mapeamentos de aliases. |
+| `izanagi init [dir] [--packs a,b,c]` | Cria projeto com `.agents/` e seleção de packs de skills. |
+| `izanagi run [agent] --task "<task>"` | Analisa a tarefa, seleciona o agente ideal e resolve a corrente de skills. |
+| `izanagi create <agent\|skill> <name>` | Cria scaffold de agente (JSON) ou skill (SKILL.md) no projeto atual. |
+| `izanagi compile <agente> [arquivo]` | Compila um System Prompt completo do agente + fundação do sistema. |
+| `izanagi list [skills\|agents]` | Lista todas as skills e agentes registrados com seus aliases. |
+| `izanagi doctor` | Valida integridade do framework, JSONs de agentes e mapeamentos de aliases. |
+| `izanagi --version` | Exibe a versão da CLI. |
+
+### Exemplos
+
+```bash
+# Task simples (auto-classificação)
+izanagi run "Create a login page"
+
+# Agente específico com task explícita
+izanagi run architect --task "Design a microservices architecture"
+
+# Agente customizado criado no projeto
+izanagi create agent my-agent
+izanagi run my-agent --task "Create a login page"
+
+# Compilar system prompt completo para um agente
+izanagi compile architect prompt_arquiteto.md
+
+# Listar e validar
+izanagi list skills
+izanagi doctor
+```
 
 ---
 
 ## Estrutura do Projeto
 
 ```
-NexusAI/
-├── bin/            Executável da CLI (bin/nexus.js)
+izanagi-ai/
+├── bin/            Executável da CLI (bin/izanagi.js)
 ├── src/cli/        Código fonte dos comandos CLI
 ├── core/           Motor central (decisão, contexto, reflexão, skill-resolver)
 ├── agents/         Definições de Agentes de IA em JSON
-├── skills/         Skill base (80+ skills especializadas em Markdown)
+├── skills/         Skill base (111 skills especializadas em Markdown)
 ├── memory/         Gerenciamento de memória e compressão
 ├── optimization/   Redução de tokens e custos
 ├── teaching/       Modo professor e aprendizado adaptativo
@@ -67,26 +113,24 @@ NexusAI/
 
 ## Agentes e Skills
 
-O framework possui **80+ skills** e **10+ agentes especializados** encadeados dinamicamente via `core/skill-resolver.json`.
-
-```bash
-# Exemplo: Compilar o System Prompt para o Arquiteto de Software
-nexus compile architect prompt_arquiteto.md
-```
+O framework possui **111+ skills** e **10 agentes especializados** encadeados dinamicamente via `core/skill-resolver.json`.
 
 ---
 
-## Publicando no NPM
+## Desenvolvimento
 
 ```bash
-# Login no NPM
-npm login
+npm install       # instala dependências
+npm run build     # compila TypeScript → dist/
+npm run doctor    # roda o doctor localmente
+npm pack          # gera o tarball do pacote
+```
 
-# Testar empacotamento em modo dry-run
-npm pack --dry-run
+### Publicando no NPM
 
-# Publicar pacote publicamente
-npm publish --access public
+```bash
+npm run bump:patch   # ou bump:minor / bump:major
+npm publish --access public   # prepublishOnly roda o build automaticamente
 ```
 
 ---

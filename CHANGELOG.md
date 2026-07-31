@@ -1,17 +1,62 @@
 # Changelog
 
-> All notable changes to the Nexus AI framework.
+> All notable changes to the IZANAGI AI framework.
 
 ---
+
+## [2.2.0] — 2026-07-31
+
+### Changed
+- **Package renamed back: `nexusai` → `izanagi-ai`** — o framework volta ao nome original Izanagi AI (repo GitHub `izanagi-ai`, site `SiteIzanagi`)
+- **Bins renomeados**: `nexus`/`nexusai` → `izanagi`/`izanagi-ai` (comandos agora são `izanagi init`, `izanagi run`, etc.)
+- CLI internamente renomeada: `Izanagi AI CLI`, config do projeto em `.izanagi/izanagi.config.json` (era `.nexus/nexus.config.json`)
+- Documentação (AGENTS.md, README, CONTRIBUTING) atualizada para o novo nome/comandos
+
+### Fixed
+- `--help` imprimia "Unknown option" junto com a ajuda (caso `--help` compartilhava bloco com `default:`)
+
+## [2.1.1] — 2026-07-31
+
+### Added
+- **Animation Engineer agent** (`agents/animation-agent.json`): sites cinematográficos — scrollytelling, scroll-driven animations, 3D WebGL e motion design
+- **3 novas skills** (com `references.md` pesquisado em 2026):
+  - `animation-web` — scroll image sequences estilo Apple, GSAP ScrollTrigger, Lenis, pinned sections, preloaders (referências: uiprompts.app, Skiper UI, KokonutUI, Apple product pages)
+  - `webgl-3d` — Three.js / React Three Fiber, shaders, partículas, GLTF/Draco, perf budgets (referências: Bruno Simon, The Monolith, DeepSee, KINESIS)
+  - `motion-design` — decisão de biblioteca GSAP vs Anime.js v4 vs Motion vs Lottie vs CSS, timing/easing/stagger
+- **Agente opencode `/animation`** (`.opencode/agent/animation.md`): ativado digitando `/animation` no opencode; copiado automaticamente para projetos pelo `izanagi init`
+- Classificação de tasks de animação/3D no `izanagi run` (ex: `izanagi run "site animado com 3d"` → Animation Engineer)
+
+### Changed
+- AGENTS.md atualizado: 11 agentes, skills ativas incluem animation-web/webgl-3d/motion-design
+
+## [2.1.0] — 2026-07-31
+
+### Added
+- **Pack system** on `izanagi init`: interactive multi-select of skill packs (arrow keys, space, `a`/`n`) or `--packs a,b,c` flag. `core` is always included.
+- `izanagi init <dir>` now creates the project directory if it doesn't exist, plus `.izanagi/izanagi.config.json` and `opencode.json` (auto-loads the framework in opencode)
+- `izanagi run [agent] --task "<task>"`: run a specific agent (incl. custom ones created via `izanagi create`) with full skill chain resolution against `core/skill-resolver.json`
+- Context resolution: CLI commands now prefer the project's `.agents/` (created by init) with fallback to the installed package
+- Interactive pack selector with graceful fallback for non-TTY environments
+
+### Changed
+- **Package renamed `izanagi-ai` → `nexusai`** (bins `nexus`/`nexusai` unchanged) — reverted in 2.2.0
+- `AGENTS.md` and `README.md` rewritten with the new CLI commands and pack system
+- Commands `compile`, `list`, `doctor` now resolve agents/skills from project `.agents/`, cwd or installed package
+
+### Removed
+- **Postinstall auto-copy removed** — this was the cause of duplicated files (`.agents/` + package contents). `.agents/` is now created only by `izanagi init`
+
+### Fixed
+- `izanagi run "task"` (without `--task`) now works again alongside `run [agent] --task "..."`
 
 ## [2.0.8] — 2026-07-23
 
 ### Added
-- `nexusai create <agent|skill> <name>` command to scaffold new agents and skills
-- `coding/` directory (13 language/framework skills) to npm package and `nexusai init`
+- `izanagi create <agent|skill> <name>` command to scaffold new agents and skills
+- `coding/` directory (13 language/framework skills) to npm package and `izanagi init`
 
 ### Fixed
-- `bin/nexus.js` import path: changed `../src/cli/index.js` → `../dist/cli/index.js` to fix `ERR_MODULE_NOT_FOUND` on published package
+- `bin/izanagi.js` import path: changed `../src/cli/index.js` → `../dist/cli/index.js` to fix `ERR_MODULE_NOT_FOUND` on published package
 
 ## [2.0.7] — 2026-07-23
 
@@ -19,14 +64,14 @@
 - Bump version to 2.0.7
 
 ### Fixed
-- `bin/nexus.js` import path fix (previously attempted, incomplete)
+- `bin/izanagi.js` import path fix (previously attempted, incomplete)
 
 ## [2.0.6] — 2026-07-23
 
 - Bump version to 2.0.6
 
 ### Fixed
-- `bin/nexus.js` import path: changed `../src/cli/index.js` → `../dist/cli/index.js` to fix `ERR_MODULE_NOT_FOUND` on published package
+- `bin/izanagi.js` import path: changed `../src/cli/index.js` → `../dist/cli/index.js` to fix `ERR_MODULE_NOT_FOUND` on published package
 
 ## [2.0.0] — 2026-07-22
 

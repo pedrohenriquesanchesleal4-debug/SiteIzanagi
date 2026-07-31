@@ -126,6 +126,6 @@
 
 ## Current Focus
 
-**v2.0.0** — Consolidation, plugin system, and CLI tooling to make NexusAI extensible and operable outside of conversation.
+**v2.0.0** — Consolidation, plugin system, and CLI tooling to make Izanagi AI extensible and operable outside of conversation.
 
 > "Rome wasn't built in a day. Neither is a great agent framework."

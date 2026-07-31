@@ -1,7 +1,7 @@
 # Skills Index
 
 > Complete registry of all skills in the Nexus AI framework.
-> Updated: 2026-07-22 | Total: 137 skills
+> Updated: 2026-07-31 | Total: 140 skills
 
 ---
 
@@ -388,11 +388,21 @@
 
 ---
 
+## Animation & 3D (3)
+
+| Skill | Status | File |
+|-------|--------|------|
+| Animation Web (scrollytelling/cinematic) | ? v1.0.0 | `skills/animation-web/SKILL.md` |
+| WebGL 3D (Three.js/R3F) | ? v1.0.0 | `skills/webgl-3d/SKILL.md` |
+| Motion Design (GSAP/Anime.js/Motion) | ? v1.0.0 | `skills/motion-design/SKILL.md` |
+
+---
+
 ## Stats
 
 | Metric | Value |
 |--------|-------|
-| **Total skills** | **137** |
+| **Total skills** | **140** |
 | Core modules | 8 |
 | Architecture | 10 |
 | Coding | 13 |
@@ -428,6 +438,7 @@
 | WebAssembly | 1 |
 | Web Performance & SEO | 2 |
 | WebSocket & Real-Time | 1 |
+| Animation & 3D | 3 |
 
 ---
 

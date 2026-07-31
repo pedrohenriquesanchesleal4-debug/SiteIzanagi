@@ -1,4 +1,4 @@
-# NEXUS AI — Operating Rules
+# IZANAGI AI — Operating Rules
 
 > Version 1.0.0
 

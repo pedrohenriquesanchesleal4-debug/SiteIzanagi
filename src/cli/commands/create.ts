@@ -11,7 +11,7 @@ export function createCommand(baseDir: string, type: string, name: string): void
       break;
     default:
       console.log(`\n\x1b[33mUnknown type: ${type}\x1b[0m`);
-      console.log('Usage: nexus create <agent|skill> <name>\n');
+      console.log('Usage: izanagi create <agent|skill> <name>\n');
       break;
   }
 }

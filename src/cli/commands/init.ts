@@ -1,31 +1,75 @@
 import fs from 'fs';
 import path from 'path';
-import { installToProject } from '../../installer.js';
+import { installToProject, PACKS, CORE_PACK_ID } from '../../installer.js';
+import { selectPacks } from '../prompts.js';
 
-export function initCommand(baseDir: string, targetDir: string = process.cwd()): void {
-  console.log(`\n\x1b[36m=== Initializing NexusAI (.agents) in: ${targetDir} ===\x1b[0m\n`);
+interface InitArgs {
+  targetDir: string;
+  packs?: string[];
+}
 
-  // Sincronizar/Copiar arquivos para .agents
-  installToProject(targetDir);
+function parseInitArgs(args: string[]): InitArgs {
+  let targetDir = process.cwd();
+  const packs: string[] = [];
 
-  const nexusFolder = path.join(targetDir, '.nexus');
-  if (!fs.existsSync(nexusFolder)) {
-    fs.mkdirSync(nexusFolder, { recursive: true });
+  for (let i = 0; i < args.length; i++) {
+    const arg = args[i];
+    if (arg === '--packs' || arg === '-p') {
+      const value = args[i + 1];
+      if (value) {
+        packs.push(...value.split(',').map((s) => s.trim()).filter(Boolean));
+        i++;
+      }
+    } else if (arg.startsWith('--packs=')) {
+      packs.push(...arg.slice(8).split(',').map((s) => s.trim()).filter(Boolean));
+    } else if (arg === '--all') {
+      packs.push(...PACKS.map((p) => p.id));
+    } else if (!arg.startsWith('-')) {
+      targetDir = arg;
+    }
   }
 
-  // Write nexus.config.json
-  const config = {
-    framework: "NexusAI",
-    version: "1.0.0",
-    defaultAgent: "senior-engineer",
-    skillsDir: ".agents/skills",
-    autoCompression: true,
-    qualityGates: true
-  };
+  return { targetDir, packs: packs.length > 0 ? packs : undefined };
+}
 
-  fs.writeFileSync(path.join(nexusFolder, 'nexus.config.json'), JSON.stringify(config, null, 2));
-  console.log(' \x1b[32m✔\x1b[0m Created .nexus/nexus.config.json');
+function validatePacks(packs: string[]): string[] {
+  const valid = new Set(PACKS.map((p) => p.id));
+  const invalid = packs.filter((p) => !valid.has(p));
+  if (invalid.length > 0) {
+    console.error(
+      `\x1b[31mError:\x1b[0m unknown pack(s): ${invalid.join(', ')}.\nValid packs: ${Array.from(valid).join(', ')}`
+    );
+    process.exit(1);
+  }
+  return packs;
+}
 
-  console.log('\n\x1b[32mNexusAI successfully initialized in this project!\x1b[0m');
-  console.log('You can now run \x1b[1mnexus run "your task"\x1b[0m or \x1b[1mnexus compile <agent>\x1b[0m.\n');
+export async function initCommand(args: string[]): Promise<void> {
+  const { targetDir, packs } = parseInitArgs(args);
+  const destinationRoot = path.resolve(targetDir);
+
+  if (fs.existsSync(destinationRoot)) {
+    const isEmpty = fs.readdirSync(destinationRoot).length === 0;
+    if (!isEmpty && destinationRoot !== process.cwd()) {
+      console.error(`\x1b[31mError:\x1b[0m directory already exists and is not empty: ${destinationRoot}`);
+      process.exit(1);
+    }
+  }
+
+  console.log(`\n\x1b[36m=== Initializing Izanagi AI in: ${destinationRoot} ===\x1b[0m\n`);
+
+  let selectedPacks: string[];
+
+  if (packs) {
+    selectedPacks = validatePacks(packs);
+    const display = Array.from(new Set([CORE_PACK_ID, ...selectedPacks])).join(', ');
+    console.log(`\x1b[33mSelected packs:\x1b[0m ${display}\n`);
+  } else {
+    selectedPacks = await selectPacks(PACKS, CORE_PACK_ID);
+  }
+
+  installToProject(destinationRoot, selectedPacks);
+
+  console.log('\x1b[32mIzanagi AI successfully initialized!\x1b[0m');
+  console.log(`\x1b[90mNext:\x1b[0m \x1b[1mcd ${path.basename(destinationRoot)}\x1b[0m && \x1b[36mizanagi run "your task"\x1b[0m\n`);
 }
