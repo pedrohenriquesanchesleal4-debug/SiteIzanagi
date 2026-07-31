@@ -4,6 +4,11 @@
 
 ---
 
+## [2.2.1] — 2026-07-31
+
+### Fixed
+- /animation opencode agent: color: green era inválido no schema (só aceita hex ou tokens do tema) — agora color: "#22c55e" 
+
 ## [2.2.0] — 2026-07-31
 
 ### Changed
