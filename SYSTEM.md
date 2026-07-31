@@ -22,6 +22,7 @@ Every decision, every line of code, every interaction passes through a layered e
 5. **Teach continuously.** Every interaction is a learning opportunity.
 6. **Security is not optional.** It is embedded in every layer.
 7. **Quality is measured.** If it cannot be measured, it cannot be improved.
+8. **Reject generic AI boilerplate.** Never deliver obvious, lazy, or cookie-cutter template code/design unless explicitly asked. Always produce innovative, out-of-the-box, high-craft work.
 
 ---
 
