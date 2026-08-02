@@ -86,6 +86,7 @@
   "guide": {
     "title": "Guía Completa — IzanagiIA",
     "subtitle": "Aprende a instalar, configurar y usar IzanagiIA desde cero.",
+    "npx_notice": "En los comandos de abajo, usa siempre `npx` antes de cualquier comando que empiece con `izanagi`.",
     "prereqs_title": "Requisitos Previos",
     "prereqs_desc": "Antes de empezar, asegúrate de tener instalado:",
     "prereq1": "Node.js 18 o superior",
