@@ -52,9 +52,9 @@ function GuideContent() {
   const { locale, setLocale, t } = useI18n()
 
   return (
-    <main className="relative z-10 min-h-screen">
+    <main className="relative z-10 min-h-screen overflow-x-hidden">
       <nav className="glass border-b border-white/5">
-        <div className="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-3 sm:h-16 flex flex-wrap items-center justify-between gap-3 sm:gap-4">
           <Link href="/" className="text-lg font-semibold tracking-tight hover:text-white/80 transition-colors">
             IzanagiIA
           </Link>
@@ -145,7 +145,7 @@ cd my-project" />
 
           <div className="glass rounded-xl p-4 mt-4">
             <p className="text-xs text-white/40 mb-3">{t("guide.agent_example_title")}</p>
-            <pre className="text-xs text-white/30 font-mono leading-relaxed">
+            <pre className="text-xs text-white/30 font-mono leading-relaxed overflow-x-auto">
               <code>{`{
   "name": "my-agent",
   "skills": ["architect", "frontend", "qa"],
@@ -181,7 +181,7 @@ cd my-project" />
         <Section num="7" title={t("guide.structure_title")}>
           <p className="text-sm text-white/30">{t("guide.structure_desc")}</p>
           <div className="glass rounded-xl p-4">
-            <pre className="text-xs text-white/30 font-mono leading-relaxed">
+            <pre className="text-xs text-white/30 font-mono leading-relaxed overflow-x-auto">
               <code>{`IzanagiIA/
 ├── bin/            ${t("guide.structure_bin")}
 ├── src/cli/        Código fonte dos comandos CLI
