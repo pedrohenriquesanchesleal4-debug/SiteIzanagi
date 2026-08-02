@@ -89,6 +89,10 @@ function GuideContent() {
           </p>
         </div>
 
+        <div className="glass rounded-xl p-4 mb-12 text-sm text-white/40">
+          {t("guide.npx_notice")}
+        </div>
+
         <Section num="1" title={t("guide.prereqs_title")}>
           <p className="text-sm text-white/30">{t("guide.prereqs_desc")}</p>
           <ul className="space-y-2">
@@ -113,13 +117,13 @@ function GuideContent() {
           </div>
           <div>
             <p className="text-xs text-white/30 mb-2">{t("guide.install_check")}</p>
-            <CodeBlock code="izanagi --version" />
+            <CodeBlock code="npx izanagi --version" />
           </div>
         </Section>
 
         <Section num="3" title={t("guide.init_title")}>
           <p className="text-sm text-white/30">{t("guide.init_desc")}</p>
-          <CodeBlock code="izanagi init my-project
+          <CodeBlock code="npx izanagi init my-project
 cd my-project" />
           <p className="text-xs text-white/20">{t("guide.init_cmd")}</p>
           <div className="glass rounded-xl p-4 mt-4">
@@ -136,7 +140,7 @@ cd my-project" />
 
         <Section num="4" title={t("guide.agent_title")}>
           <p className="text-sm text-white/30">{t("guide.agent_desc")}</p>
-          <CodeBlock code="izanagi create agent my-agent" />
+          <CodeBlock code="npx izanagi create agent my-agent" />
           <p className="text-xs text-white/20">{t("guide.agent_cmd")}</p>
 
           <div className="glass rounded-xl p-4 mt-4">
@@ -158,11 +162,11 @@ cd my-project" />
 
         <Section num="5" title={t("guide.usage_title")}>
           <p className="text-sm text-white/30">{t("guide.usage_desc")}</p>
-          <CodeBlock code={'izanagi run my-agent --task "Create a login page"'} />
+          <CodeBlock code={'npx izanagi run my-agent --task "Create a login page"'} />
           <p className="text-xs text-white/20">{t("guide.usage_example")}</p>
           <div className="mt-4">
             <p className="text-xs text-white/30 mb-2">{t("guide.usage_list")}</p>
-            <CodeBlock code="izanagi list" />
+            <CodeBlock code="npx izanagi list" />
           </div>
         </Section>
 
