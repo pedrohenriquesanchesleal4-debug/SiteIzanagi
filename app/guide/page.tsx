@@ -25,8 +25,8 @@ function CodeBlock({ code, lang = "bash" }: { code: string; lang?: string }) {
           {copied ? "Copied!" : "Copy"}
         </button>
       </div>
-      <pre className="p-4 overflow-x-auto">
-        <code className="text-sm text-white/60 font-mono leading-relaxed">{code}</code>
+      <pre className="max-w-full p-4 overflow-x-auto">
+        <code className="text-sm text-white/60 font-mono leading-relaxed break-words">{code}</code>
       </pre>
     </div>
   )
@@ -34,14 +34,14 @@ function CodeBlock({ code, lang = "bash" }: { code: string; lang?: string }) {
 
 function Section({ num, title, children }: { num: string; title: string; children: React.ReactNode }) {
   return (
-    <div className="mb-16">
+    <div className="mb-16 min-w-0">
       <div className="flex items-center gap-3 mb-6">
         <span className="flex items-center justify-center w-8 h-8 rounded-full bg-white/5 text-xs text-white/40 font-mono">
           {num}
         </span>
         <h2 className="text-xl md:text-2xl font-semibold text-white/80">{title}</h2>
       </div>
-      <div className="space-y-4 pl-11">
+      <div className="space-y-4 pl-11 min-w-0">
         {children}
       </div>
     </div>
@@ -52,9 +52,9 @@ function GuideContent() {
   const { locale, setLocale, t } = useI18n()
 
   return (
-    <main className="relative z-10 min-h-screen overflow-x-hidden">
+    <main className="relative z-10 min-h-screen w-full max-w-full overflow-x-hidden">
       <nav className="glass border-b border-white/5">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-3 sm:h-16 flex flex-wrap items-center justify-between gap-3 sm:gap-4">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-3 sm:h-16 flex flex-wrap items-center justify-between gap-3 sm:gap-4 min-w-0">
           <Link href="/" className="text-lg font-semibold tracking-tight hover:text-white/80 transition-colors">
             IzanagiIA
           </Link>
@@ -94,10 +94,10 @@ function GuideContent() {
         </div>
 
         <Section num="1" title={t("guide.prereqs_title")}>
-          <p className="text-sm text-white/30">{t("guide.prereqs_desc")}</p>
+          <p className="text-sm text-white/30 break-words">{t("guide.prereqs_desc")}</p>
           <ul className="space-y-2">
             {[1, 2, 3, 4].map((i) => (
-              <li key={i} className="flex items-center gap-3 text-sm text-white/40">
+              <li key={i} className="flex items-center gap-3 text-sm text-white/40 break-words">
                 <span className="w-1 h-1 rounded-full bg-violet-400/40" />
                 {t(`guide.prereq${i}`)}
               </li>
@@ -106,7 +106,7 @@ function GuideContent() {
         </Section>
 
         <Section num="2" title={t("guide.install_title")}>
-          <p className="text-sm text-white/30">{t("guide.install_desc")}</p>
+          <p className="text-sm text-white/30 break-words">{t("guide.install_desc")}</p>
           <div>
             <p className="text-xs text-white/30 mb-2">{t("guide.install_global")}</p>
             <CodeBlock code="npm install -g izanagi-ai" />
@@ -122,7 +122,7 @@ function GuideContent() {
         </Section>
 
         <Section num="3" title={t("guide.init_title")}>
-          <p className="text-sm text-white/30">{t("guide.init_desc")}</p>
+          <p className="text-sm text-white/30 break-words">{t("guide.init_desc")}</p>
           <CodeBlock code="npx izanagi init my-project
 cd my-project" />
           <p className="text-xs text-white/20">{t("guide.init_cmd")}</p>
@@ -139,13 +139,13 @@ cd my-project" />
         </Section>
 
         <Section num="4" title={t("guide.agent_title")}>
-          <p className="text-sm text-white/30">{t("guide.agent_desc")}</p>
+          <p className="text-sm text-white/30 break-words">{t("guide.agent_desc")}</p>
           <CodeBlock code="npx izanagi create agent my-agent" />
           <p className="text-xs text-white/20">{t("guide.agent_cmd")}</p>
 
           <div className="glass rounded-xl p-4 mt-4">
             <p className="text-xs text-white/40 mb-3">{t("guide.agent_example_title")}</p>
-            <pre className="text-xs text-white/30 font-mono leading-relaxed overflow-x-auto">
+            <pre className="max-w-full text-xs text-white/30 font-mono leading-relaxed overflow-x-auto">
               <code>{`{
   "name": "my-agent",
   "skills": ["architect", "frontend", "qa"],
@@ -161,7 +161,7 @@ cd my-project" />
         </Section>
 
         <Section num="5" title={t("guide.usage_title")}>
-          <p className="text-sm text-white/30">{t("guide.usage_desc")}</p>
+          <p className="text-sm text-white/30 break-words">{t("guide.usage_desc")}</p>
           <CodeBlock code={'npx izanagi run my-agent --task "Create a login page"'} />
           <p className="text-xs text-white/20">{t("guide.usage_example")}</p>
           <div className="mt-4">
@@ -171,17 +171,17 @@ cd my-project" />
         </Section>
 
         <Section num="6" title={t("guide.skills_title")}>
-          <p className="text-sm text-white/30">{t("guide.skills_desc")}</p>
+          <p className="text-sm text-white/30 break-words">{t("guide.skills_desc")}</p>
           <div className="glass rounded-xl p-4 text-sm text-white/40 leading-relaxed">
             {t("guide.skills_categories")}
           </div>
-          <p className="text-sm text-white/30">{t("guide.skills_custom")}</p>
+          <p className="text-sm text-white/30 break-words">{t("guide.skills_custom")}</p>
         </Section>
 
         <Section num="7" title={t("guide.structure_title")}>
-          <p className="text-sm text-white/30">{t("guide.structure_desc")}</p>
+          <p className="text-sm text-white/30 break-words">{t("guide.structure_desc")}</p>
           <div className="glass rounded-xl p-4">
-            <pre className="text-xs text-white/30 font-mono leading-relaxed overflow-x-auto">
+            <pre className="max-w-full text-xs text-white/30 font-mono leading-relaxed overflow-x-auto">
               <code>{`IzanagiIA/
 ├── bin/            ${t("guide.structure_bin")}
 ├── src/cli/        Código fonte dos comandos CLI
@@ -208,10 +208,10 @@ cd my-project" />
         </Section>
 
         <Section num="8" title={t("guide.tokens_title")}>
-          <p className="text-sm text-white/30">{t("guide.tokens_desc")}</p>
+          <p className="text-sm text-white/30 break-words">{t("guide.tokens_desc")}</p>
           <ul className="space-y-2">
             {[1, 2, 3, 4].map((i) => (
-              <li key={i} className="flex items-center gap-3 text-sm text-white/40">
+              <li key={i} className="flex items-center gap-3 text-sm text-white/40 break-words">
                 <span className="w-1 h-1 rounded-full bg-green-400/40" />
                 {t(`guide.tokens_item${i}`)}
               </li>
@@ -220,7 +220,7 @@ cd my-project" />
         </Section>
 
         <Section num="9" title={t("guide.next_title")}>
-          <p className="text-sm text-white/30">{t("guide.next_desc")}</p>
+          <p className="text-sm text-white/30 break-words">{t("guide.next_desc")}</p>
           <ul className="space-y-3">
             {[1, 2, 3, 4].map((i) => (
               <li key={i}>
@@ -236,7 +236,7 @@ cd my-project" />
                   }
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-sm text-white/40 hover:text-white/70 transition-colors"
+                  className="flex items-center gap-3 text-sm text-white/40 hover:text-white/70 transition-colors break-words"
                 >
                   <span className="w-1 h-1 rounded-full bg-violet-400/40" />
                   {t(`guide.next_item${i}`)}
