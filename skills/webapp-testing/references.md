@@ -5,7 +5,7 @@ Curadoria de automação de testes web com navegador.
 ## Fonte principal
 
 - **Índice**: https://github.com/ComposioHQ/awesome-claude-skills — 66k stars, maior lista curada de Claude Skills
-- **Skill original**: `webapp-testing/` no repo (scripts Python `with_server.py`, `element_discovery.py`, exemplos)
+- **Skill original**: `webapp-testing/` no repo (scripts Python `with_server.py`, `element_discovery.py`, exemplos) — **portados localmente em `examples/`** (paths de saída adaptados para `outputs/` do projeto)
 - **Playwright**: https://playwright.dev/docs/intro — docs oficiais (Node, Python, .NET, Java)
 
 ## O que aproveitar no Izanagi

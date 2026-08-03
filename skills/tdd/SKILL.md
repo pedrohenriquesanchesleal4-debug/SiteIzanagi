@@ -72,7 +72,11 @@ Bug encontrado? Escreva teste falhando que reproduz o bug → siga o ciclo → o
 
 Não marcou todos? Você pulou TDD. Recomece.
 
+## Testes bons (referência local)
+
+Antes de escrever ou mudar testes, leia `references/writing-good-tests.md` — regras de testes honestos: nomeie a quebra que o teste pega (bug, não decisão), derive expectativas à mão (nunca com o código sob teste), mock só o nível lento/externo, mocks espelham a estrutura real, e rode o **mutation check** antes de terminar.
+
 ## References
 
-- Repo original: [obra/superpowers](https://github.com/obra/superpowers) — skill `skills/test-driven-development/SKILL.md` (+ `writing-good-tests.md`).
+- Repo original: [obra/superpowers](https://github.com/obra/superpowers) — skill `skills/test-driven-development/SKILL.md` (+ `writing-good-tests.md`, portado localmente em `references/writing-good-tests.md`).
 - Curadoria completa em `references.md`.

@@ -69,8 +69,19 @@ with sync_playwright() as p:
 - Waits: `wait_for_selector()` / `wait_for_timeout()` quando necessário.
 - Para fluxos complexos múltiplos servidores: gerencie ambos (backend + frontend).
 
+## Exemplos locais (`examples/`)
+
+Scripts de referência (Playwright Python; use como caixa-preta — não edite a menos que necessário):
+
+- `with_server.py` — sobe 1+ servidores locais, espera as portas ficarem prontas e roda seu script. Uso: `python examples/with_server.py --server "npm run dev" --port 5173 -- python examples/element_discovery.py`
+- `element_discovery.py` — descobre botões/links/inputs no estado renderizado + screenshot full-page.
+- `console_logging.py` — captura mensagens do console do navegador durante a automação.
+- `static_html_automation.py` — automação de arquivos HTML estáticos via `file://`.
+
+Requisitos: `pip install playwright` + `playwright install chromium`. Saídas (screenshots/logs) vão para `outputs/` do projeto.
+
 ## References
 
-- Repo original: [ComposioHQ/awesome-claude-skills](https://github.com/ComposioHQ/awesome-claude-skills) — skill `webapp-testing/` (índice curado, 66k stars).
+- Repo original: [ComposioHQ/awesome-claude-skills](https://github.com/ComposioHQ/awesome-claude-skills) — skill `webapp-testing/` (índice curado, 66k stars); scripts portados localmente em `examples/`.
 - Playwright docs: https://playwright.dev/docs/intro
 - Curadoria completa em `references.md`.

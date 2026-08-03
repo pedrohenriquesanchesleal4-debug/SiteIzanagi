@@ -6,7 +6,7 @@ Curadoria da skill TDD do framework Superpowers.
 
 - **Repositório**: https://github.com/obra/superpowers — 264k+ stars, MIT
 - **Skill original**: `skills/test-driven-development/SKILL.md`
-- **Auxiliar**: `skills/test-driven-development/writing-good-tests.md` — regras para testes honestos (nomeie a mudança de produção que faria o teste falhar; asserts em comportamento real; helpers só em código de teste...)
+- **Auxiliar**: `skills/test-driven-development/writing-good-tests.md` — regras para testes honestos (nomeie a mudança de produção que faria o teste falhar; asserts em comportamento real; helpers só em código de teste...) — **portado localmente em `references/writing-good-tests.md`**
 
 ## Aproveitado no Izanagi
 
