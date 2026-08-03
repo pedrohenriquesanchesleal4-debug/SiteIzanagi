@@ -1,76 +1,107 @@
 # AGENTS.md — Izanagi AI Framework Reference
 
-> Version 2.3.1
+> Version 2.3.4
 > Modular Skill-Oriented AI Prompt & Agent Framework for Autonomous Software Engineering
 
 ---
 
 ## 1. Visão Geral do Framework
 
-Izanagi AI é um **framework meta** para engenharia de software autônoma orientada a agentes. Ele combina uma arquitetura em camadas (Decision → Context → Skill → Quality → Reflection → Memory), uma vasta biblioteca de skills especializadas, agentes pré-definidos e uma **CLI executável (`izanagi`)**.
+Izanagi AI é um **framework meta** para engenharia de software autônoma orientada a agentes: arquitetura em camadas (Decision → Context → Skill → Quality → Reflection → Memory), biblioteca de skills especializadas, 12 agentes pré-definidos e uma **CLI executável (`izanagi`)** publicada no npm (`izanagi-ai`). Este repositório É o framework (não um app que o usa).
 
 ---
 
-## 2. Lista Completa de Agentes & Comandos Opencode (`/`)
+## 2. Agentes & Comandos Opencode (`/`)
 
-O framework possui **12 agentes especializados** e um **Orquestrador Multi-Agente (`/agents`)**, todos integrados nativamente para ativação instantânea via comandos de barra (`/`) no Opencode ou via CLI (`izanagi`).
+12 agentes em `agents/*.json` + orquestrador `/agents` (`.opencode/agent/agents.md`). Cada agente tem `chains` (nome → array de **aliases** de skill) e `skills` (array de aliases). Existe também um `.md` por agente em `.opencode/agent/` para ativação via slash.
 
-| Agente / Comando | ID / Arquivo | Papel & Especialidade |
-|------------------|--------------|------------------------|
-| `/agents` | `.opencode/agent/agents.md` | **Orquestrador Central**: Permite selecionar um agente, combinar múltiplos agentes, ativar auto-detecção ou modo Swarm. |
-| `/discovery` | `agents/discovery-agent.json` | **Discovery**: Investigador de pré-produção — entrevista completa antes de codar, pesquisa referências reais na web, propõe direções com trade-offs, mostra preview "como ficaria" e gera prompt rico de implementação. ⭐ Começo de todo projeto novo. |
-| `/animation` | `agents/animation-agent.json` | **Animation Engineer**: Diretor de Experiência Cinematográfica — scrollytelling, 3D WebGL, motion signature (Apple/Red Bull/uiprompts como referência). |
-| `/architect` | `agents/architect-agent.json` | **Software Architect**: System design, Clean Architecture, Hexagonal, DDD, CQRS, ADRs e planos de implementação. |
-| `/senior-engineer` | `agents/senior-engineer-agent.json` | **Senior Engineer**: Desenvolvimento full-stack robusto, código limpo, testável e refatoração de sistemas. |
-| `/techlead` | `agents/techlead-agent.json` | **Tech Lead**: Liderança técnica, code reviews rigorosos, governança de arquitetura e mentoria de engenharia. |
-| `/security` | `agents/security-agent.json` | **Security Engineer**: Mitigação OWASP Top 10, pentest reviews, autenticação, criptografia e secure coding. |
-| `/devops` | `agents/devops-agent.json` | **DevOps Engineer**: Pipelines de CI/CD, Docker, Kubernetes, IaC e monitoramento/observabilidade. |
-| `/database` | `agents/database-agent.json` | **Database Engineer**: Modelagem de dados, otimização de queries SQL, PostgreSQL, MySQL e cache Redis. |
-| `/bug-hunter` | `agents/bug-hunter-agent.json` | **Bug Hunter**: Depuração sistemática, análise de causa raiz (root cause analysis) e correção de falhas complexas. |
-| `/docs` | `agents/docs-agent.json` | **Documentation Writer**: Documentação técnica de alto nível, READMEs, especificações de API e diagramas UML. |
-| `/pm` | `agents/pm-agent.json` | **Project Manager**: Planejamento de sprints, milestones, análise de riscos técnicos e gestão de entregas. |
-| `/professor` | `agents/professor-agent.json` | **Professor / Mentor**: Ensino adaptativo, explicação didática de conceitos e mentoria técnica passo a passo. |
-
----
-
-## 3. CLI Executável (`izanagi`)
-
-Instalação global: `npm install -g izanagi-ai` (ou uso direto via `npx izanagi <cmd>`).
-
-| Comando | Descrição Completa |
-|---|---|
-| `izanagi init [dir]` | Inicializa o framework no projeto. Copia automaticamente `AGENTS.md`, `SYSTEM.md` e `RULES.md` para a **raiz do projeto** (para detecção nativa pelo Opencode) e estrutura `.agents/`. |
-| `izanagi run [agent] --task "<task>"` | Analisa a tarefa, classifica a categoria, seleciona o(s) agente(s) e a skill chain, resolve dependências e **gera automaticamente o arquivo `izanagi-prompt.md`** pronto para ser copiado e colado na sua IA. |
-| `izanagi compile <agent> [file]` | Compila o System Prompt completo (Agente + SYSTEM.md + RULES.md + Skills) para exportação. |
-| `izanagi list [skills\|agents]` | Lista todos os agentes disponíveis e todas as skills registradas no `core/skill-resolver.json`. |
-| `izanagi doctor` | Executa auditoria de integridade do framework (verifica SYSTEM, RULES, integridade de JSONs de agentes e aliases do resolver). |
+| Comando | Arquivo | Papel |
+|---|---|---|
+| `/agents` | `.opencode/agent/agents.md` | Orquestrador Multi-Agente (single/multi/auto/swarm) |
+| `/discovery` | `agents/discovery-agent.json` | Pré-produção: entrevista, pesquisa web, preview, prompt rico ⭐ começo de projeto novo |
+| `/animation` | `agents/animation-agent.json` | Scrollytelling, 3D WebGL, motion signature |
+| `/architect` | `agents/architect-agent.json` | System design, Clean Arch, DDD, CQRS, ADRs |
+| `/senior-engineer` | `agents/senior-engineer-agent.json` | Full-stack, refactoring, código limpo/testável |
+| `/techlead` | `agents/techlead-agent.json` | Code review, governança, mentoria |
+| `/security` | `agents/security-agent.json` | OWASP Top 10, auth, secure coding |
+| `/devops` | `agents/devops-agent.json` | CI/CD, Docker, K8s, IaC, observabilidade |
+| `/database` | `agents/database-agent.json` | SQL, PostgreSQL, Redis, modelagem |
+| `/bug-hunter` | `agents/bug-hunter-agent.json` | Debug, root cause analysis |
+| `/docs` | `agents/docs-agent.json` | Docs técnicos, READMEs, diagramas |
+| `/pm` | `agents/pm-agent.json` | Sprints, milestones, riscos |
+| `/professor` | `agents/professor-agent.json` | Ensino adaptativo, explicações |
 
 ---
 
-## 4. Arquitetura em Camadas & Engines (`core/`)
+## 3. Comandos de Desenvolvimento (ordem importa)
 
-1. **Decision Engine**: Classifica o tipo de tarefa (`new_project`, `bug`, `refactor`, `review`, `security_audit`, etc.) e define a chain de skills ideal.
-2. **Context Engine**: Constrói janela de contexto enxuta e carrega memória de projeto.
-3. **Skill Executor**: Executa o grafo direcionado acíclico (DAG) de skills com resolução de dependências.
-4. **Token Manager**: Monitora orçamento de tokens e aciona compressão quando >70% do orçamento é atingido.
-5. **Quality Gates**: Valida obrigatoriamente todas as entregas na ordem: **Security → Style → Clarity → Conciseness → Completeness**.
-6. **Reflection Engine**: Avaliação pós-tarefa e aprendizado contínuo.
+```
+npm install          # instala deps (self-dependency: package.json depende de "izanagi-ai": "^2.2.7" — não remover)
+npm run build        # tsc && node dist/scripts/generate-manifest.js
+npm run verify       # build + teste de instalação em sandbox (passa todos os pack IDs)
+npm run doctor       # node bin/izanagi.js doctor — auditoria de integridade
+npm run bump:patch   # npm version patch --no-git-tag-version (também minor/major)
+npm publish          # prepublishOnly roda build; depois: git push
+```
+
+**Gotchas críticos:**
+- `dist/` é gitignored e `bin/izanagi.js` importa de `../dist/cli/index.js` — **rode `npm run build` antes de qualquer comando CLI local**, senão roda código obsoleto ou quebra.
+- `doctor` só valida: SYSTEM.md/RULES.md, JSONs de agentes e aliases do resolver → targets. Não valida chains dos agentes nem o conteúdo de `.manifest`.
+- Não há test runner (sem `npm test`). Verificação = `npm run build` + `npm run verify` + `npm run doctor`.
+- CI (`.github/workflows/publish.yml`): roda `build` + `verify` em push/PR; publica no npm em tags `v*`/release (precisa do secret `NPM_TOKEN`).
+- Padrão de commit do repo: `chore: bump to vX.Y.Z` para bumps e `feat:`/`fix:`/`docs:` descritivos em PT-BR para mudanças.
 
 ---
 
-## 5. Padrão Anti-Generic / High-Craft (Regra de Ouro)
+## 4. Estrutura do Framework
 
-O framework proíbe estritamente a entrega de códigos ou designs genéricos com "cara de IA" (como templates óbvios, gradientes repetitivos sem propósito, estruturas vazias ou boilerplate gerado automaticamente), **a menos que o usuário solicite explicitamente**.
-- **Padrão Obrigatório**: Inovação, sofisticação técnica, código limpo e arquitetura refinada ("High-Craft").
-- **Design Padrão (quando aplicável)**: Estilo Apple-like futurista, glassmorphism sutil, tipografia precisa, foco total em performance (60fps) e micro-interações intencionais.
+- `core/` — 8 engines (.md) + **`skill-resolver.json`** (mapa alias → target; NÃO editar à mão sem validar targets)
+- `agents/` — 12 definições de agentes em JSON (fonte da verdade para o `/agents`)
+- `skills/` — 79+ skills em `skills/<name>/SKILL.md` (+ `references.md` opcional)
+- `architecture/ coding/ database/ devops/ memory/ optimization/ security/ teaching/ testing/` — skills legadas em arquivo único `.md`
+- `.opencode/agent/` — comandos slash do Opencode
+- `src/` — CLI TypeScript (entrypoint: `src/cli/index.ts` → `runCLI`); scripts de release em `src/scripts/`
+- `SYSTEM.md` & `RULES.md` — fundação e regras operacionais (carregados via `opencode.json` → instructions)
 
 ---
 
-## 6. Estrutura de Diretórios do Framework
+## 5. Skill Resolver — como aliases resolvem
 
-- `core/` — 8 engines centrais + `skill-resolver.json`
-- `agents/` — 11 definições de agentes em JSON
-- `skills/` — Skills especializadas organizadas em pastas `skills/<name>/SKILL.md`
-- `.opencode/agent/` — Comandos slash (`/`) nativos do Opencode
-- `src/` — Código-fonte da CLI em TypeScript (`dist/` gerado no build)
-- `SYSTEM.md` & `RULES.md` — Fundação e regras operacionais obrigatórias
+`core/skill-resolver.json` → `aliases: { alias: "categoria/nome" }` (204 aliases). A resolução de um target tenta, em ordem:
+1. arquivo direto (`skills/foo`)
+2. `skills/foo.md`
+3. `skills/foo/SKILL.md`
+
+**Ao adicionar/remover skill:** edite o resolver (ou rode `node dist/scripts/update-resolver.js` para regenerar aliases de `skills/*`), depois valide com `npm run doctor` — ele acusa alias → target inexistente como warning.
+
+---
+
+## 6. Gotcha `.agents/` (mascarador de bugs)
+
+Este repo tem uma pasta `.agents/` (gitignored) que é a instalação local do framework — o CLI (doctor/list/run) **prioriza `.agents/` do cwd** sobre a raiz do repo (`resolveFrameworkRoot`). Consequência prática:
+- Se `.agents/` ficar desatualizado em relação à raiz, o `doctor` valida contra o espelho velho e **mascara bugs reais** (ex.: aliases quebrados resolviam só porque o `.agents` tinha arquivos antigos).
+- **Sincronize manualmente** mudanças de `skills/`, `core/`, `agents/`, `SYSTEM.md`/`RULES.md` para `.agents/` (não há script de sync — apenas copie os arquivos alterados). Manter raiz e `.agents` idênticos (compare com: `Get-ChildItem -Recurse` e `Compare-Object`).
+- `my-project/` na raiz é lixo de teste do instalador (snapshot antigo) — ignorar, não editar.
+
+---
+
+## 7. `.manifest` (catálogo gerado)
+
+`.manifest` é **gerado no build** por `src/scripts/generate-manifest.ts` (versão do package.json + 12 agents + 188 skills do resolver, com validação de paths — 0 quebrados ou o build falha). **Não editar à mão**; rodar `npm run build` para regenerar. Incluído no pacote npm como catálogo de consulta.
+
+---
+
+## 8. Padrão Anti-Generic / High-Craft (Regra de Ouro)
+
+Proibido entregar código/design genérico "cara de IA" (templates óbvios, gradientes repetitivos sem propósito, boilerplate), **a menos que o usuário peça explicitamente**.
+- Padrão obrigatório: inovação, sofisticação técnica, código limpo, arquitetura refinada.
+- Design padrão (quando aplicável): estilo Apple-like futurista, glassmorphism sutil, tipografia precisa, 60fps, micro-interações intencionais.
+
+---
+
+## 9. Release Flow (resumo)
+
+1. `npm run bump:patch` (ou minor/major) — bumpa `package.json`/`package-lock.json` sem tag
+2. `npm run build` — recompila + regenera `.manifest` com a nova versão
+3. Commit (`chore: bump to vX.Y.Z`) + `npm publish` (build roda de novo via prepublishOnly)
+4. `git push` (CI roda build+verify; publish automático via tag/release se configurado)
