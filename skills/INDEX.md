@@ -238,7 +238,7 @@
 | Continuous Improvement | ✅ v1.0.0 | `skills/continuous-improvement.md` |
 | Hallucination Detection | ✅ v1.0.0 | `skills/hallucination-detection.md` |
 | Confidence Estimator | ✅ v1.0.0 | `skills/confidence-estimator.md` |
-| Continuous Learning Engine | ✅ v1.0.0 | `skills/continuous-learning-engine.md` |
+| Continuous Improvement (Learning Engine) | ✅ v1.0.0 | `skills/continuous-improvement/SKILL.md` |
 
 
 ---
@@ -313,11 +313,10 @@
 
 ---
 
-## Privacy (2)
+## Privacy (1)
 
 | Skill | Status | File |
 |-------|--------|------|
-| Privacy Engineer | ? v1.0.0 | `skills/privacy-engineer/SKILL.md` |
 | Security & Privacy | ? v1.0.0 | `skills/security-privacy/SKILL.md` |
 
 ---

@@ -4,6 +4,35 @@
 
 ---
 
+## [2.3.3] — 2026-08-03
+
+### Fixed
+- **Skill Resolver**: alias `learning` apontava para `skills/continuous-learning-engine` (inexistente — skill consolidada em `continuous-improvement`). Agora aponta para `skills/continuous-improvement/SKILL`.
+- **`verify-build`**: `npm run verify` quebrava com `TypeError: selectedPackIds is not iterable` porque `installToProject` era chamado sem o segundo argumento. Agora passa todos os pack IDs no teste de instalação em sandbox.
+
+### Removed
+- **`skills/privacy-engineer`**: duplicata morta de `skills/security-privacy` (mesmo escopo LGPD/GDPR, marcada `disabled` no `.manifest`, sem uso em nenhuma chain). Removida skill + alias `privacy-engineer` do resolver.
+- **`.manifest`**: catálogo estático obsoleto (versão 2.2.1, 55 paths quebrados, sem leitura em nenhum código). Removido do pacote e do repositório.
+
+## [2.3.2] — 2026-08-02
+
+### Added
+- Portado `skills/tdd/references/writing-good-tests.md` (técnicas de escrita de testes de alta qualidade).
+- Portado `skills/webapp-testing/examples/*.py` (4 exemplos Playwright: sandbox server, discovery de elementos, console logging, automação HTML estático) com paths adaptados para `outputs/`.
+
+## [2.3.1] — 2026-08-02
+
+### Added
+- Portado `skills/ui-ux-pro-max/references/quick-reference.md` + `pro-rules.md` (regras UX da Apple/HIG de alto impacto em texto).
+
+### Fixed
+- URL `http://highscalability.com` → `https://highscalability.com` (mixed content).
+
+## [2.3.0] — 2026-08-02
+
+### Added
+- **Discovery Agent** (`/discovery`): pré-produção completa antes de codar — entrevista, pesquisa web, preview e prompt de implementação.
+
 ## [2.2.1] — 2026-07-31
 
 ### Fixed

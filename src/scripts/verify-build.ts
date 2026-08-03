@@ -20,10 +20,11 @@ try {
   }
   fs.mkdirSync(sandboxDir, { recursive: true });
 
-  // 3. Executar instalador simulando projeto de usuário
+  // 3. Executar instalador simulando projeto de usuário (instala todos os packs)
   const installerPath = path.join(rootDir, 'dist', 'installer.js');
   const installerUrl = pathToFileURL(installerPath).href;
-  const code = `import('${installerUrl}').then(m => m.installToProject('${sandboxDir.replace(/\\/g, '/')}'))`;
+  const packIds = `['core','agents','skills','architecture','coding','database','devops','security','testing','memory','optimization','teaching']`;
+  const code = `import('${installerUrl}').then(m => m.installToProject('${sandboxDir.replace(/\\/g, '/')}', ${packIds}))`;
   
   execSync(`node -e "${code}"`, { cwd: rootDir, stdio: 'inherit' });
 

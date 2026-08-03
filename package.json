@@ -1,6 +1,6 @@
 {
   "name": "izanagi-ai",
-  "version": "2.3.2",
+  "version": "2.3.3",
   "description": "Izanagi AI - Modular Skill-Oriented AI Prompt & Agent Framework for Autonomous Software Engineering",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -32,8 +32,7 @@
     "RULES.md",
     "AGENTS.md",
     "CHANGELOG.md",
-    "ROADMAP.md",
-    ".manifest"
+    "ROADMAP.md"
   ],
   "scripts": {
     "build": "tsc",
