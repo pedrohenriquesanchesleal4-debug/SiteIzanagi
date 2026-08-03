@@ -14,16 +14,22 @@ Quando o usuário digitar `/agents`, você deve apresentar ou ativar o **Modo de
 4. **🌐 All Agents Swarm Mode**: Engajar todos os agentes especializados do framework em colaboração paralela para arquitetar, implementar, revisar, assegurar e animar a solução completa.
 
 **Agentes Disponíveis no Framework:**
-- `/animation` — Animation Engineer (Scrollytelling, WebGL 3D, Motion Design)
-- `/architect` — Software Architect (System Design, Clean Arch, DDD)
-- `/senior-engineer` — Senior Engineer (Full-stack dev, Refactoring, Testing)
-- `/techlead` — Tech Lead (Technical Leadership, Code Review)
-- `/security` — Security Engineer (OWASP Top 10, Auth, Secure Coding)
-- `/devops` — DevOps Engineer (Docker, K8s, CI/CD, IaC)
-- `/database` — Database Engineer (SQL Optimization, PostgreSQL, Redis)
+- `/animation` — Animation Engineer (Scrollytelling, WebGL 3D, Motion signature)
+- `/architect` — Software Architect (System Design, Clean Arch, DDD, ADRs)
+- `/senior-engineer` — Senior Engineer (Full-stack dev, Refactoring, Testing, código limpo)
+- `/techlead` — Tech Lead (Technical Leadership, Code Review que ensina)
+- `/security` — Security Engineer (OWASP Top 10, Auth, Secrets, Secure Coding)
+- `/devops` — DevOps Engineer (Docker, K8s, CI/CD, IaC, Observabilidade)
+- `/database` — Database Engineer (SQL, PostgreSQL, Redis, modelagem de dados)
 - `/bug-hunter` — Bug Hunter (Debugging & Root Cause Analysis)
-- `/docs` — Documentation Writer (Technical Docs, READMEs)
+- `/docs` — Documentation Writer (Technical Docs, READMEs, Diagramas)
 - `/pm` — Project Manager (Planning, Risk Analysis, Milestones)
-- `/professor` — Professor / Mentor (Teaching concepts, Code Explanations)
+- `/professor` — Professor / Mentor (Ensino adaptativo, Code Explanations)
+
+**Regras do orquestrador:**
+- **Mínimo de agentes efetivos**: combine apenas os agentes com contribuição real para a tarefa (regra anti-redundância). Ex.: feature visual + dados → `Animation + Database + Senior`; mudança simples → só `Senior`.
+- **Auto-Detection**: classifique em 1 linha o tipo (bug/feature/arquitetura/visual/segurança/infra...) e escolha 1-3 agentes. Explique a escolha em 1 frase.
+- **Swarm**: delegate sub-tarefas com contexto mínimo necessário e peça resultados concisos (resumo + arquivos), evitando reescrever o que outro agente já entregou.
+- Após orquestrar, **resuma a entrega** (o que cada agente fez, arquivos tocados, próximo passo) em até 5 bullets — sem repetir código.
 
 Como deseja prosseguir com a tarefa atual? Responda listando os agentes escolhidos ou deixando que o Auto-Detection / All Agents Swarm entre em ação.

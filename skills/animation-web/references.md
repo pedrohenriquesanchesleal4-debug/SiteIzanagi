@@ -32,17 +32,24 @@ Referências pesquisadas (2026) para sites cinematográficos, scroll-driven e n�
 ### Sites-scrollytelling de referência
 | Site | Técnica principal |
 |---|---|
-| Apple product pages (iphone, macbook) | **Scroll image sequence**: produto rotaciona/desmonta via frames pré-renderizados em canvas conforme o scroll; look "video" com scrub reverso |
-| [scrollytelling.ai/universe-to-you](https://scrollytelling.ai/universe-to-you/) | Zoom tipográfico do universo → humano; capítulos com famílias de fonte diferentes; Lenis smooth scroll; sem vídeo (leve) |
+| Apple product pages (iphone, macbook) | **Scroll image sequence**: produto com site-vídeo via frames pré-renderizados em canvas conforme o scroll; look "video" com scrub reverso |
+| [scrollytelling.ai/universe-to-you](https://scrollytelling.ai/universe-to-you/) | Zoom tipográfico do universo → natureza; capítulos com famílias de fonte; Lenis; sem vídeo (leve) |
+| Red Bull × HLabs — History of Breaking (https://www.redbull.com/int-en/theredbulletin/genesis-of-competitive-breaking) | **Interactive editorial premiado (Webby Winner, Awwwards)**: timeline de breaking com spinning typography, sound bites, playlists, GIFs |
+| Reddit × HLabs — Max's Mansion (https://www.redbull.com/int-en/theredbulletin/max-verstappen-home) | **"Experience" interativa**: 5 cômodos, 40+ itens ilustrados, gamificação (procurar troféus) — engagement 6x normal |
 | [yesnowww.com](https://yesnowww.com/) (YesNo) | Brutalist binário: transições tipográficas bold com scroll |
 | [inversa.com](https://inversa.com/) | Câmera 3D que se move pelo espaço conforme scroll (feito para a marca Inversa) |
-| AVATR (car launch) | Scroll "peels back" camadas do veículo — reveal de detalhes |
+| AVATR (foreign launch) | "Peels back" camadas do veículo — reveal de detalhes |
 | [bluxstudio.com](https://bluxstudio.com/) | Typography gigante reativa ao scroll, transições morphing |
 | [bruno-simon.com](https://bruno-simon.com/) | Portfolio 3D: dirige um carro pela cena |
-| The Monolith (themonolithproject.net) | 13 cenas WebGL conectadas por scroll (R3F + shaders custom + partículas GPU) |
+| The Monolith (themonolithproject.com) | 13 cenas WebGL conectadas por scroll (R3F + shaders custom + partículas GPU) |
 | [deepseecommerce.com](https://deepseecommerce.com/) | E-commerce 3D: descida de câmera scroll-driven com fog (Awwwards Honorable Mention) |
-| [gsapvault.com](https://gsapvault.com/blog/scroll-image-sequence-tutorial) | Tutorial completo do padrão Apple: canvas + ScrollTrigger + HiDPI + capítulos + Lenis |
+| gsapvault.com/blog/scroll-image-sequence-tutorial | Tutorial completo do padrão Apple: canvas + ScrollTrigger + HiDPI + capítulos + Lenis |
 | KINESIS (kinesis.codesempai.com) | Studio de 3D scroll-driven open-source (R3F + editor in-browser) |
+| schoolofmotion.com/blog/10-websites-with-great-animation-in-2026 | Curadoria 2026: eszterbial.com (elegância minimalista), Apple, Unseen Studio — "restraint is the power" |
+| aw u.a. Awwwards galleries (scrolling / webgl / 3d) | Curadorias vivas de sites com scroll-driven 3D (Iloca, The Tie-break, Everest, Obys Experiment Space...) |
+| Trionn (codrops case study) | Coordenação GSAP + Three.js + Lenis + Web Audio — arquitetura de experiências |
+| Codrops (tympanus.net) ZERO / False Earth | Scroll-driven WebGL + WebGPU; pipeline e otimização mobile |
+| Scrollytelling.ai/examples | 27 exemplos revisados + guia (Snow Fall NYT como marco histórico) |
 
 ### Componentes/bibliotecas animadas (2026)
 - **Kinetik UI** (kinetikui.com) — 50+ componentes React animados com Framer Motion: magnetic buttons, toasts, toggles, counters.

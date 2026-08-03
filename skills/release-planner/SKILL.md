@@ -68,3 +68,7 @@ patch: bug fixes, no new features
 ## Changelog
 
 ### 1.0.0 — Initial release. Version rules, checklist, changelog format.
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

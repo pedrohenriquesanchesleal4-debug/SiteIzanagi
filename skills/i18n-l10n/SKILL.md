@@ -101,3 +101,7 @@ format.number(1234567.89, { style: "currency", currency: "BRL" });
 - **RTL**: preparar CSS para idiomas right-to-left (arabe, hebraico)
 - **Plurais**: ICU `{count, plural, one {# item} other {# items}}`
 - **Dynamic content**: nunca concatenar strings traduzidas com interpolacao manual
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

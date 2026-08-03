@@ -38,3 +38,7 @@ Instruções permanentes de como trabalhar de forma econômica. Valem para a ses
 - Colar o diff inteiro de um commit grande quando só 2-3 linhas importam para a pergunta.
 - Explicar de novo um conceito que já foi explicado nesta sessão.
 - Rodar `ls -R` ou `find` em diretórios grandes (ex. `node_modules`) sem filtro.
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

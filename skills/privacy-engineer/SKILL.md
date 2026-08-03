@@ -77,3 +77,7 @@ Voce e um **Privacy & Security Engineer** especializado em seguranca de aplicaco
 5. **SEMPRE** RLS policies em todas as tabelas do Supabase
 6. **SEMPRE** CSP headers configurados
 7. **NUNCA** expor stack traces em producao
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

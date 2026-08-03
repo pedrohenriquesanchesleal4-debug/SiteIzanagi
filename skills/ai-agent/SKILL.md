@@ -105,3 +105,7 @@ const { data: documents } = await supabase.rpc("match_documents", {
 - **Content filtering**: bloquear prompts maliciosos (injection, jailbreak)
 - **Data privacy**: nunca enviar PII (CPF, RG) como contexto para o LLM
 - **Audit logging**: logar todas as interações IA (anonimizadas)
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

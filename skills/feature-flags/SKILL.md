@@ -93,3 +93,7 @@ dev → staging → rollout (5%) → rollout (25%) → rollout (100%) → cleanu
 - ❌ Flags em cascata (flag A depende de flag B)
 - ❌ Flags sem owner definido
 - ❌ Testar apenas com flag ON (esquecer de testar flag OFF)
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

@@ -105,3 +105,7 @@ const socket = io("wss://api.enterprise.com");
 | Chat ao vivo | WebSocket (Socket.IO) | `chat/{ticketId}` |
 | Atualizacoes admin | WebSocket | `admin/events` |
 | Radio streaming | HLS ou WebSocket | `radio/stream` |
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

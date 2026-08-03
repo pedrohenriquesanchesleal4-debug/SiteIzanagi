@@ -208,3 +208,7 @@ root_cause_analysis:
 - Pattern detection across multiple bugs
 - Root cause report in YAML
 - Systemic recommendation engine
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

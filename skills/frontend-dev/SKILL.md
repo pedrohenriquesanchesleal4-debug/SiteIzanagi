@@ -176,3 +176,7 @@ export default function NomeDaPagina() {
 6. **NUNCA** criar componente acima de 200 linhas — extrair sub-componentes
 7. **SEMPRE** usar `@/` para imports (nunca caminhos relativos `../../`)
 8. **SEMPRE** manter a estrutura de page: `Header → PageHeader → content → Footer`
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

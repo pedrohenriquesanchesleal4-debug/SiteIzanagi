@@ -25,3 +25,7 @@ Projetar e otimizar prompts de sistema, poucos exemplos (few-shot), cadeias de r
 - [ ] Regras de "Sempre" e "Nunca" são inequívocas.
 - [ ] Delimitadores claros (`<user_input>`, ```json) previnem injeção de instruções.
 - [ ] O formato de saída é estritamente especificado.
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

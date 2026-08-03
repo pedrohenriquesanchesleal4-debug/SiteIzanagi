@@ -97,3 +97,7 @@ Lint → Test → Build → Image → Deploy Staging → E2E → Deploy Prod
 - **Encryption**: S3 SSE-S3, RDS encryption at rest, TLS in transit
 - **Backup**: RDS automated backups (7-30 days retention)
 - **Monitoring**: CloudWatch (AWS), alerts em CPU/memory/errors 4xx/5xx
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

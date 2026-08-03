@@ -22,3 +22,7 @@ Escanear repositórios e trechos de código em busca de falhas de segurança (SA
 - [ ] Análise efetuada com severidade classificada (CRITICAL, HIGH, MEDIUM, LOW).
 - [ ] Todo problema identificado possui o arquivo, trecho de código e linha correspondente.
 - [ ] Recomendação de correção (Fix) fornecida com exemplo claro antes/depois.
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

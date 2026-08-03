@@ -112,3 +112,7 @@ violations:
 ## Changelog
 
 ### 1.0.0 — Initial release. DRY, KISS, YAGNI checks with examples.
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

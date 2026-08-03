@@ -47,3 +47,7 @@ Se a tarefa gerou algo que vale lembrar no futuro, adicione uma entrada curta (1
 ## Gotcha
 
 Se o projeto já tem um `CLAUDE.md` na raiz, não duplique informação entre ele e `.claude/memoria/contexto.md` — `CLAUDE.md` é para regras permanentes do projeto, a memória é para o que foi sendo aprendido ao longo do tempo.
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

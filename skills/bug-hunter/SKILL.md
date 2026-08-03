@@ -232,3 +232,7 @@ bug_report:
 - Binary isolation technique
 - Structured bug report format with YAML
 - Regression test requirement
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

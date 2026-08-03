@@ -96,3 +96,7 @@ CREATE POLICY "Admins can read all posts" ON posts
 | JWT signing | RS256 (asymmetric) |
 | TLS | TLS 1.3 (min 1.2) |
 | Dados sensiveis em repouso | AES-256-GCM |
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

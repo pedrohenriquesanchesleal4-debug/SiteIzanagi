@@ -80,3 +80,7 @@ Extract (API/DB/Files) → Transform (clean/validate/aggregate) → Load (Target
 - **Backup**: MongoDB Atlas backups, ES snapshots, Kafka topic backup
 - **Idempotency**: consumers devem ser idempotentes (mesmo evento processado 2x = mesmo resultado)
 - **Dead letter**: toda queue/topic deve ter DLQ configurada
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

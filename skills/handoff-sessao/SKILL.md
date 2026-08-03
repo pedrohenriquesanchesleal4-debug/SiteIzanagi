@@ -30,3 +30,7 @@ Escreva (ou atualize) `.agents/memoria/em-andamento.md` com no máximo estes cam
 - Sobrescreva a entrada da mesma tarefa em vez de acumular várias entradas desatualizadas — isso é estado atual, não histórico.
 - Quando a tarefa for concluída, apague a entrada dela deste arquivo (o que vale a pena lembrar para sempre já deve ter ido para `decisoes.md` ou `erros-corrigidos.md` via a skill `memoria-projeto`).
 - Ao retomar uma sessão, leia este arquivo primeiro se ele existir — economiza o usuário ter que reexplicar onde parou.
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

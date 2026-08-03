@@ -31,3 +31,7 @@ Esta skill orienta a criação de servidores compatíveis com a especificação 
 - [ ] Esquemas de entrada validam todos os parâmetros obrigatórios e opcionais.
 - [ ] Erros retornam estrutura `{ isError: true, content: [...] }`.
 - [ ] Sanitização aplicada em todos os argumentos de sistema de arquivos ou comandos.
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

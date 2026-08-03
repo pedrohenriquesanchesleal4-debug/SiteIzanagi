@@ -100,9 +100,22 @@ function resolveChainForCategory(agent: any, category: string): string[] {
     if (Array.isArray(first)) return first;
   }
   if (Array.isArray(agent.skills) && agent.skills.length > 0) {
-    return agent.skills.slice(0, 8);
+    return agent.skills.slice(0, 5);
   }
   return ['planner', 'reviewer', 'clean-code'];
+}
+
+/**
+ * Compacta o conteúdo de uma skill para o prompt: mantém apenas a parte de
+ * alto sinal (descrição + primeiras seções até o limite de linhas).
+ * Evita despejar arquivos inteiros de skill (200+ linhas) no prompt gerado.
+ */
+function summarizeSkill(fullPath: string, maxLines: number): string {
+  const content = fs.readFileSync(fullPath, 'utf-8');
+  const lines = content.split('\n');
+  if (lines.length <= maxLines) return content;
+  // Corta no limite e sinaliza que foi truncado
+  return lines.slice(0, maxLines).join('\n') + `\n\n<!-- (skill truncada em ${maxLines} linhas — veja ${fullPath} para o conteúdo completo) -->`;
 }
 
 function agentLabel(agent: any): string {
@@ -151,19 +164,23 @@ export function runCommand(baseDir: string, args: string[]): void {
 
   const skillChain = resolveChainForCategory(agent, category);
 
+  // Anti-redundância: deduplica ids e limita o tamanho da cadeia (evita prompt gigante)
+  const MAX_CHAIN = 6;
+  const compactSkillChain = skillChain.filter((s, i) => skillChain.indexOf(s) === i).slice(0, MAX_CHAIN);
+
   console.log(`\x1b[32m✔ Category Identified:\x1b[0m ${category}`);
   console.log(`\x1b[32m✔ Selected Agent:\x1b[0m ${agentLabel(agent)} (v${agent.version || '1.0.0'})`);
   if (agent.role) {
     console.log(`  \x1b[90mRole: ${agent.role}\x1b[0m`);
   }
-  console.log(`\x1b[32m✔ Computed Skill Chain:\x1b[0m ${skillChain.join(' -> ')}\n`);
+  console.log(`\x1b[32m✔ Computed Skill Chain:\x1b[0m ${compactSkillChain.join(' -> ')}\n`);
 
   // 2. Valida as skills da chain no resolver
   const aliases = loadSkillResolver(cwd, baseDir);
   console.log('\x1b[1mSkill Chain Resolution:\x1b[0m');
   let resolvedCount = 0;
 
-  for (const skill of skillChain) {
+  for (const skill of compactSkillChain) {
     const skillPath = resolveSkillPath(cwd, baseDir, skill);
     if (skillPath) {
       console.log(`  \x1b[32m✔\x1b[0m \x1b[1m${skill}\x1b[0m -> ${path.relative(cwd, skillPath)}`);
@@ -198,9 +215,12 @@ export function runCommand(baseDir: string, args: string[]): void {
   const systemContent = findDoc('SYSTEM.md');
   const rulesContent = findDoc('RULES.md');
 
+  const compact = process.argv.includes('--compact') || !!(process.env.IZANAGI_COMPACT);
+
   let fullPrompt = `<!-- IZANAGI AI READY-TO-USE PROMPT -->\n`;
   fullPrompt += `<!-- TASK: ${task} -->\n`;
-  fullPrompt += `<!-- AGENT: ${agent.name} (v${agent.version || '1.0.0'}) -->\n\n`;
+  fullPrompt += `<!-- AGENT: ${agent.name} (v${agent.version || '1.0.0'}) -->\n`;
+  fullPrompt += `<!-- MODE: ${compact ? 'compact (economia de tokens)' : 'full'} -->\n\n`;
   fullPrompt += `## USER TASK\n${task}\n\n`;
   fullPrompt += `## AGENT IDENTITY & ROLE\n${agent.identity || agent.role}\n\n`;
 
@@ -211,19 +231,19 @@ export function runCommand(baseDir: string, args: string[]): void {
     fullPrompt += `## PROHIBITED ACTIONS (NEVER)\n` + agent.never.map((n: string) => `- ${n}`).join('\n') + `\n\n`;
   }
 
-  fullPrompt += `## COMPUTED SKILL CHAIN (${skillChain.join(' -> ')})\n\n`;
-  for (const skill of skillChain) {
+  fullPrompt += `## COMPUTED SKILL CHAIN (${compactSkillChain.join(' -> ')})\n\n`;
+  for (const skill of compactSkillChain) {
     const sPath = resolveSkillPath(cwd, baseDir, skill);
     if (sPath && fs.existsSync(sPath)) {
-      fullPrompt += `### SKILL: ${skill}\n` + fs.readFileSync(sPath, 'utf-8') + `\n\n`;
+      fullPrompt += `### SKILL: ${skill}\n` + summarizeSkill(sPath, compact ? 60 : 160) + `\n\n`;
     }
   }
 
   if (systemContent && fs.existsSync(systemContent)) {
-    fullPrompt += `## SYSTEM FOUNDATION\n` + fs.readFileSync(systemContent, 'utf-8') + `\n\n`;
+    fullPrompt += `## SYSTEM FOUNDATION\n` + summarizeSkill(systemContent, compact ? 80 : 400) + `\n\n`;
   }
   if (rulesContent && fs.existsSync(rulesContent)) {
-    fullPrompt += `## OPERATIONAL RULES\n` + fs.readFileSync(rulesContent, 'utf-8') + `\n\n`;
+    fullPrompt += `## OPERATIONAL RULES\n` + summarizeSkill(rulesContent, compact ? 60 : 400) + `\n\n`;
   }
 
   const promptPath = path.resolve(cwd, 'izanagi-prompt.md');

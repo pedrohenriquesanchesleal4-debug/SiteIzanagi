@@ -80,3 +80,7 @@ app/
 - **Pull-to-refresh**: em todas as listas
 - **Infinite scroll**: paginacao com FlatList (RN) ou ListView (Flutter)
 - **Error states**: tela de erro com botao "Tentar novamente"
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

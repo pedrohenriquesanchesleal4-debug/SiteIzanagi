@@ -101,3 +101,7 @@ export function middleware(req: NextRequest) {
 | Vercel Edge | 100k requests/mes (Hobby) | Gratuito |
 | AWS Lambda | 1M requests/mes | Sempre gratis |
 | Cloudflare Workers | 100k requests/dia | Gratuito |
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

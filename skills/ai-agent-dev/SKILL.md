@@ -115,3 +115,7 @@ server.setRequestHandler("tools/list", async () => ({
 4. **NUNCA** expor system prompt ou instruções internas ao usuário
 5. **SEMPRE** sanitizar input do usuário antes de enviar ao LLM (anti injection)
 6. **SEMPRE** validar output do LLM antes de exibir (guardrails)
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

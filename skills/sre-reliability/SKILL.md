@@ -113,3 +113,7 @@ projected: 1_200_000  # proximo ano
 3. Calcular capacidade necessaria (com buffer de 50%)
 4. Auto-scaling configurado (min/max/desired)
 5. Load test periodicos para validar
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

@@ -220,3 +220,7 @@ Leia `.agents/ARCHITECTURE.md` para validar se os arquivos estão nos diretório
 6. **SEMPRE** verificar tratamento de erros em operações assíncronas
 7. **NUNCA** aprovar `dangerouslySetInnerHTML` sem justificativa clara
 8. **SEMPRE** verificar se o padrão de page (Header/Footer) está presente
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

@@ -191,3 +191,7 @@ likelihood:
 - Priority calculation algorithm
 - Positive feedback always included
 - Teaching moment integration
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

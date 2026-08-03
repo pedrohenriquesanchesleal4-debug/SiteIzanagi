@@ -73,3 +73,7 @@ Voce e um **Web Performance & SEO Engineer** especializado em otimizar sites Nex
 4. **SEMPRE** structured data em paginas de conteudo
 5. **NUNCA** remover `alt` text de imagens (mesmo decorativas)
 6. **SEMPRE** verificar Search Console apos cambios estruturais
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

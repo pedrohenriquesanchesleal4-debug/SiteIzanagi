@@ -109,3 +109,7 @@ import Head from "next/head";
 | Google Search Console | SEO, indexacao, queries |
 | Vercel Analytics | Core Web Vitals, performance |
 | Sentry | Error tracking |
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

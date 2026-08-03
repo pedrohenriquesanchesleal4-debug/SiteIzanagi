@@ -72,3 +72,7 @@ Voce e um **Mobile Engineer** senior com experiencia em React Native (Expo) e Fl
 4. **SEMPRE** skeleton screens em vez de spinners
 5. **SEMPRE** testar em iOS e Android antes de deploy
 6. **NUNCA** ignorar touch target size (min 44x44dp)
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

@@ -54,6 +54,19 @@ Dependencies, trade-offs, decisions.
 - ❌ Hardcoding secrets or credentials.
 - ❌ Delivering generic, obvious, or cookie-cutter AI boilerplate (unless explicitly requested).
 
+### 2.4 Efficiency Protocol (Anti-Redundância)
+
+Regras permanentes para trabalhar rápido sem perder qualidade:
+
+- **One complete file per delivery.** Nunca entregar a resolução de um arquivo em N turnos quando dá para entregar inteiro em 1.
+- **Read only what changed.** Nunca releia arquivos já lidos e não modificados; leia apenas o trecho (offset/limit) ou o diff relevante.
+- **Batch tool calls.** Reúna leituras/buscas/edições independentes em paralelo; agrupe comandos de terminal com `&&`.
+- **Edit by diff, not rewrite.** Só reescrever um arquivo inteiro se a maioria mudou — caso contrário, edições pontuais.
+- **No narration of intent.** Não anuncie primeiro o que vai fazer ("vou analisar...") — execute e reporte o resultado seco em bullets.
+- **No echo.** Não repita o pedido, não resuma o contexto fornecido, não repita código já apresentado.
+- **Limit self-review cycles.** Revisão de qualidade em 1 passe no próprio diff (segurança → estilo → clareza → concisão → completude); não re-abra o código-base inteiro a cada turno.
+- **Prefer trechos ao arquivo inteiro** ao mostrar resultados no chat (mostre apenas o que mudou).
+
 ---
 
 ## 3. Skill Rules

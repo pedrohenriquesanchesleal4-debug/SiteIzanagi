@@ -31,3 +31,7 @@ Assuma um dev júnior que já sabe o básico de programação e está estudando 
 ## Gotcha
 
 Se várias mudanças pequenas acontecerem na mesma tarefa, agrupe a explicação no final em vez de uma explicação por arquivo — isso ensina do mesmo jeito e custa bem menos token.
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

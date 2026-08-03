@@ -106,3 +106,7 @@ steps:
 - **Observability**: dashboards e alertas prontos antes de comecar
 - **Blameless**: postmortem sem culpa, foco em aprendizado
 - **Documentation**: documentar todo experimento (hipotese, resultado, aprendizado)
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

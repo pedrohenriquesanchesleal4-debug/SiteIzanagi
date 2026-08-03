@@ -325,3 +325,7 @@ Ordenar classes Tailwind por:
 // Exemplo ordenado
 <button className="flex items-center justify-center gap-2 w-full px-6 py-3 text-white font-semibold bg-brand-blue rounded-lg shadow-lg hover:bg-brand-dark-blue focus:ring-2 transition-colors duration-300">
 ```
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

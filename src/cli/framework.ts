@@ -85,8 +85,15 @@ export function resolveSkillPath(cwd: string, packageBaseDir: string, alias: str
 
   for (const root of roots) {
     const candidate = path.join(root, rel);
-    if (fs.existsSync(candidate)) return candidate;
-    if (fs.existsSync(candidate + '.md')) return candidate + '.md';
+    // 1) arquivo direto
+    if (fs.existsSync(candidate) && fs.statSync(candidate).isFile()) return candidate;
+    // 2) arquivo .md explícito
+    if (fs.existsSync(candidate + '.md') && fs.statSync(candidate + '.md').isFile()) return candidate + '.md';
+    // 3) diretório de skill com SKILL.md dentro (padrão .agents/skills/<name>/SKILL.md)
+    if (fs.existsSync(candidate) && fs.statSync(candidate).isDirectory()) {
+      const skillFile = path.join(candidate, 'SKILL.md');
+      if (fs.existsSync(skillFile)) return skillFile;
+    }
   }
   return null;
 }

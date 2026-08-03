@@ -102,3 +102,7 @@ const resolvers: Resolvers = {
 - **Rate limiting**: por query complexity, não por request count
 - **Persisted queries only**: em produção, aceitar apenas queries pré-registradas
 - **Validation**: Zod schema nos inputs de mutation (além do GraphQL type system)
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

@@ -213,3 +213,7 @@ debug_report:
 - Structured debug report format
 - Common cause checklist (5 items)
 - Handoff protocol to Bug Hunter
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

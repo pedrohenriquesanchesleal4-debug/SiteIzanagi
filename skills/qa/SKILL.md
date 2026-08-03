@@ -229,3 +229,7 @@ style={{ color: '#1e40af' }} // → usar className="text-brand-blue"
 - [ ] Sem dados sensíveis expostos
 - [ ] RLS respeitado
 ```
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

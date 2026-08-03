@@ -248,3 +248,7 @@ refactoring_plan:
 - Workflow with characterization tests
 - Refactoring plan template in YAML
 - "One change at a time" enforced
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

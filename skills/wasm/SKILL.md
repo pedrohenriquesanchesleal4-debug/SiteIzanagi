@@ -131,3 +131,7 @@ export function WasmCalculator() {
 - **Error handling**: Wasm pode falhar (panic) — sempre envolver em try/catch
 - **Memory management**: Wasm tem memoria linear propria — gerenciar manualmente em Rust
 - **Threads**: SharedArrayBuffer + Web Workers para multi-threading (cuidado com CORS/Sec-Fetch)
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

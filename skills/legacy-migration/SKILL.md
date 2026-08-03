@@ -89,3 +89,7 @@ rewrite ^/(\d{4})/(\d{2})/(.*)$ /noticias/$3 permanent;
 | Performance baseline | Medir performance antes/depois |
 | User communication | Comunicar mudancas e possiveis downtime |
 | Staging migration | Testar migracao completa em staging primeiro |
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

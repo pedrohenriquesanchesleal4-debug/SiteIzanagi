@@ -96,3 +96,7 @@ resource "aws_subnet" "public" {
 | Plan review | Sempre revisar `terraform plan` antes de `apply` |
 | Pre-commit hooks | `terraform fmt`, `terraform validate` |
 | CI/CD | `terraform plan` no PR, `terraform apply` no merge |
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.

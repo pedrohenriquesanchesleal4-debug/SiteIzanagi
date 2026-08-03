@@ -354,3 +354,7 @@ on_failure:
 - Risk score algorithm
 - Full workflow with 10 steps
 - Integration with Planning Engine
+
+## References
+
+Veja `references.md` nesta pasta — curadoria dos melhores sites/referências (2026) para este tópico, com as fontes canônicas e exemplos de alto nível.
