@@ -1,6 +1,6 @@
 # AGENTS.md — Izanagi AI Framework Reference
 
-> Version 2.3.0
+> Version 2.3.1
 > Modular Skill-Oriented AI Prompt & Agent Framework for Autonomous Software Engineering
 
 ---
@@ -13,11 +13,12 @@ Izanagi AI é um **framework meta** para engenharia de software autônoma orient
 
 ## 2. Lista Completa de Agentes & Comandos Opencode (`/`)
 
-O framework possui **11 agentes especializados** e um **Orquestrador Multi-Agente (`/agents`)**, todos integrados nativamente para ativação instantânea via comandos de barra (`/`) no Opencode ou via CLI (`izanagi`).
+O framework possui **12 agentes especializados** e um **Orquestrador Multi-Agente (`/agents`)**, todos integrados nativamente para ativação instantânea via comandos de barra (`/`) no Opencode ou via CLI (`izanagi`).
 
 | Agente / Comando | ID / Arquivo | Papel & Especialidade |
 |------------------|--------------|------------------------|
 | `/agents` | `.opencode/agent/agents.md` | **Orquestrador Central**: Permite selecionar um agente, combinar múltiplos agentes, ativar auto-detecção ou modo Swarm. |
+| `/discovery` | `agents/discovery-agent.json` | **Discovery**: Investigador de pré-produção — entrevista completa antes de codar, pesquisa referências reais na web, propõe direções com trade-offs, mostra preview "como ficaria" e gera prompt rico de implementação. ⭐ Começo de todo projeto novo. |
 | `/animation` | `agents/animation-agent.json` | **Animation Engineer**: Diretor de Experiência Cinematográfica — scrollytelling, 3D WebGL, motion signature (Apple/Red Bull/uiprompts como referência). |
 | `/architect` | `agents/architect-agent.json` | **Software Architect**: System design, Clean Architecture, Hexagonal, DDD, CQRS, ADRs e planos de implementação. |
 | `/senior-engineer` | `agents/senior-engineer-agent.json` | **Senior Engineer**: Desenvolvimento full-stack robusto, código limpo, testável e refatoração de sistemas. |

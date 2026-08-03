@@ -9,6 +9,7 @@
 
 | Agent | Role | Skills | File |
 |-------|------|--------|------|
+| **Discovery** | Pré-produção: entrevista, pesquisa de referências, direções e prompt rico | Brainstorming, UI/UX Pro Max, Deep Research, Requirement Analyzer | `discovery-agent.json` |
 | **Software Architect** | System design & architecture | Software Architect, Clean Arch, Hexagonal, DDD, CQRS | `architect-agent.json` |
 | **Senior Engineer** | Full-stack development & code quality | Backend, Frontend, Code Review, Refactoring, Testing | `senior-engineer-agent.json` |
 | **Bug Hunter** | Debugging & root cause analysis | Debug Specialist, Bug Hunter, Root Cause Analyzer | `bug-hunter-agent.json` |
