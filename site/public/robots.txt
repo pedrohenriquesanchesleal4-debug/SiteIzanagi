@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://izanagi-ai.dev/sitemap.xml
