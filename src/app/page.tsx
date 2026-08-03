@@ -186,9 +186,9 @@ export default function Home() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <div className="flex items-center justify-between gap-4 px-4 py-3 rounded-xl bg-zinc-900/90 border border-white/10 font-mono text-xs text-zinc-200 shadow-lg min-w-[320px]">
-              <span className="text-zinc-400">$ <span className="text-white">npx izanagi init my-project</span></span>
+              <span className="text-zinc-400">$ <span className="text-white">npm i izanagi-ai</span></span>
               <button
-                onClick={() => copyText("npx izanagi init my-project")}
+                onClick={() => copyText("npm i izanagi-ai")}
                 className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition"
               >
                 {copiedInit ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
