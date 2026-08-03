@@ -65,8 +65,15 @@ Minimalism & Swiss, Neumorphism, Glassmorphism, Brutalism, 3D & Hyperrealism, Vi
 
 Não fabrique. Retente com keywords mais amplas (produto + estilo separados). Se ainda vazio, use defaults do nicho e **diga explicitamente** que a recomendação veio dos defaults, não de um match.
 
+## Arquivos locais (referências portadas)
+
+Leia **sob demanda** — nunca carregue ambos de uma vez:
+
+- `references/quick-reference.md` — regras UX completas em 10 categorias priorizadas (a11y, touch, performance, estilo, layout, tipografia/cor, animação, forms, navegação, charts). Use em **reviews/auditorias de UI** ou para o checklist completo de uma categoria.
+- `references/pro-rules.md` — polish de **apps nativas** (iOS/Android/RN/Flutter): ícones, interação, light/dark, layout com safe-areas + checklist canônico pré-entrega. Use antes de entregar UI de app nativo.
+
 ## References
 
-- Repo: [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) — 113k stars, MIT. Instalável via `npx ui-ux-pro-max-cli init --ai opencode` (traz scripts Python de busca, dados CSV completos e 161 regras de raciocínio por indústria).
+- Repo: [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) — 113k stars, MIT. Instalação opcional via `npx ui-ux-pro-max-cli init --ai opencode` traz a busca Python + dados CSV completos (~1.5MB) — não necessária aqui (versão texto portada em `references/`).
 - Docs: https://uupm.cc — comparativo básico vs premium.
 - Veja `references.md` para a curadoria completa de fontes.

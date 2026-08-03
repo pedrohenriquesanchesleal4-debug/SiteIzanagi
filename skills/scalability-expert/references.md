@@ -11,5 +11,5 @@
 - [CNCF Landscape — Scalability](https://landscape.cncf.io) — ecossistema de ferramentas para escalar workloads cloud-native.
 
 ## Comunidade / tutorial / exemplos
-- [High Scalability](http://highscalability.com) — estudos de caso de arquiteturas de sistemas de alta escala.
+- [High Scalability](https://highscalability.com) — estudos de caso de arquiteturas de sistemas de alta escala.
 - [AWS Architecture Center](https://aws.amazon.com/architecture/) — exemplos de arquiteturas escaláveis de referência.

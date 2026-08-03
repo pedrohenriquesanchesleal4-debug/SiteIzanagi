@@ -18,6 +18,15 @@ Fonte da inteligência de design (curada do pacote `ui-ux-pro-max-skill`).
 3. **Anti-patterns por indústria** — ex.: "AI purple/pink gradients" para banking; neon para wellness; dark mode avulsa.
 4. **Dials**: `--variance 1-10`, `--motion 1-10`, `--density 1-10` para tunar o design system sem mudar a query.
 
+## Assets incorporados localmente (portados)
+
+- `references/quick-reference.md` — regras UX completas (10 categorias priorizadas) em formato estático indexável.
+- `references/pro-rules.md` — polish de UI nativa/mobile + checklist canônico pré-entrega.
+
+**Deliberadamente NÃO portados** (decisão de token-economics):
+- `data/*.csv` (~1.5MB) — só são úteis com os scripts Python de busca; lê-los custaria ~400k tokens; disponíveis opcionalmente via `npx ui-ux-pro-max-cli init --ai opencode`.
+- `scripts/*.py` (busca/design-system) — exigiriam Python como dependência de runtime; o Izanagi é Node/TS puro.
+
 ## Estilos de UI citados (84)
 
 - **General (49)**: Minimalism & Swiss, Neumorphism, Glassmorphism, Brutalism, 3D & Hyperrealism, Vibrant & Block-based, Dark Mode OLED, Accessible & Ethical, Claymorphism, Aurora UI, Retro-Futurism, Flat, Skeuomorphism, Liquid Glass, Motion-Driven, Micro-interactions, Inclusive, Zero Interface, Soft UI Evolution, Neubrutalism, Bento Box Grid, Y2K, Cyberpunk, Organic Biophilic, AI-Native UI, Memphis, Vaporwave, Dimensional Layering, Exaggerated Minimalism, Kinetic Typography, Parallax Storytelling, Swiss Modernism 2.0, HUD/FUI, Pixel Art, Bento Grids, Spatial UI (Vision), E-Ink/Paper, Gen Z Maximalism, Biomimetic, Anti-Polish, Tactile Digital, Nature Distilled, Interactive Cursor, Voice-First, 3D Product Preview, Gradient Mesh, Editorial Grid, Chromatic Aberration, Vintage Analog.
