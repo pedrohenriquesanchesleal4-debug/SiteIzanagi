@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { Terminal, Shield, Cpu, Zap, Code2, Layers, ArrowRight, CheckCircle2, Copy, Sparkles, Compass, Film, Database, Bug, FileText, Users, GraduationCap, Globe, Download, Play, Check, Box, RefreshCw, Github, ExternalLink, Mail } from "lucide-react";
+import { Terminal, Shield, Cpu, Zap, Code2, Layers, ArrowRight, CheckCircle2, Copy, Sparkles, Compass, Film, Database, Bug, FileText, Users, GraduationCap, Globe, Download, Play, Check, Box, RefreshCw, Github, ExternalLink, Mail, CpuIcon } from "lucide-react";
 
 // Interactive Mouse Spotlight Component
 function MouseSpotlight() {
@@ -73,17 +73,12 @@ const scrollySteps = [
 
 export default function Home() {
   const [copiedInit, setCopiedInit] = useState(false);
-  const [copiedRun, setCopiedRun] = useState(false);
   const [selectedPreset, setSelectedPreset] = useState(0);
   const [isRunningSim, setIsRunningSim] = useState(false);
   const [simStep, setSimStep] = useState(0);
   const [activeAgentModal, setActiveAgentModal] = useState<typeof agents[0] | null>(null);
 
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
 
   const runSimulation = (index: number) => {
     setSelectedPreset(index);
@@ -103,15 +98,10 @@ export default function Home() {
     }, 700);
   };
 
-  const copyText = (text: string, type: "init" | "run") => {
+  const copyText = (text: string) => {
     navigator.clipboard.writeText(text);
-    if (type === "init") {
-      setCopiedInit(true);
-      setTimeout(() => setCopiedInit(false), 2000);
-    } else {
-      setCopiedRun(true);
-      setTimeout(() => setCopiedRun(false), 2000);
-    }
+    setCopiedInit(true);
+    setTimeout(() => setCopiedInit(false), 2000);
   };
 
   return (
@@ -132,6 +122,7 @@ export default function Home() {
 
           <nav className="hidden md:flex items-center gap-8 text-xs font-medium text-zinc-400">
             <Link href="/guide" className="hover:text-white transition">Guia</Link>
+            <a href="#about" className="hover:text-white transition">O que é</a>
             <a href="#scrolly" className="hover:text-white transition">Pipeline</a>
             <a href="#playground" className="hover:text-white transition">Simulador</a>
             <a href="#agents" className="hover:text-white transition">Agentes (12)</a>
@@ -174,19 +165,18 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-[1.1]"
+            className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight text-white mb-6 leading-[1.05]"
           >
-            Engenharia de Software Autônoma <br />
-            <span className="text-zinc-400 font-normal">Sem concessões. Sem boilerplate.</span>
+            Pense. Construa. Evolua.
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto mb-10 font-normal leading-relaxed"
+            className="text-base sm:text-xl text-zinc-400 max-w-2xl mx-auto mb-10 font-normal leading-relaxed"
           >
-            Execute instantaneamente via <code className="text-white bg-zinc-800 px-1.5 py-0.5 rounded font-mono text-xs">npx izanagi init</code>. Projetado para engenheiros que exigem precisão absoluta, arquitetura estrita e baixo consumo de tokens.
+            Framework modular orientado a skills para agentes de IA especializados em engenharia de software autônoma. Baixo consumo de tokens e execução determinística.
           </motion.p>
 
           <motion.div
@@ -198,7 +188,7 @@ export default function Home() {
             <div className="flex items-center justify-between gap-4 px-4 py-3 rounded-xl bg-zinc-900/90 border border-white/10 font-mono text-xs text-zinc-200 shadow-lg min-w-[320px]">
               <span className="text-zinc-400">$ <span className="text-white">npx izanagi init my-project</span></span>
               <button
-                onClick={() => copyText("npx izanagi init my-project", "init")}
+                onClick={() => copyText("npx izanagi init my-project")}
                 className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition"
               >
                 {copiedInit ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
@@ -214,8 +204,44 @@ export default function Home() {
           </motion.div>
         </section>
 
+        {/* O que é o Izanagi AI? (About Section) */}
+        <section id="about" className="max-w-5xl mx-auto px-6 py-20">
+          <div className="rounded-3xl border border-white/10 bg-zinc-950/80 p-8 md:p-14 backdrop-blur-xl shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="relative z-10 max-w-3xl">
+              <span className="text-xs font-mono uppercase tracking-widest text-zinc-500">Fundação & Visão</span>
+              <h2 className="text-3xl font-bold text-white mt-2 mb-6">O que é o Izanagi AI?</h2>
+              
+              <div className="space-y-4 text-sm text-zinc-300 leading-relaxed font-normal">
+                <p>
+                  O <strong className="text-white font-semibold">Izanagi AI</strong> é um framework meta projetado para engenharia de software autônoma orientada a agentes. Ele não é apenas um template — é um ecossistema completo baseado em camadas (<span className="text-blue-400 font-mono">Decision → Context → Skill → Quality → Reflection → Memory</span>).
+                </p>
+                <p>
+                  Enquanto ferramentas tradicionais geram código solto e genérico ("cara de IA"), o Izanagi divide o desenvolvimento em marcos estritos através de <strong className="text-white">12 agentes especializados</strong> e mais de <strong className="text-white">70 skills modulares</strong>.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 pt-8 border-t border-white/10 font-mono text-xs">
+                <div className="p-4 rounded-2xl bg-zinc-900/60 border border-white/5">
+                  <div className="text-white font-bold text-base mb-1">12 Agentes</div>
+                  <div className="text-zinc-400">Especializados por domínios (Arquitetura, DB, Security...)</div>
+                </div>
+                <div className="p-4 rounded-2xl bg-zinc-900/60 border border-white/5">
+                  <div className="text-white font-bold text-base mb-1">Baixo Token</div>
+                  <div className="text-zinc-400">Contexto enxuto e compactação contínua de memória</div>
+                </div>
+                <div className="p-4 rounded-2xl bg-zinc-900/60 border border-white/5">
+                  <div className="text-white font-bold text-base mb-1">Zero Boilerplate</div>
+                  <div className="text-zinc-400">Arquitetura estrita e código de alta fidelidade técnica</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Scrollytelling Section */}
-        <section id="scrolly" className="max-w-5xl mx-auto px-6 py-24 relative">
+        <section id="scrolly" className="max-w-5xl mx-auto px-6 py-20 relative">
           <div className="text-center mb-16">
             <span className="text-xs font-mono uppercase tracking-widest text-zinc-500">Experiência Imersiva</span>
             <h2 className="text-3xl md:text-4xl font-bold text-white mt-2">Como o Izanagi Funciona</h2>
