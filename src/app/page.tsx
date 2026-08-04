@@ -167,7 +167,7 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight text-white mb-6 leading-[1.05]"
           >
-            Pense. Construa. Evolua.
+            Pense, Construa, Evolua.
           </motion.h1>
 
           <motion.p
