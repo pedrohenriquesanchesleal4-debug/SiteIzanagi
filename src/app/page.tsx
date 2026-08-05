@@ -1,9 +1,15 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll } from "framer-motion";
 import Link from "next/link";
-import { Terminal, Shield, Cpu, Zap, Code2, Layers, ArrowRight, CheckCircle2, Copy, Sparkles, Compass, Film, Database, Bug, FileText, Users, GraduationCap, Globe, Download, Play, Check, Box, RefreshCw, Github, ExternalLink, Mail, CpuIcon } from "lucide-react";
+import { Shield, Cpu, Code2, Layers, Copy, Sparkles, Compass, Film, Database, Bug, FileText, Users, GraduationCap, Play, Check, RefreshCw, Github, ExternalLink, Mail, ArrowUp } from "lucide-react";
+import { useLanguage } from "../lib/i18n/LanguageProvider";
+import LanguageSwitcher from "../components/LanguageSwitcher";
+import MobileNav from "../components/MobileNav";
+import type { Dict } from "../lib/i18n/dictionaries";
+
+type RoleKey = keyof Dict["agentsSection"]["roles"];
 
 // Interactive Mouse Spotlight Component
 function MouseSpotlight() {
@@ -26,59 +32,76 @@ function MouseSpotlight() {
 }
 
 const agents = [
-  { id: "discovery", name: "Discovery", icon: Compass, role: "Entrevista profunda, pesquisa web, geração de prompts ricos.", skills: ["brainstorming", "deep-research"], color: "border-blue-500/30 hover:border-blue-500/60 bg-blue-500/5" },
-  { id: "architect", name: "Software Architect", icon: Layers, role: "System Design, Clean Architecture, DDD, CQRS, ADRs.", skills: ["architecture-patterns", "memory-projeto"], color: "border-purple-500/30 hover:border-purple-500/60 bg-purple-500/5" },
-  { id: "senior-engineer", name: "Senior Engineer", icon: Code2, role: "Desenvolvimento Full-Stack, refatoração e código limpo testável.", skills: ["frontend", "ai-agent", "tdd"], color: "border-emerald-500/30 hover:border-emerald-500/60 bg-emerald-500/5" },
-  { id: "animation", name: "Animation Engineer", icon: Film, role: "Scrollytelling, WebGL 3D, motion design de alta performance.", skills: ["animation-web", "motion-design", "webgl-3d"], color: "border-pink-500/30 hover:border-pink-500/60 bg-pink-500/5" },
-  { id: "security", name: "Security Engineer", icon: Shield, role: "OWASP Top 10, auth, cryptografia e secure coding estrito.", skills: ["security-privacy"], color: "border-amber-500/30 hover:border-amber-500/60 bg-amber-500/5" },
-  { id: "devops", name: "DevOps Engineer", icon: Cpu, role: "Docker, Kubernetes, CI/CD, IaC com Terraform e observabilidade.", skills: ["cloud-infra", "iac-terraform"], color: "border-indigo-500/30 hover:border-indigo-500/60 bg-indigo-500/5" },
-  { id: "database", name: "Database Engineer", icon: Database, role: "SQL avançado, PostgreSQL, Redis, modelagem de dados e índices.", skills: ["data-engineering"], color: "border-violet-500/30 hover:border-violet-500/60 bg-violet-500/5" },
-  { id: "bug-hunter", name: "Bug Hunter", icon: Bug, role: "Debugging cirúrgico e análise de causa raiz de regressões.", skills: ["tdd", "qa"], color: "border-red-500/30 hover:border-red-500/60 bg-red-500/5" },
-  { id: "techlead", name: "Tech Lead", icon: Sparkles, role: "Code review rigoroso, governança técnica e mentoria de equipe.", skills: ["architecture-patterns"], color: "border-yellow-500/30 hover:border-yellow-500/60 bg-yellow-500/5" },
-  { id: "docs", name: "Documentation", icon: FileText, role: "Geração de documentação técnica, READMEs impecáveis e diagramas.", skills: ["architecture-patterns"], color: "border-sky-500/30 hover:border-sky-500/60 bg-sky-500/5" },
-  { id: "pm", name: "Project Manager", icon: Users, role: "Planejamento de sprints, marcos, análise de riscos e entregas.", skills: ["brainstorming"], color: "border-emerald-600/30 hover:border-emerald-600/60 bg-emerald-600/5" },
-  { id: "professor", name: "Professor / Mentor", icon: GraduationCap, role: "Ensino adaptativo, explicações didáticas e mentoria prática.", skills: ["professor-modo"], color: "border-fuchsia-500/30 hover:border-fuchsia-500/60 bg-fuchsia-500/5" },
-];
+  { id: "discovery", name: "Discovery", roleKey: "discovery", icon: Compass, skills: ["brainstorming", "deep-research"], color: "border-blue-500/30 hover:border-blue-500/60 bg-blue-500/5" },
+  { id: "architect", name: "Software Architect", roleKey: "architect", icon: Layers, skills: ["architecture-patterns", "memory-projeto"], color: "border-purple-500/30 hover:border-purple-500/60 bg-purple-500/5" },
+  { id: "senior-engineer", name: "Senior Engineer", roleKey: "senior-engineer", icon: Code2, skills: ["frontend", "ai-agent", "tdd"], color: "border-emerald-500/30 hover:border-emerald-500/60 bg-emerald-500/5" },
+  { id: "animation", name: "Animation Engineer", roleKey: "animation", icon: Film, skills: ["animation-web", "motion-design", "webgl-3d"], color: "border-pink-500/30 hover:border-pink-500/60 bg-pink-500/5" },
+  { id: "security", name: "Security Engineer", roleKey: "security", icon: Shield, skills: ["security-privacy"], color: "border-amber-500/30 hover:border-amber-500/60 bg-amber-500/5" },
+  { id: "devops", name: "DevOps Engineer", roleKey: "devops", icon: Cpu, skills: ["cloud-infra", "iac-terraform"], color: "border-indigo-500/30 hover:border-indigo-500/60 bg-indigo-500/5" },
+  { id: "database", name: "Database Engineer", roleKey: "database", icon: Database, skills: ["data-engineering"], color: "border-violet-500/30 hover:border-violet-500/60 bg-violet-500/5" },
+  { id: "bug-hunter", name: "Bug Hunter", roleKey: "bug-hunter", icon: Bug, skills: ["tdd", "qa"], color: "border-red-500/30 hover:border-red-500/60 bg-red-500/5" },
+  { id: "techlead", name: "Tech Lead", roleKey: "techlead", icon: Sparkles, skills: ["architecture-patterns"], color: "border-yellow-500/30 hover:border-yellow-500/60 bg-yellow-500/5" },
+  { id: "docs", name: "Documentation", roleKey: "docs", icon: FileText, skills: ["architecture-patterns"], color: "border-sky-500/30 hover:border-sky-500/60 bg-sky-500/5" },
+  { id: "pm", name: "Project Manager", roleKey: "pm", icon: Users, skills: ["brainstorming"], color: "border-emerald-600/30 hover:border-emerald-600/60 bg-emerald-600/5" },
+  { id: "professor", name: "Professor / Mentor", roleKey: "professor", icon: GraduationCap, skills: ["professor-modo"], color: "border-fuchsia-500/30 hover:border-fuchsia-500/60 bg-fuchsia-500/5" },
+] as const;
 
+// Dados estáticos (comandos de terminal realistas permanecem em EN); textos de UI vêm do dicionário i18n.
 const presetSimulations = [
   {
-    label: "Criar SaaS Fintech com PostgreSQL & Auth",
     task: "Build fintech multi-tenant dashboard with PostgreSQL and JWT auth",
-    steps: [
-      { agent: "Discovery", action: "Analisando requisitos e gerando spec inicial...", time: "0.2s" },
-      { agent: "Software Architect", action: "Projetando Clean Architecture e schema relacional...", time: "0.5s" },
-      { agent: "Database Engineer", action: "Criando migrações SQL otimizadas com índices...", time: "0.8s" },
-      { agent: "Security Engineer", action: "Aplicando validação OWASP Top 10 e criptografia...", time: "1.1s" },
-      { agent: "Senior Engineer", action: "Implementando componentes Next.js + Tailwind...", time: "1.6s" }
-    ]
+    times: ["0.2s", "0.5s", "0.8s", "1.1s", "1.6s"],
   },
   {
-    label: "Site 3D Imersivo com Scrollytelling",
     task: "Build Apple-style 3D WebGL product showcase with scrollytelling",
-    steps: [
-      { agent: "Discovery", action: "Mapeando referências visuais de alto padrão...", time: "0.3s" },
-      { agent: "Animation Engineer", action: "Configurando GSAP ScrollTrigger e shaders WebGL...", time: "0.6s" },
-      { agent: "Senior Engineer", action: "Montando estrutura de componentes fluidos a 60fps...", time: "1.0s" },
-      { agent: "Tech Lead", action: "Validando performance e bundle size...", time: "1.4s" }
-    ]
-  }
+    times: ["0.3s", "0.6s", "1.0s", "1.4s"],
+  },
 ];
 
-const scrollySteps = [
-  { num: "01", title: "Scaffold Instantâneo", desc: "Inicializa o workspace com `npx izanagi init`. Sem instalações globais complexas, apenas execução direta via npx." },
-  { num: "02", title: "Resolução Dinâmica de Skills", desc: "O motor decide qual skill ativar (como `/discovery` ou `/architect`) com base no contexto exato da tarefa." },
-  { num: "03", title: "Execução Swarm Multi-Agente", desc: "Múltiplos agentes especializados colaboram em paralelo, dividindo responsabilidades sem duplicação de esforço." },
-  { num: "04", title: "Portões de Qualidade & Deploy", desc: "Verificação algorítmica estrita de segurança, performance e arquitetura antes de entregar o código final." }
-];
+const scrollyNums = ["01", "02", "03", "04"];
 
 export default function Home() {
+  const { t } = useLanguage();
   const [copiedInit, setCopiedInit] = useState(false);
   const [selectedPreset, setSelectedPreset] = useState(0);
   const [isRunningSim, setIsRunningSim] = useState(false);
   const [simStep, setSimStep] = useState(0);
-  const [activeAgentModal, setActiveAgentModal] = useState<typeof agents[0] | null>(null);
+  const [activeAgentModal, setActiveAgentModal] = useState<(typeof agents)[number] | null>(null);
+  const [showTopBtn, setShowTopBtn] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("");
 
   const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll();
+
+  const sectionIds = ["about", "scrolly", "playground", "agents"];
+
+  // Back-to-top visibility
+  useEffect(() => {
+    const onScroll = () => setShowTopBtn(window.scrollY > 600);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Scroll spy: destaca a seção ativa na navegação
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  const navClass = (id: string) =>
+    `hover:text-white transition ${activeSection === id ? "text-white" : ""}`;
 
   const runSimulation = (index: number) => {
     setSelectedPreset(index);
@@ -89,7 +112,7 @@ export default function Home() {
     let current = 0;
     const interval = setInterval(() => {
       current++;
-      if (current < sim.steps.length) {
+      if (current < sim.times.length) {
         setSimStep(current);
       } else {
         clearInterval(interval);
@@ -104,9 +127,19 @@ export default function Home() {
     setTimeout(() => setCopiedInit(false), 2000);
   };
 
+  const presetSteps = t.playground.presets[selectedPreset].steps;
+  const visibleStepCount = isRunningSim ? simStep + 1 : presetSteps.length;
+
   return (
     <div ref={containerRef} className="min-h-screen bg-[#070709] text-zinc-100 flex flex-col justify-between selection:bg-zinc-200 selection:text-zinc-900 font-sans relative overflow-x-hidden">
       <MouseSpotlight />
+
+      {/* Scroll Progress Bar */}
+      <motion.div
+        style={{ scaleX: scrollYProgress }}
+        className="fixed top-0 left-0 right-0 h-0.5 origin-left z-[60] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+        aria-hidden="true"
+      />
 
       {/* Top Navbar */}
       <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-[#070709]/80 border-b border-white/[0.06]">
@@ -121,29 +154,44 @@ export default function Home() {
           </div>
 
           <nav className="hidden md:flex items-center gap-8 text-xs font-medium text-zinc-400">
-            <Link href="/guide" className="hover:text-white transition">Guia</Link>
-            <a href="#about" className="hover:text-white transition">O que é</a>
-            <a href="#scrolly" className="hover:text-white transition">Pipeline</a>
-            <a href="#playground" className="hover:text-white transition">Simulador</a>
-            <a href="#agents" className="hover:text-white transition">Agentes (12)</a>
+            <Link href="/guide" className="hover:text-white transition">{t.nav.guide}</Link>
+            <a href="#about" className={navClass("about")}>{t.nav.about}</a>
+            <a href="#scrolly" className={navClass("scrolly")}>{t.nav.pipeline}</a>
+            <a href="#playground" className={navClass("playground")}>{t.nav.simulator}</a>
+            <a href="#agents" className={navClass("agents")}>{t.nav.agents}</a>
             <a href="https://github.com/pedrohenriquesanchesleal4-debug/izanagi-ai" target="_blank" rel="noreferrer" className="hover:text-white transition flex items-center gap-1">
-              <Github className="w-3.5 h-3.5" /> GitHub
+              <Github className="w-3.5 h-3.5" /> {t.nav.github}
             </a>
-            <a href="https://www.npmjs.com/package/izanagi-ai" target="_blank" rel="noreferrer" className="hover:text-white transition">NPM</a>
+            <a href="https://www.npmjs.com/package/izanagi-ai" target="_blank" rel="noreferrer" className="hover:text-white transition">{t.nav.npm}</a>
             <a href="https://pedrohsl-portfolio.vercel.app" target="_blank" rel="noreferrer" className="hover:text-white transition flex items-center gap-1 text-blue-400">
-              Contato <ExternalLink className="w-3 h-3" />
+              {t.nav.contact} <ExternalLink className="w-3 h-3" />
             </a>
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
+            <LanguageSwitcher />
             <a
               href="https://pedrohsl-portfolio.vercel.app"
               target="_blank"
               rel="noreferrer"
-              className="px-4 py-1.5 rounded-lg bg-white text-zinc-900 font-medium text-xs hover:bg-zinc-200 transition shadow-sm"
+              className="hidden md:block px-4 py-1.5 rounded-lg bg-white text-zinc-900 font-medium text-xs hover:bg-zinc-200 transition shadow-sm"
             >
-              Portfólio & Contato
+              {t.nav.portfolio}
             </a>
+            <MobileNav
+              items={[
+                { label: t.nav.home, href: "/" },
+                { label: t.nav.guide, href: "/guide" },
+                { label: t.nav.about, href: "#about" },
+                { label: t.nav.pipeline, href: "#scrolly" },
+                { label: t.nav.simulator, href: "#playground" },
+                { label: t.nav.agents, href: "#agents" },
+                { label: t.nav.github, href: "https://github.com/pedrohenriquesanchesleal4-debug/izanagi-ai", external: true },
+                { label: t.nav.npm, href: "https://www.npmjs.com/package/izanagi-ai", external: true },
+                { label: t.nav.contact, href: "https://pedrohsl-portfolio.vercel.app", external: true, highlight: true },
+              ]}
+              cta={{ label: t.nav.portfolio, href: "https://pedrohsl-portfolio.vercel.app", external: true }}
+            />
           </div>
         </div>
       </header>
@@ -158,7 +206,7 @@ export default function Home() {
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-zinc-300 text-xs font-mono mb-8 backdrop-blur-md"
           >
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            v2.3.4 — Motor Multi-Agente Determinístico via NPX
+            {t.hero.badge}
           </motion.div>
 
           <motion.h1
@@ -167,7 +215,7 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight text-white mb-6 leading-[1.05]"
           >
-            Pense, Construa, Evolua.
+            {t.hero.title}
           </motion.h1>
 
           <motion.p
@@ -176,7 +224,7 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-base sm:text-xl text-zinc-400 max-w-2xl mx-auto mb-10 font-normal leading-relaxed"
           >
-            Framework modular orientado a skills para agentes de IA especializados em engenharia de software autônoma. Baixo consumo de tokens e execução determinística.
+            {t.hero.subtitle}
           </motion.p>
 
           <motion.div
@@ -186,54 +234,61 @@ export default function Home() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <div className="flex items-center justify-between gap-4 px-4 py-3 rounded-xl bg-zinc-900/90 border border-white/10 font-mono text-xs text-zinc-200 shadow-lg min-w-[320px]">
-              <span className="text-zinc-400">$ <span className="text-white">npm i izanagi-ai</span></span>
+              <span className="text-zinc-400">$ <span className="text-white">npx izanagi init my-project</span></span>
               <button
-                onClick={() => copyText("npm i izanagi-ai")}
+                onClick={() => copyText("npx izanagi init my-project")}
+                aria-label="Copy npx izanagi init my-project"
                 className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition"
               >
                 {copiedInit ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                <span>{copiedInit ? "Copiado" : "Copiar"}</span>
+                <span>{copiedInit ? t.hero.copied : t.hero.copy}</span>
               </button>
             </div>
             <a
               href="#playground"
               className="px-6 py-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-medium text-xs flex items-center gap-2 transition border border-white/10"
             >
-              <Play className="w-3.5 h-3.5 text-blue-400 fill-blue-400" /> Testar Simulador
+              <Play className="w-3.5 h-3.5 text-blue-400 fill-blue-400" /> {t.hero.testSimulator}
             </a>
           </motion.div>
         </section>
 
-        {/* O que é o Izanagi AI? (About Section) */}
+        {/* About Section */}
         <section id="about" className="max-w-5xl mx-auto px-6 py-20">
           <div className="rounded-3xl border border-white/10 bg-zinc-950/80 p-8 md:p-14 backdrop-blur-xl shadow-2xl relative overflow-hidden">
             <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
 
             <div className="relative z-10 max-w-3xl">
-              <span className="text-xs font-mono uppercase tracking-widest text-zinc-500">Fundação & Visão</span>
-              <h2 className="text-3xl font-bold text-white mt-2 mb-6">O que é o Izanagi AI?</h2>
-              
+              <span className="text-xs font-mono uppercase tracking-widest text-zinc-500">{t.about.eyebrow}</span>
+              <h2 className="text-3xl font-bold text-white mt-2 mb-6">{t.about.title}</h2>
+
               <div className="space-y-4 text-sm text-zinc-300 leading-relaxed font-normal">
                 <p>
-                  O <strong className="text-white font-semibold">Izanagi AI</strong> é um framework meta projetado para engenharia de software autônoma orientada a agentes. Ele não é apenas um template — é um ecossistema completo baseado em camadas (<span className="text-blue-400 font-mono">Decision → Context → Skill → Quality → Reflection → Memory</span>).
+                  {t.about.p1pre}
+                  <strong className="text-white font-semibold">Izanagi AI</strong>
+                  {t.about.p1post}
                 </p>
                 <p>
-                  Enquanto ferramentas tradicionais geram código solto e genérico ("cara de IA"), o Izanagi divide o desenvolvimento em marcos estritos através de <strong className="text-white">12 agentes especializados</strong> e mais de <strong className="text-white">70 skills modulares</strong>.
+                  {t.about.p2pre}
+                  <strong className="text-white">{t.about.p2agents}</strong>
+                  {t.about.p2mid}
+                  <strong className="text-white">{t.about.p2skills}</strong>
+                  {t.about.p2post}
                 </p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 pt-8 border-t border-white/10 font-mono text-xs">
                 <div className="p-4 rounded-2xl bg-zinc-900/60 border border-white/5">
-                  <div className="text-white font-bold text-base mb-1">12 Agentes</div>
-                  <div className="text-zinc-400">Especializados por domínios (Arquitetura, DB, Security...)</div>
+                  <div className="text-white font-bold text-base mb-1">{t.about.stat1Title}</div>
+                  <div className="text-zinc-400">{t.about.stat1Desc}</div>
                 </div>
                 <div className="p-4 rounded-2xl bg-zinc-900/60 border border-white/5">
-                  <div className="text-white font-bold text-base mb-1">Baixo Token</div>
-                  <div className="text-zinc-400">Contexto enxuto e compactação contínua de memória</div>
+                  <div className="text-white font-bold text-base mb-1">{t.about.stat2Title}</div>
+                  <div className="text-zinc-400">{t.about.stat2Desc}</div>
                 </div>
                 <div className="p-4 rounded-2xl bg-zinc-900/60 border border-white/5">
-                  <div className="text-white font-bold text-base mb-1">Zero Boilerplate</div>
-                  <div className="text-zinc-400">Arquitetura estrita e código de alta fidelidade técnica</div>
+                  <div className="text-white font-bold text-base mb-1">{t.about.stat3Title}</div>
+                  <div className="text-zinc-400">{t.about.stat3Desc}</div>
                 </div>
               </div>
             </div>
@@ -243,13 +298,13 @@ export default function Home() {
         {/* Scrollytelling Section */}
         <section id="scrolly" className="max-w-5xl mx-auto px-6 py-20 relative">
           <div className="text-center mb-16">
-            <span className="text-xs font-mono uppercase tracking-widest text-zinc-500">Experiência Imersiva</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mt-2">Como o Izanagi Funciona</h2>
-            <p className="text-zinc-400 text-sm mt-2">Role para acompanhar o fluxo determinístico do swarm.</p>
+            <span className="text-xs font-mono uppercase tracking-widest text-zinc-500">{t.scrolly.eyebrow}</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mt-2">{t.scrolly.title}</h2>
+            <p className="text-zinc-400 text-sm mt-2">{t.scrolly.subtitle}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
-            {scrollySteps.map((step, idx) => (
+            {scrollyNums.map((num, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 30 }}
@@ -259,10 +314,10 @@ export default function Home() {
                 className="p-8 rounded-3xl border border-white/10 bg-zinc-900/40 backdrop-blur-xl relative overflow-hidden group hover:border-zinc-700 transition"
               >
                 <div className="absolute top-6 right-6 font-mono text-4xl font-bold text-zinc-800 group-hover:text-zinc-700 transition-colors">
-                  {step.num}
+                  {num}
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3 pr-10">{step.title}</h3>
-                <p className="text-sm text-zinc-400 leading-relaxed">{step.desc}</p>
+                <h3 className="text-xl font-bold text-white mb-3 pr-10">{t.scrolly.steps[idx].title}</h3>
+                <p className="text-sm text-zinc-400 leading-relaxed">{t.scrolly.steps[idx].desc}</p>
               </motion.div>
             ))}
           </div>
@@ -271,16 +326,16 @@ export default function Home() {
         {/* Interactive Swarm Playground Section */}
         <section id="playground" className="max-w-5xl mx-auto px-6 mb-28">
           <div className="text-center mb-10">
-            <span className="text-xs font-mono uppercase tracking-widest text-zinc-500">Simulador Interativo ao Vivo</span>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mt-2">Veja o Swarm em Ação</h2>
-            <p className="text-zinc-400 text-sm mt-1">Selecione um cenário e execute a pipeline de agentes em tempo real.</p>
+            <span className="text-xs font-mono uppercase tracking-widest text-zinc-500">{t.playground.eyebrow}</span>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mt-2">{t.playground.title}</h2>
+            <p className="text-zinc-400 text-sm mt-1">{t.playground.subtitle}</p>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-zinc-950/90 shadow-2xl overflow-hidden backdrop-blur-2xl">
             {/* Preset Selector */}
             <div className="p-4 bg-zinc-900/60 border-b border-white/10 flex flex-wrap gap-3 items-center justify-between">
               <div className="flex items-center gap-2">
-                {presetSimulations.map((preset, idx) => (
+                {t.playground.presets.map((preset, idx) => (
                   <button
                     key={idx}
                     onClick={() => runSimulation(idx)}
@@ -302,7 +357,7 @@ export default function Home() {
                 className="px-4 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white text-xs font-medium flex items-center gap-2 transition shadow-sm"
               >
                 <RefreshCw className={`w-3.5 h-3.5 ${isRunningSim ? "animate-spin" : ""}`} />
-                {isRunningSim ? "Executando Swarm..." : "Executar Swarm"}
+                {isRunningSim ? t.playground.running : t.playground.run}
               </button>
             </div>
 
@@ -312,12 +367,12 @@ export default function Home() {
                 <span>$ npx izanagi run --task "{presetSimulations[selectedPreset].task}"</span>
                 <span className="text-emerald-400 flex items-center gap-1.5">
                   <span className={`w-2 h-2 rounded-full ${isRunningSim ? "bg-amber-400 animate-ping" : "bg-emerald-400"}`} />
-                  {isRunningSim ? "Processando..." : "Concluído"}
+                  {isRunningSim ? t.playground.processing : t.playground.done}
                 </span>
               </div>
 
               <div className="space-y-3 pt-2">
-                {presetSimulations[selectedPreset].steps.slice(0, isRunningSim ? simStep + 1 : presetSimulations[selectedPreset].steps.length).map((step, sIdx) => (
+                {presetSteps.slice(0, visibleStepCount).map((step, sIdx) => (
                   <motion.div
                     key={sIdx}
                     initial={{ opacity: 0, x: -10 }}
@@ -330,7 +385,7 @@ export default function Home() {
                       </span>
                       <span className="text-zinc-300">{step.action}</span>
                     </div>
-                    <span className="text-zinc-600 text-[10px]">{step.time}</span>
+                    <span className="text-zinc-600 text-[10px]">{presetSimulations[selectedPreset].times[sIdx]}</span>
                   </motion.div>
                 ))}
               </div>
@@ -341,10 +396,10 @@ export default function Home() {
         {/* 12 Specialized Agents Grid */}
         <section id="agents" className="max-w-7xl mx-auto px-6 py-16">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-mono uppercase tracking-widest text-zinc-500">Arquitetura Modular</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mt-2">12 Agentes Especializados</h2>
+            <span className="text-xs font-mono uppercase tracking-widest text-zinc-500">{t.agentsSection.eyebrow}</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mt-2">{t.agentsSection.title}</h2>
             <p className="text-zinc-400 text-sm mt-2">
-              Cada agente possui escopo estrito, correntes de skills dedicadas e validação automatizada.
+              {t.agentsSection.subtitle}
             </p>
           </div>
 
@@ -365,7 +420,7 @@ export default function Home() {
                       <span className="text-xs font-mono text-zinc-500">/{agent.id}</span>
                     </div>
                     <h3 className="text-lg font-semibold text-white mb-2">{agent.name}</h3>
-                    <p className="text-xs text-zinc-400 leading-relaxed mb-4">{agent.role}</p>
+                    <p className="text-xs text-zinc-400 leading-relaxed mb-4">{t.agentsSection.roles[agent.roleKey]}</p>
                   </div>
                   <div className="flex items-center gap-1.5 flex-wrap pt-3 border-t border-white/5">
                     {agent.skills.map((skill, sIdx) => (
@@ -385,21 +440,38 @@ export default function Home() {
       <footer className="border-t border-white/10 py-12 text-xs text-zinc-500 font-mono bg-zinc-950">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <p className="text-zinc-400 font-medium">© 2026 Izanagi AI Framework. Desenvolvido com precisão.</p>
+            <p className="text-zinc-400 font-medium">{t.footer.copyright}</p>
           </div>
           <div className="flex items-center gap-6 text-zinc-400">
             <a href="https://github.com/pedrohenriquesanchesleal4-debug/izanagi-ai" target="_blank" rel="noreferrer" className="hover:text-white transition flex items-center gap-1">
-              <Github className="w-3.5 h-3.5" /> Repositório GitHub
+              <Github className="w-3.5 h-3.5" /> {t.footer.repo}
             </a>
             <a href="https://www.npmjs.com/package/izanagi-ai" target="_blank" rel="noreferrer" className="hover:text-white transition">
-              NPM Package
+              {t.footer.npm}
             </a>
             <a href="https://pedrohsl-portfolio.vercel.app" target="_blank" rel="noreferrer" className="hover:text-white transition flex items-center gap-1 text-blue-400">
-              <Mail className="w-3.5 h-3.5" /> Contato / Portfólio
+              <Mail className="w-3.5 h-3.5" /> {t.footer.contact}
             </a>
           </div>
         </div>
       </footer>
+
+      {/* Back to Top */}
+      <AnimatePresence>
+        {showTopBtn && (
+          <motion.button
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 16 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            aria-label={t.ui.backToTop}
+            className="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-xl bg-zinc-900/90 border border-white/10 backdrop-blur-xl flex items-center justify-center text-zinc-300 hover:text-white hover:bg-zinc-800 transition shadow-xl"
+          >
+            <ArrowUp className="w-4 h-4" />
+          </motion.button>
+        )}
+      </AnimatePresence>
 
       {/* Agent Modal Detail */}
       <AnimatePresence>
@@ -428,10 +500,12 @@ export default function Home() {
                 </div>
               </div>
 
-              <p className="text-sm text-zinc-300 mb-6 leading-relaxed">{activeAgentModal.role}</p>
+              <p className="text-sm text-zinc-300 mb-6 leading-relaxed">
+                {t.agentsSection.roles[activeAgentModal.roleKey]}
+              </p>
 
               <div className="mb-6">
-                <h4 className="text-xs font-mono uppercase tracking-wider text-zinc-500 mb-2">Skills Vinculadas:</h4>
+                <h4 className="text-xs font-mono uppercase tracking-wider text-zinc-500 mb-2">{t.agentsSection.skillsLabel}</h4>
                 <div className="flex flex-wrap gap-2">
                   {activeAgentModal.skills.map((s, idx) => (
                     <span key={idx} className="px-2.5 py-1 rounded-lg bg-zinc-900 border border-white/10 text-xs font-mono text-zinc-300">
@@ -445,7 +519,7 @@ export default function Home() {
                 onClick={() => setActiveAgentModal(null)}
                 className="w-full py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-medium text-xs transition"
               >
-                Fechar
+                {t.agentsSection.close}
               </button>
             </motion.div>
           </motion.div>

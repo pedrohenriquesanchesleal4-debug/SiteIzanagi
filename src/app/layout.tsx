@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { MotionConfig } from "framer-motion";
+import { LanguageProvider } from "../lib/i18n/LanguageProvider";
 
 export const metadata: Metadata = {
   title: "Izanagi AI — Autonomous Multi-Agent Software Engineering Framework",
   description: "The definitive modular skill-oriented AI prompt & agent framework for autonomous software engineering. Built for low token consumption, rigorous architecture, and high-craft execution.",
+  icons: {
+    icon: [{ url: "/favicon.ico", sizes: "32x32" }],
+    apple: "/apple-icon.png",
+  },
   keywords: [
     "Izanagi AI",
     "Autonomous Agents",
@@ -67,7 +73,7 @@ export default function RootLayout({
               "operatingSystem": "All",
               "applicationCategory": "DeveloperApplication",
               "description": "Modular skill-oriented AI prompt & agent framework for autonomous software engineering.",
-              "softwareVersion": "2.3.4",
+              "softwareVersion": "2.3.7",
               "author": {
                 "@type": "Person",
                 "name": "Pedro Henrique Sanches Leal"
@@ -82,7 +88,9 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-background text-foreground antialiased selection:bg-blue-500 selection:text-white">
-        {children}
+        <MotionConfig reducedMotion="user">
+          <LanguageProvider>{children}</LanguageProvider>
+        </MotionConfig>
       </body>
     </html>
   );
