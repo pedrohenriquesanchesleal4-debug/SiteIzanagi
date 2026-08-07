@@ -201,7 +201,8 @@ export default function Home() {
 
       {/* Hero Section */}
       <main className="flex-1 pt-32 pb-24 relative z-10">
-        <section className="max-w-5xl mx-auto px-6 text-center pt-16 pb-20">
+        <section className="max-w-5xl mx-auto px-6 text-center pt-16 pb-20 relative">
+          <div className="absolute inset-0 -z-10 bg-grid-faint" aria-hidden="true" />
           <LiveVersionBadge />
 
           <motion.h1
@@ -210,7 +211,7 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight text-white mb-6 leading-[1.05]"
           >
-            {t.hero.title}
+            <span className="text-gradient-cool">{t.hero.title}</span>
           </motion.h1>
 
           <motion.p

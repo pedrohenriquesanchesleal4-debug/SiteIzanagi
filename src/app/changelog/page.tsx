@@ -7,6 +7,7 @@ import { useLanguage } from "../../lib/i18n/LanguageProvider";
 import LanguageSwitcher from "../../components/LanguageSwitcher";
 import MobileNav from "../../components/MobileNav";
 import ChangelogFeed from "../../components/ChangelogFeed";
+import UpdateSpotlight from "../../components/UpdateSpotlight";
 import LiveVersionBadge from "../../components/LiveVersionBadge";
 
 export default function ChangelogPage() {
@@ -81,6 +82,9 @@ export default function ChangelogPage() {
             {t.changelog.realtime}
           </motion.div>
         </div>
+
+        {/* Destaque da última grande atualização */}
+        <UpdateSpotlight />
 
         {/* Live Feed */}
         <ChangelogFeed />

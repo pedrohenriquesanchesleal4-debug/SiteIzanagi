@@ -42,6 +42,8 @@ interface LiveVersion {
 // Só é exibido se a GitHub API falhar (rate-limit/rede). Mantém o site íntegro.
 
 const FALLBACK_COMMITS: Array<Pick<CommitInfo, "sha" | "message" | "date">> = [
+  { sha: "f1098fb", message: "feat: regra anti-cara-de-IA como padrao do framework + automacao em qualquer linguagem", date: "2026-08-07" },
+  { sha: "6925e7d", message: "feat: automation-engineer agent + 13 skills + orchestrator multi-agent otimizado", date: "2026-08-07" },
   { sha: "454b008", message: "chore: bump to v2.4.1", date: "2026-08-07" },
   { sha: "82b7426", message: "feat: curadoria de referencias de componentes/prompts IA (21st.dev, cult-ui, skiper-ui, reactbits, originkit, uiverse, animista, phosphor, grill-me, humanizer, websitesprompts, 10x.app)", date: "2026-08-07" },
   { sha: "110cb0b", message: "feat: v2.4.0 elite framework - skill composition engine, anti-repeat memory, deep discovery v3 e multi-CLI adapters", date: "2026-08-07" },
