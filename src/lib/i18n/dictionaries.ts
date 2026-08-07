@@ -33,7 +33,7 @@ const pt = {
     closeMenu: "Fechar menu",
   },
   hero: {
-    badge: "v2.4.1 · Motor Multi-Agente Determinístico via NPX",
+    badge: "v2.5.3 · Smart CLI Detection & Exhaustive Deep Engineering",
     title: "Pense, Construa, Evolua.",
     subtitle:
       "Framework modular orientado a skills para agentes de IA especializados em engenharia de software autônoma. Baixo consumo de tokens e execução determinística.",
