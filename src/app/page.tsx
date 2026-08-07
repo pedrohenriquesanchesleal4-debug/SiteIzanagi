@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useScroll } from "framer-motion";
 import Link from "next/link";
-import { Shield, Cpu, Code2, Layers, Copy, Sparkles, Compass, Film, Database, Bug, FileText, Users, GraduationCap, Play, Check, RefreshCw, Github, ExternalLink, Mail, ArrowUp, History } from "lucide-react";
+import { Shield, Cpu, Code2, Layers, Copy, Sparkles, Compass, Film, Database, Bug, FileText, Users, GraduationCap, Play, Check, RefreshCw, Github, ExternalLink, Mail, ArrowUp, History, Workflow } from "lucide-react";
 import { useLanguage } from "../lib/i18n/LanguageProvider";
 import LanguageSwitcher from "../components/LanguageSwitcher";
 import MobileNav from "../components/MobileNav";
@@ -34,17 +34,18 @@ function MouseSpotlight() {
 
 const agents = [
   { id: "discovery", name: "Discovery", roleKey: "discovery", icon: Compass, skills: ["brainstorming", "deep-research"], color: "border-blue-500/30 hover:border-blue-500/60 bg-blue-500/5" },
-  { id: "architect", name: "Software Architect", roleKey: "architect", icon: Layers, skills: ["architecture-patterns", "memory-projeto"], color: "border-purple-500/30 hover:border-purple-500/60 bg-purple-500/5" },
+  { id: "architect", name: "Software Architect", roleKey: "architect", icon: Layers, skills: ["architecture-patterns", "memory-projeto"], color: "border-orange-500/30 hover:border-orange-500/60 bg-orange-500/5" },
   { id: "senior-engineer", name: "Senior Engineer", roleKey: "senior-engineer", icon: Code2, skills: ["frontend", "ai-agent", "tdd"], color: "border-emerald-500/30 hover:border-emerald-500/60 bg-emerald-500/5" },
   { id: "animation", name: "Animation Engineer", roleKey: "animation", icon: Film, skills: ["animation-web", "motion-design", "webgl-3d"], color: "border-pink-500/30 hover:border-pink-500/60 bg-pink-500/5" },
   { id: "security", name: "Security Engineer", roleKey: "security", icon: Shield, skills: ["security-privacy"], color: "border-amber-500/30 hover:border-amber-500/60 bg-amber-500/5" },
   { id: "devops", name: "DevOps Engineer", roleKey: "devops", icon: Cpu, skills: ["cloud-infra", "iac-terraform"], color: "border-indigo-500/30 hover:border-indigo-500/60 bg-indigo-500/5" },
-  { id: "database", name: "Database Engineer", roleKey: "database", icon: Database, skills: ["data-engineering"], color: "border-violet-500/30 hover:border-violet-500/60 bg-violet-500/5" },
+  { id: "database", name: "Database Engineer", roleKey: "database", icon: Database, skills: ["data-engineering"], color: "border-cyan-500/30 hover:border-cyan-500/60 bg-cyan-500/5" },
   { id: "bug-hunter", name: "Bug Hunter", roleKey: "bug-hunter", icon: Bug, skills: ["tdd", "qa"], color: "border-red-500/30 hover:border-red-500/60 bg-red-500/5" },
   { id: "techlead", name: "Tech Lead", roleKey: "techlead", icon: Sparkles, skills: ["architecture-patterns"], color: "border-yellow-500/30 hover:border-yellow-500/60 bg-yellow-500/5" },
   { id: "docs", name: "Documentation", roleKey: "docs", icon: FileText, skills: ["architecture-patterns"], color: "border-sky-500/30 hover:border-sky-500/60 bg-sky-500/5" },
   { id: "pm", name: "Project Manager", roleKey: "pm", icon: Users, skills: ["brainstorming"], color: "border-emerald-600/30 hover:border-emerald-600/60 bg-emerald-600/5" },
-  { id: "professor", name: "Professor / Mentor", roleKey: "professor", icon: GraduationCap, skills: ["professor-modo"], color: "border-fuchsia-500/30 hover:border-fuchsia-500/60 bg-fuchsia-500/5" },
+  { id: "professor", name: "Professor / Mentor", roleKey: "professor", icon: GraduationCap, skills: ["professor-modo"], color: "border-teal-500/30 hover:border-teal-500/60 bg-teal-500/5" },
+  { id: "automation-engineer", name: "Automation Engineer", roleKey: "automation-engineer", icon: Workflow, skills: ["automation-engineer", "spreadsheet-automation", "api-automation"], color: "border-lime-500/30 hover:border-lime-500/60 bg-lime-500/5" },
 ] as const;
 
 // Dados estáticos (comandos de terminal realistas permanecem em EN); textos de UI vêm do dicionário i18n.
@@ -138,7 +139,7 @@ export default function Home() {
       {/* Scroll Progress Bar */}
       <motion.div
         style={{ scaleX: scrollYProgress }}
-        className="fixed top-0 left-0 right-0 h-0.5 origin-left z-[60] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+        className="fixed top-0 left-0 right-0 h-0.5 origin-left z-[60] bg-gradient-to-r from-blue-500 via-sky-400 to-cyan-400"
         aria-hidden="true"
       />
 
@@ -387,7 +388,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 12 Specialized Agents Grid */}
+        {/* 13 Specialized Agents Grid */}
         <section id="agents" className="max-w-7xl mx-auto px-6 py-16">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-xs font-mono uppercase tracking-widest text-zinc-500">{t.agentsSection.eyebrow}</span>

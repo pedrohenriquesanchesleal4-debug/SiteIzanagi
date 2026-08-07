@@ -4,7 +4,7 @@ import { MotionConfig } from "framer-motion";
 import { LanguageProvider } from "../lib/i18n/LanguageProvider";
 
 export const metadata: Metadata = {
-  title: "Izanagi AI — Autonomous Multi-Agent Software Engineering Framework",
+    title: "Izanagi AI · Autonomous Multi-Agent Software Engineering Framework",
   description: "The definitive modular skill-oriented AI prompt & agent framework for autonomous software engineering. Built for low token consumption, rigorous architecture, and high-craft execution.",
   icons: {
     icon: [{ url: "/favicon.ico", sizes: "32x32" }],
@@ -41,13 +41,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     alternateLocale: ["pt_BR", "es_ES"],
     url: "https://izanagi-ai.dev",
-    title: "Izanagi AI — Autonomous Multi-Agent Software Engineering Framework",
+  title: "Izanagi AI · Autonomous Multi-Agent Software Engineering Framework",
     description: "Modular skill-oriented AI prompt & agent framework for autonomous software engineering.",
     siteName: "Izanagi AI",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Izanagi AI — Autonomous Multi-Agent Framework",
+    title: "Izanagi AI · Autonomous Multi-Agent Framework",
     description: "Modular skill-oriented AI prompt & agent framework for autonomous software engineering.",
   },
   other: {
@@ -73,7 +73,7 @@ export default function RootLayout({
               "operatingSystem": "All",
               "applicationCategory": "DeveloperApplication",
               "description": "Modular skill-oriented AI prompt & agent framework for autonomous software engineering.",
-              "softwareVersion": "2.3.7",
+              "softwareVersion": "2.4.1",
               "author": {
                 "@type": "Person",
                 "name": "Pedro Henrique Sanches Leal"

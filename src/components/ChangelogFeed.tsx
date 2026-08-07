@@ -58,7 +58,7 @@ const TYPE_META: Record<CommitType, { icon: typeof Sparkles; color: string; labe
   fix: { icon: Wrench, color: "text-emerald-400 border-emerald-500/30 bg-emerald-500/10", labelKey: "fix" },
   chore: { icon: RefreshCw, color: "text-zinc-400 border-zinc-500/30 bg-zinc-500/10", labelKey: "chore" },
   docs: { icon: FileText, color: "text-sky-400 border-sky-500/30 bg-sky-500/10", labelKey: "docs" },
-  refactor: { icon: Layers, color: "text-purple-400 border-purple-500/30 bg-purple-500/10", labelKey: "refactor" },
+  refactor: { icon: Layers, color: "text-orange-400 border-orange-500/30 bg-orange-500/10", labelKey: "refactor" },
   perf: { icon: Activity, color: "text-amber-400 border-amber-500/30 bg-amber-500/10", labelKey: "perf" },
   test: { icon: TestTube, color: "text-rose-400 border-rose-500/30 bg-rose-500/10", labelKey: "test" },
   build: { icon: Cpu, color: "text-indigo-400 border-indigo-500/30 bg-indigo-500/10", labelKey: "build" },
@@ -190,7 +190,7 @@ export default function ChangelogFeed() {
           </span>
           <span className="text-zinc-400">{tFeed.liveLabel}:</span>
           <span className="text-white font-semibold">
-            {version ? `v${version.version}` : loading ? tFeed.loading : "—"}
+            {version ? `v${version.version}` : loading ? tFeed.loading : "···"}
           </span>
           {version?.publishedAt && (
             <span className="text-zinc-500 hidden sm:inline">· {formatDate(version.publishedAt, locale)}</span>
