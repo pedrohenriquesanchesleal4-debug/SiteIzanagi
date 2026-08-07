@@ -68,6 +68,7 @@ export default function GuidePage() {
           <MobileNav
             items={[
               { label: t.nav.home, href: "/" },
+              { label: t.nav.logs, href: "/changelog", highlight: true },
               { label: t.nav.about, href: "/#about" },
               { label: t.nav.pipeline, href: "/#scrolly" },
               { label: t.nav.simulator, href: "/#playground" },
@@ -87,8 +88,7 @@ export default function GuidePage() {
         <div className="mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-zinc-300 text-xs font-mono mb-6">
             <BookOpen className="w-3.5 h-3.5 text-blue-400" /> {t.guide.badge}
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
+          </div>          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
             {t.guide.title}
           </h1>
           <p className="text-zinc-400 text-base leading-relaxed">

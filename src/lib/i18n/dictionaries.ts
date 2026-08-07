@@ -17,6 +17,7 @@ const pt = {
   nav: {
     home: "Início",
     guide: "Guia",
+    logs: "Logs & Novidades",
     about: "O que é",
     pipeline: "Pipeline",
     simulator: "Simulador",
@@ -32,7 +33,7 @@ const pt = {
     closeMenu: "Fechar menu",
   },
   hero: {
-    badge: "v2.3.7 — Motor Multi-Agente Determinístico via NPX",
+    badge: "v2.4.1 — Motor Multi-Agente Determinístico via NPX",
     title: "Pense, Construa, Evolua.",
     subtitle:
       "Framework modular orientado a skills para agentes de IA especializados em engenharia de software autônoma. Baixo consumo de tokens e execução determinística.",
@@ -50,7 +51,7 @@ const pt = {
       'Enquanto ferramentas tradicionais geram código solto e genérico ("cara de IA"), o Izanagi divide o desenvolvimento em marcos estritos através de ',
     p2agents: "12 agentes especializados",
     p2mid: " e mais de ",
-    p2skills: "70 skills modulares",
+    p2skills: "189 skills modulares",
     p2post: ".",
     stat1Title: "12 Agentes",
     stat1Desc: "Especializados por domínios (Arquitetura, DB, Security...)",
@@ -139,9 +140,34 @@ const pt = {
     npm: "NPM Package",
     contact: "Contato / Portfólio",
   },
+  changelog: {
+    title: "Logs & Novidades",
+    subtitle:
+      "Acompanhe em tempo real tudo o que está acontecendo no framework: novas features, correções, melhorias de performance e evolução contínua do Izanagi AI.",
+    realtime: "Feed ao vivo — GitHub API + npm registry, sem manutenção manual",
+    liveLabel: "Última versão",
+    loading: "Carregando...",
+    viewOnGithub: "Ver commits no GitHub",
+    offlineNote:
+      "Não foi possível conectar à API do GitHub (rate-limit ou rede). Exibindo os últimos lançamentos conhecidos — o feed volta ao vivo automaticamente.",
+    ago: "há",
+    types: {
+      feat: "Novo",
+      fix: "Correção",
+      chore: "Manutenção",
+      docs: "Docs",
+      refactor: "Refatoração",
+      perf: "Performance",
+      test: "Testes",
+      build: "Build",
+      ci: "CI/CD",
+      other: "Commit",
+    },
+    repoLink: "Repositório do framework",
+  },
   guide: {
     back: "Voltar ao Início",
-    badge: "Documentação Oficial v2.3.7",
+    badge: "Documentação Oficial v2.4.1",
     title: "Guia de Instalação & Uso",
     subtitle:
       "Aprenda a inicializar o Izanagi AI em seu workspace, configurar packs de skills especializados e acionar o swarm de agentes autônomos.",
@@ -193,6 +219,7 @@ const en: Dict = {
   nav: {
     home: "Home",
     guide: "Guide",
+    logs: "Logs & Updates",
     about: "What is",
     pipeline: "Pipeline",
     simulator: "Simulator",
@@ -208,7 +235,7 @@ const en: Dict = {
     closeMenu: "Close menu",
   },
   hero: {
-    badge: "v2.3.7 — Deterministic Multi-Agent Engine via NPX",
+    badge: "v2.4.1 — Deterministic Multi-Agent Engine via NPX",
     title: "Think. Build. Evolve.",
     subtitle:
       "A modular skill-oriented framework for AI agents specialized in autonomous software engineering. Low token consumption and deterministic execution.",
@@ -226,7 +253,7 @@ const en: Dict = {
       'While traditional tools generate loose, generic code ("AI-flavored boilerplate"), Izanagi breaks development into strict milestones through ',
     p2agents: "12 specialized agents",
     p2mid: " and more than ",
-    p2skills: "70 modular skills",
+    p2skills: "189 modular skills",
     p2post: ".",
     stat1Title: "12 Agents",
     stat1Desc: "Specialized by domain (Architecture, DB, Security...)",
@@ -315,9 +342,34 @@ const en: Dict = {
     npm: "NPM Package",
     contact: "Contact / Portfolio",
   },
+  changelog: {
+    title: "Logs & Updates",
+    subtitle:
+      "Follow in real time everything happening in the framework: new features, fixes, performance improvements and the continuous evolution of Izanagi AI.",
+    realtime: "Live feed — GitHub API + npm registry, zero manual maintenance",
+    liveLabel: "Latest version",
+    loading: "Loading...",
+    viewOnGithub: "View commits on GitHub",
+    offlineNote:
+      "Could not reach the GitHub API (rate limit or network). Showing the latest known releases — the feed goes live again automatically.",
+    ago: "ago",
+    types: {
+      feat: "New",
+      fix: "Fix",
+      chore: "Maintenance",
+      docs: "Docs",
+      refactor: "Refactor",
+      perf: "Performance",
+      test: "Tests",
+      build: "Build",
+      ci: "CI/CD",
+      other: "Commit",
+    },
+    repoLink: "Framework repository",
+  },
   guide: {
     back: "Back to Home",
-    badge: "Official Documentation v2.3.7",
+    badge: "Official Documentation v2.4.1",
     title: "Installation & Usage Guide",
     subtitle:
       "Learn how to initialize Izanagi AI in your workspace, configure specialized skill packs and trigger the autonomous agent swarm.",
@@ -367,6 +419,7 @@ const es: Dict = {
   nav: {
     home: "Inicio",
     guide: "Guía",
+    logs: "Logs & Novedades",
     about: "Qué es",
     pipeline: "Pipeline",
     simulator: "Simulador",
@@ -382,7 +435,7 @@ const es: Dict = {
     closeMenu: "Cerrar menú",
   },
   hero: {
-    badge: "v2.3.7 — Motor Multi-Agente Determinístico vía NPX",
+    badge: "v2.4.1 — Motor Multi-Agente Determinístico vía NPX",
     title: "Piensa. Construye. Evoluciona.",
     subtitle:
       "Framework modular orientado a skills para agentes de IA especializados en ingeniería de software autónoma. Bajo consumo de tokens y ejecución determinística.",
@@ -400,7 +453,7 @@ const es: Dict = {
       'Mientras las herramientas tradicionales generan código suelto y genérico ("cara de IA"), Izanagi divide el desarrollo en hitos estrictos a través de ',
     p2agents: "12 agentes especializados",
     p2mid: " y más de ",
-    p2skills: "70 skills modulares",
+    p2skills: "189 skills modulares",
     p2post: ".",
     stat1Title: "12 Agentes",
     stat1Desc: "Especializados por dominio (Arquitectura, DB, Security...)",
@@ -489,9 +542,34 @@ const es: Dict = {
     npm: "Paquete NPM",
     contact: "Contacto / Portafolio",
   },
+  changelog: {
+    title: "Logs & Novedades",
+    subtitle:
+      "Sigue en tiempo real todo lo que está pasando en el framework: nuevas funciones, correcciones, mejoras de rendimiento y la evolución continua de Izanagi AI.",
+    realtime: "Feed en vivo — GitHub API + npm registry, sin mantenimiento manual",
+    liveLabel: "Última versión",
+    loading: "Cargando...",
+    viewOnGithub: "Ver commits en GitHub",
+    offlineNote:
+      "No se pudo conectar a la API de GitHub (límite de peticiones o red). Mostrando los últimos lanzamientos conocidos — el feed vuelve en vivo automáticamente.",
+    ago: "hace",
+    types: {
+      feat: "Nuevo",
+      fix: "Corrección",
+      chore: "Mantenimiento",
+      docs: "Docs",
+      refactor: "Refactor",
+      perf: "Rendimiento",
+      test: "Tests",
+      build: "Build",
+      ci: "CI/CD",
+      other: "Commit",
+    },
+    repoLink: "Repositorio del framework",
+  },
   guide: {
     back: "Volver al Inicio",
-    badge: "Documentación Oficial v2.3.7",
+    badge: "Documentación Oficial v2.4.1",
     title: "Guía de Instalación & Uso",
     subtitle:
       "Aprende a inicializar Izanagi AI en tu workspace, configurar packs de skills especializados y activar el swarm de agentes autónomos.",

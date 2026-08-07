@@ -3,10 +3,11 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useScroll } from "framer-motion";
 import Link from "next/link";
-import { Shield, Cpu, Code2, Layers, Copy, Sparkles, Compass, Film, Database, Bug, FileText, Users, GraduationCap, Play, Check, RefreshCw, Github, ExternalLink, Mail, ArrowUp } from "lucide-react";
+import { Shield, Cpu, Code2, Layers, Copy, Sparkles, Compass, Film, Database, Bug, FileText, Users, GraduationCap, Play, Check, RefreshCw, Github, ExternalLink, Mail, ArrowUp, History } from "lucide-react";
 import { useLanguage } from "../lib/i18n/LanguageProvider";
 import LanguageSwitcher from "../components/LanguageSwitcher";
 import MobileNav from "../components/MobileNav";
+import LiveVersionBadge from "../components/LiveVersionBadge";
 import type { Dict } from "../lib/i18n/dictionaries";
 
 type RoleKey = keyof Dict["agentsSection"]["roles"];
@@ -152,6 +153,9 @@ export default function Home() {
 
           <nav className="hidden md:flex items-center gap-8 text-xs font-medium text-zinc-400">
             <Link href="/guide" className="hover:text-white transition">{t.nav.guide}</Link>
+            <Link href="/changelog" className="hover:text-white transition flex items-center gap-1 text-blue-400">
+              <History className="w-3.5 h-3.5" /> {t.nav.logs}
+            </Link>
             <a href="#about" className={navClass("about")}>{t.nav.about}</a>
             <a href="#scrolly" className={navClass("scrolly")}>{t.nav.pipeline}</a>
             <a href="#playground" className={navClass("playground")}>{t.nav.simulator}</a>
@@ -179,6 +183,7 @@ export default function Home() {
               items={[
                 { label: t.nav.home, href: "/" },
                 { label: t.nav.guide, href: "/guide" },
+                { label: t.nav.logs, href: "/changelog", highlight: true },
                 { label: t.nav.about, href: "#about" },
                 { label: t.nav.pipeline, href: "#scrolly" },
                 { label: t.nav.simulator, href: "#playground" },
@@ -196,15 +201,7 @@ export default function Home() {
       {/* Hero Section */}
       <main className="flex-1 pt-32 pb-24 relative z-10">
         <section className="max-w-5xl mx-auto px-6 text-center pt-16 pb-20">
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-zinc-300 text-xs font-mono mb-8 backdrop-blur-md"
-          >
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            {t.hero.badge}
-          </motion.div>
+          <LiveVersionBadge />
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
