@@ -145,9 +145,6 @@ export default function Home() {
       <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-[#070709]/80 border-b border-white/[0.06]">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-zinc-900 border border-white/10 flex items-center justify-center font-bold text-white shadow-md">
-              ⛩️
-            </div>
             <span className="font-bold tracking-tight text-base text-zinc-100">
               Izanagi <span className="text-zinc-400 font-normal">AI</span>
             </span>
